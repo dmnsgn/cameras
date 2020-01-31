@@ -1,5 +1,6 @@
+web_modules
 screenshot.jpg
 index.html
 demo.js
-src/**/*
-!src/index.d.ts
+src/*
+!src/types.d.ts
