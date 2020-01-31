@@ -1,0 +1,7 @@
+screenshot.gif
+.editorconfig
+.travis.yml
+index.html
+demo.js
+src/**/*
+!src/index.d.ts
