@@ -39,7 +39,7 @@ perspectiveCamera.updateProjectionMatrix();
 
 ## API
 
-See the [Typescript types](src/types.d.js) for options.
+See the [Typescript types](src/types.d.ts) for options.
 
 ## License
 
