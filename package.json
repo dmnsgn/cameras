@@ -1,6 +1,6 @@
 {
   "name": "cameras",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Cameras for 3D rendering.",
   "type": "module",
   "main": "lib/index.js",
