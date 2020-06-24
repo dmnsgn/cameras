@@ -1,15 +1,18 @@
 import { mat4 } from "gl-matrix";
 
 import Camera from "./Camera.js";
-import { OrthographicCameraOptions } from "./types.d.js";
+
+import { OrthographicCameraOptions, CameraType } from "./types.d.js";
 
 export default class OrthographicCamera extends Camera {
-  public left: number = -1;
-  public right: number = 1;
-  public top: number = 1;
-  public bottom: number = -1;
+  public readonly type: CameraType = CameraType.Orthographic;
 
-  public zoom: number = 1;
+  public left = -1;
+  public right = 1;
+  public top = 1;
+  public bottom = -1;
+
+  public zoom = 1;
 
   constructor(options?: OrthographicCameraOptions) {
     super(options);

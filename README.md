@@ -23,12 +23,23 @@ npm install cameras
 import { PerspectiveCamera } from "cameras";
 
 const perspectiveCamera = new PerspectiveCamera({
-	fov: Math.PI / 2,
-	near: 1,
-	far: 1000,
-	position: [3, 3, 3],
-	target: [0, 1, 0]
+  fov: Math.PI / 2,
+  near: 1,
+  far: 1000,
+  position: [3, 3, 3],
+  target: [0, 1, 0],
 });
+
+// Create controls
+const perspectiveCameraControls = new Controls({
+  element: regl._gl.canvas,
+  camera: perspectiveCamera,
+});
+
+// Update controls and set camera with controls position/target
+perspectiveCameraControls.update();
+perspectiveCamera.position = perspectiveCameraControls.position;
+perspectiveCamera.target = perspectiveCameraControls.target;
 
 // Update view matrices (call when changing position/target/up)
 perspectiveCamera.update();
@@ -39,7 +50,7 @@ perspectiveCamera.updateProjectionMatrix();
 
 ## API
 
-See the [Typescript types](src/types.d.ts) for options.
+See the [Typescript types](src/types.d.ts) for options (PerspectiveCameraOptions, OrthographicCameraOptions, ControlsOptions).
 
 ## License
 

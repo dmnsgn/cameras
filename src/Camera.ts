@@ -1,14 +1,15 @@
 import { mat4, vec3 } from "gl-matrix";
+
 import { CameraType, CameraOptions, CameraView } from "./types.d.js";
 
 export default class Camera {
   public readonly type: CameraType = CameraType.Camera;
 
-  public near: number = 0.1;
-  public far: number = 100;
-  public up: vec3 = vec3.fromValues(0, 1, 0);
+  public near = 0.1;
+  public far = 100;
 
-  public position: vec3 = vec3.create();
+  public up: vec3 = vec3.fromValues(0, 1, 0);
+  public position: vec3 = vec3.fromValues(0, 0, 1);
   public target: vec3 = vec3.create();
 
   public projectionMatrix: mat4 = mat4.create();
