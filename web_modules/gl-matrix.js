@@ -9,7 +9,7 @@ var RANDOM = Math.random;
 /**
  * Sets the type of array used when creating new vectors and matrices
  *
- * @param {Type} type Array type, such as Float32Array or Array
+ * @param {Float32ArrayConstructor | ArrayConstructor} type Array type, such as Float32Array or Array
  */
 
 function setMatrixArrayType(type) {
@@ -50,6 +50,7 @@ if (!Math.hypot) Math.hypot = function () {
 };
 
 var common = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   EPSILON: EPSILON,
   get ARRAY_TYPE () { return ARRAY_TYPE; },
   RANDOM: RANDOM,
@@ -84,7 +85,7 @@ function create() {
 /**
  * Creates a new mat2 initialized with values from an existing matrix
  *
- * @param {mat2} a matrix to clone
+ * @param {ReadonlyMat2} a matrix to clone
  * @returns {mat2} a new 2x2 matrix
  */
 
@@ -100,7 +101,7 @@ function clone(a) {
  * Copy the values from one mat2 to another
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the source matrix
+ * @param {ReadonlyMat2} a the source matrix
  * @returns {mat2} out
  */
 
@@ -165,7 +166,7 @@ function set(out, m00, m01, m10, m11) {
  * Transpose the values of a mat2
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the source matrix
+ * @param {ReadonlyMat2} a the source matrix
  * @returns {mat2} out
  */
 
@@ -189,7 +190,7 @@ function transpose(out, a) {
  * Inverts a mat2
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the source matrix
+ * @param {ReadonlyMat2} a the source matrix
  * @returns {mat2} out
  */
 
@@ -216,7 +217,7 @@ function invert(out, a) {
  * Calculates the adjugate of a mat2
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the source matrix
+ * @param {ReadonlyMat2} a the source matrix
  * @returns {mat2} out
  */
 
@@ -232,7 +233,7 @@ function adjoint(out, a) {
 /**
  * Calculates the determinant of a mat2
  *
- * @param {mat2} a the source matrix
+ * @param {ReadonlyMat2} a the source matrix
  * @returns {Number} determinant of a
  */
 
@@ -243,8 +244,8 @@ function determinant(a) {
  * Multiplies two mat2's
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the first operand
- * @param {mat2} b the second operand
+ * @param {ReadonlyMat2} a the first operand
+ * @param {ReadonlyMat2} b the second operand
  * @returns {mat2} out
  */
 
@@ -267,7 +268,7 @@ function multiply(out, a, b) {
  * Rotates a mat2 by the given angle
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the matrix to rotate
+ * @param {ReadonlyMat2} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
  * @returns {mat2} out
  */
@@ -289,8 +290,8 @@ function rotate(out, a, rad) {
  * Scales the mat2 by the dimensions in the given vec2
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the matrix to rotate
- * @param {vec2} v the vec2 to scale the matrix by
+ * @param {ReadonlyMat2} a the matrix to rotate
+ * @param {ReadonlyVec2} v the vec2 to scale the matrix by
  * @returns {mat2} out
  **/
 
@@ -336,7 +337,7 @@ function fromRotation(out, rad) {
  *     mat2.scale(dest, dest, vec);
  *
  * @param {mat2} out mat2 receiving operation result
- * @param {vec2} v Scaling vector
+ * @param {ReadonlyVec2} v Scaling vector
  * @returns {mat2} out
  */
 
@@ -350,17 +351,17 @@ function fromScaling(out, v) {
 /**
  * Returns a string representation of a mat2
  *
- * @param {mat2} a matrix to represent as a string
+ * @param {ReadonlyMat2} a matrix to represent as a string
  * @returns {String} string representation of the matrix
  */
 
 function str(a) {
-  return 'mat2(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
+  return "mat2(" + a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ")";
 }
 /**
  * Returns Frobenius norm of a mat2
  *
- * @param {mat2} a the matrix to calculate Frobenius norm of
+ * @param {ReadonlyMat2} a the matrix to calculate Frobenius norm of
  * @returns {Number} Frobenius norm
  */
 
@@ -369,10 +370,10 @@ function frob(a) {
 }
 /**
  * Returns L, D and U matrices (Lower triangular, Diagonal and Upper triangular) by factorizing the input matrix
- * @param {mat2} L the lower triangular matrix
- * @param {mat2} D the diagonal matrix
- * @param {mat2} U the upper triangular matrix
- * @param {mat2} a the input matrix to factorize
+ * @param {ReadonlyMat2} L the lower triangular matrix
+ * @param {ReadonlyMat2} D the diagonal matrix
+ * @param {ReadonlyMat2} U the upper triangular matrix
+ * @param {ReadonlyMat2} a the input matrix to factorize
  */
 
 function LDU(L, D, U, a) {
@@ -386,8 +387,8 @@ function LDU(L, D, U, a) {
  * Adds two mat2's
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the first operand
- * @param {mat2} b the second operand
+ * @param {ReadonlyMat2} a the first operand
+ * @param {ReadonlyMat2} b the second operand
  * @returns {mat2} out
  */
 
@@ -402,8 +403,8 @@ function add(out, a, b) {
  * Subtracts matrix b from matrix a
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the first operand
- * @param {mat2} b the second operand
+ * @param {ReadonlyMat2} a the first operand
+ * @param {ReadonlyMat2} b the second operand
  * @returns {mat2} out
  */
 
@@ -417,8 +418,8 @@ function subtract(out, a, b) {
 /**
  * Returns whether or not the matrices have exactly the same elements in the same position (when compared with ===)
  *
- * @param {mat2} a The first matrix.
- * @param {mat2} b The second matrix.
+ * @param {ReadonlyMat2} a The first matrix.
+ * @param {ReadonlyMat2} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
@@ -428,8 +429,8 @@ function exactEquals(a, b) {
 /**
  * Returns whether or not the matrices have approximately the same elements in the same position.
  *
- * @param {mat2} a The first matrix.
- * @param {mat2} b The second matrix.
+ * @param {ReadonlyMat2} a The first matrix.
+ * @param {ReadonlyMat2} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
@@ -448,7 +449,7 @@ function equals$1(a, b) {
  * Multiply each element of the matrix by a scalar.
  *
  * @param {mat2} out the receiving matrix
- * @param {mat2} a the matrix to scale
+ * @param {ReadonlyMat2} a the matrix to scale
  * @param {Number} b amount to scale the matrix's elements by
  * @returns {mat2} out
  */
@@ -464,8 +465,8 @@ function multiplyScalar(out, a, b) {
  * Adds two mat2's after multiplying each element of the second operand by a scalar value.
  *
  * @param {mat2} out the receiving vector
- * @param {mat2} a the first operand
- * @param {mat2} b the second operand
+ * @param {ReadonlyMat2} a the first operand
+ * @param {ReadonlyMat2} b the second operand
  * @param {Number} scale the amount to scale b's elements by before adding
  * @returns {mat2} out
  */
@@ -491,6 +492,7 @@ var mul = multiply;
 var sub = subtract;
 
 var mat2 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create,
   clone: clone,
   copy: copy,
@@ -522,12 +524,12 @@ var mat2 = /*#__PURE__*/Object.freeze({
 /**
  * 2x3 Matrix
  * @module mat2d
- *
  * @description
  * A mat2d contains six elements defined as:
  * <pre>
- * [a, b, c,
- *  d, tx, ty]
+ * [a, b,
+ *  c, d,
+ *  tx, ty]
  * </pre>
  * This is a short form for the 3x3 matrix:
  * <pre>
@@ -561,7 +563,7 @@ function create$1() {
 /**
  * Creates a new mat2d initialized with values from an existing matrix
  *
- * @param {mat2d} a matrix to clone
+ * @param {ReadonlyMat2d} a matrix to clone
  * @returns {mat2d} a new 2x3 matrix
  */
 
@@ -579,7 +581,7 @@ function clone$1(a) {
  * Copy the values from one mat2d to another
  *
  * @param {mat2d} out the receiving matrix
- * @param {mat2d} a the source matrix
+ * @param {ReadonlyMat2d} a the source matrix
  * @returns {mat2d} out
  */
 
@@ -656,7 +658,7 @@ function set$1(out, a, b, c, d, tx, ty) {
  * Inverts a mat2d
  *
  * @param {mat2d} out the receiving matrix
- * @param {mat2d} a the source matrix
+ * @param {ReadonlyMat2d} a the source matrix
  * @returns {mat2d} out
  */
 
@@ -685,7 +687,7 @@ function invert$1(out, a) {
 /**
  * Calculates the determinant of a mat2d
  *
- * @param {mat2d} a the source matrix
+ * @param {ReadonlyMat2d} a the source matrix
  * @returns {Number} determinant of a
  */
 
@@ -696,8 +698,8 @@ function determinant$1(a) {
  * Multiplies two mat2d's
  *
  * @param {mat2d} out the receiving matrix
- * @param {mat2d} a the first operand
- * @param {mat2d} b the second operand
+ * @param {ReadonlyMat2d} a the first operand
+ * @param {ReadonlyMat2d} b the second operand
  * @returns {mat2d} out
  */
 
@@ -726,7 +728,7 @@ function multiply$1(out, a, b) {
  * Rotates a mat2d by the given angle
  *
  * @param {mat2d} out the receiving matrix
- * @param {mat2d} a the matrix to rotate
+ * @param {ReadonlyMat2d} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
  * @returns {mat2d} out
  */
@@ -752,8 +754,8 @@ function rotate$1(out, a, rad) {
  * Scales the mat2d by the dimensions in the given vec2
  *
  * @param {mat2d} out the receiving matrix
- * @param {mat2d} a the matrix to translate
- * @param {vec2} v the vec2 to scale the matrix by
+ * @param {ReadonlyMat2d} a the matrix to translate
+ * @param {ReadonlyVec2} v the vec2 to scale the matrix by
  * @returns {mat2d} out
  **/
 
@@ -778,8 +780,8 @@ function scale$1(out, a, v) {
  * Translates the mat2d by the dimensions in the given vec2
  *
  * @param {mat2d} out the receiving matrix
- * @param {mat2d} a the matrix to translate
- * @param {vec2} v the vec2 to translate the matrix by
+ * @param {ReadonlyMat2d} a the matrix to translate
+ * @param {ReadonlyVec2} v the vec2 to translate the matrix by
  * @returns {mat2d} out
  **/
 
@@ -831,7 +833,7 @@ function fromRotation$1(out, rad) {
  *     mat2d.scale(dest, dest, vec);
  *
  * @param {mat2d} out mat2d receiving operation result
- * @param {vec2} v Scaling vector
+ * @param {ReadonlyVec2} v Scaling vector
  * @returns {mat2d} out
  */
 
@@ -852,7 +854,7 @@ function fromScaling$1(out, v) {
  *     mat2d.translate(dest, dest, vec);
  *
  * @param {mat2d} out mat2d receiving operation result
- * @param {vec2} v Translation vector
+ * @param {ReadonlyVec2} v Translation vector
  * @returns {mat2d} out
  */
 
@@ -868,17 +870,17 @@ function fromTranslation(out, v) {
 /**
  * Returns a string representation of a mat2d
  *
- * @param {mat2d} a matrix to represent as a string
+ * @param {ReadonlyMat2d} a matrix to represent as a string
  * @returns {String} string representation of the matrix
  */
 
 function str$1(a) {
-  return 'mat2d(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' + a[4] + ', ' + a[5] + ')';
+  return "mat2d(" + a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ")";
 }
 /**
  * Returns Frobenius norm of a mat2d
  *
- * @param {mat2d} a the matrix to calculate Frobenius norm of
+ * @param {ReadonlyMat2d} a the matrix to calculate Frobenius norm of
  * @returns {Number} Frobenius norm
  */
 
@@ -889,8 +891,8 @@ function frob$1(a) {
  * Adds two mat2d's
  *
  * @param {mat2d} out the receiving matrix
- * @param {mat2d} a the first operand
- * @param {mat2d} b the second operand
+ * @param {ReadonlyMat2d} a the first operand
+ * @param {ReadonlyMat2d} b the second operand
  * @returns {mat2d} out
  */
 
@@ -907,8 +909,8 @@ function add$1(out, a, b) {
  * Subtracts matrix b from matrix a
  *
  * @param {mat2d} out the receiving matrix
- * @param {mat2d} a the first operand
- * @param {mat2d} b the second operand
+ * @param {ReadonlyMat2d} a the first operand
+ * @param {ReadonlyMat2d} b the second operand
  * @returns {mat2d} out
  */
 
@@ -925,7 +927,7 @@ function subtract$1(out, a, b) {
  * Multiply each element of the matrix by a scalar.
  *
  * @param {mat2d} out the receiving matrix
- * @param {mat2d} a the matrix to scale
+ * @param {ReadonlyMat2d} a the matrix to scale
  * @param {Number} b amount to scale the matrix's elements by
  * @returns {mat2d} out
  */
@@ -943,8 +945,8 @@ function multiplyScalar$1(out, a, b) {
  * Adds two mat2d's after multiplying each element of the second operand by a scalar value.
  *
  * @param {mat2d} out the receiving vector
- * @param {mat2d} a the first operand
- * @param {mat2d} b the second operand
+ * @param {ReadonlyMat2d} a the first operand
+ * @param {ReadonlyMat2d} b the second operand
  * @param {Number} scale the amount to scale b's elements by before adding
  * @returns {mat2d} out
  */
@@ -961,8 +963,8 @@ function multiplyScalarAndAdd$1(out, a, b, scale) {
 /**
  * Returns whether or not the matrices have exactly the same elements in the same position (when compared with ===)
  *
- * @param {mat2d} a The first matrix.
- * @param {mat2d} b The second matrix.
+ * @param {ReadonlyMat2d} a The first matrix.
+ * @param {ReadonlyMat2d} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
@@ -972,8 +974,8 @@ function exactEquals$1(a, b) {
 /**
  * Returns whether or not the matrices have approximately the same elements in the same position.
  *
- * @param {mat2d} a The first matrix.
- * @param {mat2d} b The second matrix.
+ * @param {ReadonlyMat2d} a The first matrix.
+ * @param {ReadonlyMat2d} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
@@ -1006,6 +1008,7 @@ var mul$1 = multiply$1;
 var sub$1 = subtract$1;
 
 var mat2d = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$1,
   clone: clone$1,
   copy: copy$1,
@@ -1065,7 +1068,7 @@ function create$2() {
  * Copies the upper-left 3x3 values into the given mat3.
  *
  * @param {mat3} out the receiving 3x3 matrix
- * @param {mat4} a   the source 4x4 matrix
+ * @param {ReadonlyMat4} a   the source 4x4 matrix
  * @returns {mat3} out
  */
 
@@ -1084,7 +1087,7 @@ function fromMat4(out, a) {
 /**
  * Creates a new mat3 initialized with values from an existing matrix
  *
- * @param {mat3} a matrix to clone
+ * @param {ReadonlyMat3} a matrix to clone
  * @returns {mat3} a new 3x3 matrix
  */
 
@@ -1105,7 +1108,7 @@ function clone$2(a) {
  * Copy the values from one mat3 to another
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the source matrix
+ * @param {ReadonlyMat3} a the source matrix
  * @returns {mat3} out
  */
 
@@ -1200,7 +1203,7 @@ function identity$2(out) {
  * Transpose the values of a mat3
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the source matrix
+ * @param {ReadonlyMat3} a the source matrix
  * @returns {mat3} out
  */
 
@@ -1234,7 +1237,7 @@ function transpose$1(out, a) {
  * Inverts a mat3
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the source matrix
+ * @param {ReadonlyMat3} a the source matrix
  * @returns {mat3} out
  */
 
@@ -1274,7 +1277,7 @@ function invert$2(out, a) {
  * Calculates the adjugate of a mat3
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the source matrix
+ * @param {ReadonlyMat3} a the source matrix
  * @returns {mat3} out
  */
 
@@ -1302,7 +1305,7 @@ function adjoint$1(out, a) {
 /**
  * Calculates the determinant of a mat3
  *
- * @param {mat3} a the source matrix
+ * @param {ReadonlyMat3} a the source matrix
  * @returns {Number} determinant of a
  */
 
@@ -1322,8 +1325,8 @@ function determinant$2(a) {
  * Multiplies two mat3's
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the first operand
- * @param {mat3} b the second operand
+ * @param {ReadonlyMat3} a the first operand
+ * @param {ReadonlyMat3} b the second operand
  * @returns {mat3} out
  */
 
@@ -1361,8 +1364,8 @@ function multiply$2(out, a, b) {
  * Translate a mat3 by the given vector
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the matrix to translate
- * @param {vec2} v vector to translate by
+ * @param {ReadonlyMat3} a the matrix to translate
+ * @param {ReadonlyVec2} v vector to translate by
  * @returns {mat3} out
  */
 
@@ -1393,7 +1396,7 @@ function translate$1(out, a, v) {
  * Rotates a mat3 by the given angle
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the matrix to rotate
+ * @param {ReadonlyMat3} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
  * @returns {mat3} out
  */
@@ -1425,8 +1428,8 @@ function rotate$2(out, a, rad) {
  * Scales the mat3 by the dimensions in the given vec2
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the matrix to rotate
- * @param {vec2} v the vec2 to scale the matrix by
+ * @param {ReadonlyMat3} a the matrix to rotate
+ * @param {ReadonlyVec2} v the vec2 to scale the matrix by
  * @returns {mat3} out
  **/
 
@@ -1452,7 +1455,7 @@ function scale$2(out, a, v) {
  *     mat3.translate(dest, dest, vec);
  *
  * @param {mat3} out mat3 receiving operation result
- * @param {vec2} v Translation vector
+ * @param {ReadonlyVec2} v Translation vector
  * @returns {mat3} out
  */
 
@@ -1502,7 +1505,7 @@ function fromRotation$2(out, rad) {
  *     mat3.scale(dest, dest, vec);
  *
  * @param {mat3} out mat3 receiving operation result
- * @param {vec2} v Scaling vector
+ * @param {ReadonlyVec2} v Scaling vector
  * @returns {mat3} out
  */
 
@@ -1522,7 +1525,7 @@ function fromScaling$2(out, v) {
  * Copies the values from a mat2d into a mat3
  *
  * @param {mat3} out the receiving matrix
- * @param {mat2d} a the matrix to copy
+ * @param {ReadonlyMat2d} a the matrix to copy
  * @returns {mat3} out
  **/
 
@@ -1539,13 +1542,13 @@ function fromMat2d(out, a) {
   return out;
 }
 /**
-* Calculates a 3x3 matrix from the given quaternion
-*
-* @param {mat3} out mat3 receiving operation result
-* @param {quat} q Quaternion to create matrix from
-*
-* @returns {mat3} out
-*/
+ * Calculates a 3x3 matrix from the given quaternion
+ *
+ * @param {mat3} out mat3 receiving operation result
+ * @param {ReadonlyQuat} q Quaternion to create matrix from
+ *
+ * @returns {mat3} out
+ */
 
 function fromQuat(out, q) {
   var x = q[0],
@@ -1576,13 +1579,13 @@ function fromQuat(out, q) {
   return out;
 }
 /**
-* Calculates a 3x3 normal matrix (transpose inverse) from the 4x4 matrix
-*
-* @param {mat3} out mat3 receiving operation result
-* @param {mat4} a Mat4 to derive the normal matrix from
-*
-* @returns {mat3} out
-*/
+ * Calculates a 3x3 normal matrix (transpose inverse) from the 4x4 matrix
+ *
+ * @param {mat3} out mat3 receiving operation result
+ * @param {ReadonlyMat4} a Mat4 to derive the normal matrix from
+ *
+ * @returns {mat3} out
+ */
 
 function normalFromMat4(out, a) {
   var a00 = a[0],
@@ -1656,17 +1659,17 @@ function projection(out, width, height) {
 /**
  * Returns a string representation of a mat3
  *
- * @param {mat3} a matrix to represent as a string
+ * @param {ReadonlyMat3} a matrix to represent as a string
  * @returns {String} string representation of the matrix
  */
 
 function str$2(a) {
-  return 'mat3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + a[6] + ', ' + a[7] + ', ' + a[8] + ')';
+  return "mat3(" + a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7] + ", " + a[8] + ")";
 }
 /**
  * Returns Frobenius norm of a mat3
  *
- * @param {mat3} a the matrix to calculate Frobenius norm of
+ * @param {ReadonlyMat3} a the matrix to calculate Frobenius norm of
  * @returns {Number} Frobenius norm
  */
 
@@ -1677,8 +1680,8 @@ function frob$2(a) {
  * Adds two mat3's
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the first operand
- * @param {mat3} b the second operand
+ * @param {ReadonlyMat3} a the first operand
+ * @param {ReadonlyMat3} b the second operand
  * @returns {mat3} out
  */
 
@@ -1698,8 +1701,8 @@ function add$2(out, a, b) {
  * Subtracts matrix b from matrix a
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the first operand
- * @param {mat3} b the second operand
+ * @param {ReadonlyMat3} a the first operand
+ * @param {ReadonlyMat3} b the second operand
  * @returns {mat3} out
  */
 
@@ -1719,7 +1722,7 @@ function subtract$2(out, a, b) {
  * Multiply each element of the matrix by a scalar.
  *
  * @param {mat3} out the receiving matrix
- * @param {mat3} a the matrix to scale
+ * @param {ReadonlyMat3} a the matrix to scale
  * @param {Number} b amount to scale the matrix's elements by
  * @returns {mat3} out
  */
@@ -1740,8 +1743,8 @@ function multiplyScalar$2(out, a, b) {
  * Adds two mat3's after multiplying each element of the second operand by a scalar value.
  *
  * @param {mat3} out the receiving vector
- * @param {mat3} a the first operand
- * @param {mat3} b the second operand
+ * @param {ReadonlyMat3} a the first operand
+ * @param {ReadonlyMat3} b the second operand
  * @param {Number} scale the amount to scale b's elements by before adding
  * @returns {mat3} out
  */
@@ -1761,8 +1764,8 @@ function multiplyScalarAndAdd$2(out, a, b, scale) {
 /**
  * Returns whether or not the matrices have exactly the same elements in the same position (when compared with ===)
  *
- * @param {mat3} a The first matrix.
- * @param {mat3} b The second matrix.
+ * @param {ReadonlyMat3} a The first matrix.
+ * @param {ReadonlyMat3} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
@@ -1772,8 +1775,8 @@ function exactEquals$2(a, b) {
 /**
  * Returns whether or not the matrices have approximately the same elements in the same position.
  *
- * @param {mat3} a The first matrix.
- * @param {mat3} b The second matrix.
+ * @param {ReadonlyMat3} a The first matrix.
+ * @param {ReadonlyMat3} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
@@ -1812,6 +1815,7 @@ var mul$2 = multiply$2;
 var sub$2 = subtract$2;
 
 var mat3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$2,
   fromMat4: fromMat4,
   clone: clone$2,
@@ -1884,7 +1888,7 @@ function create$3() {
 /**
  * Creates a new mat4 initialized with values from an existing matrix
  *
- * @param {mat4} a matrix to clone
+ * @param {ReadonlyMat4} a matrix to clone
  * @returns {mat4} a new 4x4 matrix
  */
 
@@ -1912,7 +1916,7 @@ function clone$3(a) {
  * Copy the values from one mat4 to another
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the source matrix
+ * @param {ReadonlyMat4} a the source matrix
  * @returns {mat4} out
  */
 
@@ -2049,7 +2053,7 @@ function identity$3(out) {
  * Transpose the values of a mat4
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the source matrix
+ * @param {ReadonlyMat4} a the source matrix
  * @returns {mat4} out
  */
 
@@ -2099,7 +2103,7 @@ function transpose$2(out, a) {
  * Inverts a mat4
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the source matrix
+ * @param {ReadonlyMat4} a the source matrix
  * @returns {mat4} out
  */
 
@@ -2162,7 +2166,7 @@ function invert$3(out, a) {
  * Calculates the adjugate of a mat4
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the source matrix
+ * @param {ReadonlyMat4} a the source matrix
  * @returns {mat4} out
  */
 
@@ -2204,7 +2208,7 @@ function adjoint$2(out, a) {
 /**
  * Calculates the determinant of a mat4
  *
- * @param {mat4} a the source matrix
+ * @param {ReadonlyMat4} a the source matrix
  * @returns {Number} determinant of a
  */
 
@@ -2244,8 +2248,8 @@ function determinant$3(a) {
  * Multiplies two mat4s
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the first operand
- * @param {mat4} b the second operand
+ * @param {ReadonlyMat4} a the first operand
+ * @param {ReadonlyMat4} b the second operand
  * @returns {mat4} out
  */
 
@@ -2305,8 +2309,8 @@ function multiply$3(out, a, b) {
  * Translate a mat4 by the given vector
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to translate
- * @param {vec3} v vector to translate by
+ * @param {ReadonlyMat4} a the matrix to translate
+ * @param {ReadonlyVec3} v vector to translate by
  * @returns {mat4} out
  */
 
@@ -2360,8 +2364,8 @@ function translate$2(out, a, v) {
  * Scales the mat4 by the dimensions in the given vec3 not using vectorization
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to scale
- * @param {vec3} v the vec3 to scale the matrix by
+ * @param {ReadonlyMat4} a the matrix to scale
+ * @param {ReadonlyVec3} v the vec3 to scale the matrix by
  * @returns {mat4} out
  **/
 
@@ -2391,9 +2395,9 @@ function scale$3(out, a, v) {
  * Rotates a mat4 by the given angle around the given axis
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to rotate
+ * @param {ReadonlyMat4} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
- * @param {vec3} axis the axis to rotate around
+ * @param {ReadonlyVec3} axis the axis to rotate around
  * @returns {mat4} out
  */
 
@@ -2471,7 +2475,7 @@ function rotate$3(out, a, rad, axis) {
  * Rotates a matrix by the given angle around the X axis
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to rotate
+ * @param {ReadonlyMat4} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
  * @returns {mat4} out
  */
@@ -2515,7 +2519,7 @@ function rotateX(out, a, rad) {
  * Rotates a matrix by the given angle around the Y axis
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to rotate
+ * @param {ReadonlyMat4} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
  * @returns {mat4} out
  */
@@ -2559,7 +2563,7 @@ function rotateY(out, a, rad) {
  * Rotates a matrix by the given angle around the Z axis
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to rotate
+ * @param {ReadonlyMat4} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
  * @returns {mat4} out
  */
@@ -2607,7 +2611,7 @@ function rotateZ(out, a, rad) {
  *     mat4.translate(dest, dest, vec);
  *
  * @param {mat4} out mat4 receiving operation result
- * @param {vec3} v Translation vector
+ * @param {ReadonlyVec3} v Translation vector
  * @returns {mat4} out
  */
 
@@ -2638,7 +2642,7 @@ function fromTranslation$2(out, v) {
  *     mat4.scale(dest, dest, vec);
  *
  * @param {mat4} out mat4 receiving operation result
- * @param {vec3} v Scaling vector
+ * @param {ReadonlyVec3} v Scaling vector
  * @returns {mat4} out
  */
 
@@ -2670,7 +2674,7 @@ function fromScaling$3(out, v) {
  *
  * @param {mat4} out mat4 receiving operation result
  * @param {Number} rad the angle to rotate the matrix by
- * @param {vec3} axis the axis to rotate around
+ * @param {ReadonlyVec3} axis the axis to rotate around
  * @returns {mat4} out
  */
 
@@ -2825,7 +2829,7 @@ function fromZRotation(out, rad) {
  *
  * @param {mat4} out mat4 receiving operation result
  * @param {quat4} q Rotation quaternion
- * @param {vec3} v Translation vector
+ * @param {ReadonlyVec3} v Translation vector
  * @returns {mat4} out
  */
 
@@ -2869,7 +2873,7 @@ function fromRotationTranslation(out, q, v) {
  * Creates a new mat4 from a dual quat.
  *
  * @param {mat4} out Matrix
- * @param {quat2} a Dual Quaternion
+ * @param {ReadonlyQuat2} a Dual Quaternion
  * @returns {mat4} mat4 receiving operation result
  */
 
@@ -2904,7 +2908,7 @@ function fromQuat2(out, a) {
  *  the returned vector will be the same as the translation vector
  *  originally supplied.
  * @param  {vec3} out Vector to receive translation component
- * @param  {mat4} mat Matrix to be decomposed (input)
+ * @param  {ReadonlyMat4} mat Matrix to be decomposed (input)
  * @return {vec3} out
  */
 
@@ -2921,7 +2925,7 @@ function getTranslation(out, mat) {
  *  the same as the scaling vector
  *  originally supplied.
  * @param  {vec3} out Vector to receive scaling factor component
- * @param  {mat4} mat Matrix to be decomposed (input)
+ * @param  {ReadonlyMat4} mat Matrix to be decomposed (input)
  * @return {vec3} out
  */
 
@@ -2946,7 +2950,7 @@ function getScaling(out, mat) {
  *  fromRotationTranslation, the returned quaternion will be the
  *  same as the quaternion originally supplied.
  * @param {quat} out Quaternion to receive the rotation component
- * @param {mat4} mat Matrix to be decomposed (input)
+ * @param {ReadonlyMat4} mat Matrix to be decomposed (input)
  * @return {quat} out
  */
 
@@ -3009,8 +3013,8 @@ function getRotation(out, mat) {
  *
  * @param {mat4} out mat4 receiving operation result
  * @param {quat4} q Rotation quaternion
- * @param {vec3} v Translation vector
- * @param {vec3} s Scaling vector
+ * @param {ReadonlyVec3} v Translation vector
+ * @param {ReadonlyVec3} s Scaling vector
  * @returns {mat4} out
  */
 
@@ -3068,9 +3072,9 @@ function fromRotationTranslationScale(out, q, v, s) {
  *
  * @param {mat4} out mat4 receiving operation result
  * @param {quat4} q Rotation quaternion
- * @param {vec3} v Translation vector
- * @param {vec3} s Scaling vector
- * @param {vec3} o The origin vector around which to scale and rotate
+ * @param {ReadonlyVec3} v Translation vector
+ * @param {ReadonlyVec3} s Scaling vector
+ * @param {ReadonlyVec3} o The origin vector around which to scale and rotate
  * @returns {mat4} out
  */
 
@@ -3129,7 +3133,7 @@ function fromRotationTranslationScaleOrigin(out, q, v, s, o) {
  * Calculates a 4x4 matrix from the given quaternion
  *
  * @param {mat4} out mat4 receiving operation result
- * @param {quat} q Quaternion to create matrix from
+ * @param {ReadonlyQuat} q Quaternion to create matrix from
  *
  * @returns {mat4} out
  */
@@ -3322,9 +3326,9 @@ function ortho(out, left, right, bottom, top, near, far) {
  * If you want a matrix that actually makes an object look at another object, you should use targetTo instead.
  *
  * @param {mat4} out mat4 frustum matrix will be written into
- * @param {vec3} eye Position of the viewer
- * @param {vec3} center Point the viewer is looking at
- * @param {vec3} up vec3 pointing up
+ * @param {ReadonlyVec3} eye Position of the viewer
+ * @param {ReadonlyVec3} center Point the viewer is looking at
+ * @param {ReadonlyVec3} up vec3 pointing up
  * @returns {mat4} out
  */
 
@@ -3405,9 +3409,9 @@ function lookAt(out, eye, center, up) {
  * Generates a matrix that makes something look at something else.
  *
  * @param {mat4} out mat4 frustum matrix will be written into
- * @param {vec3} eye Position of the viewer
- * @param {vec3} center Point the viewer is looking at
- * @param {vec3} up vec3 pointing up
+ * @param {ReadonlyVec3} eye Position of the viewer
+ * @param {ReadonlyVec3} center Point the viewer is looking at
+ * @param {ReadonlyVec3} up vec3 pointing up
  * @returns {mat4} out
  */
 
@@ -3463,29 +3467,29 @@ function targetTo(out, eye, target, up) {
 /**
  * Returns a string representation of a mat4
  *
- * @param {mat4} a matrix to represent as a string
+ * @param {ReadonlyMat4} a matrix to represent as a string
  * @returns {String} string representation of the matrix
  */
 
 function str$3(a) {
-  return 'mat4(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + a[6] + ', ' + a[7] + ', ' + a[8] + ', ' + a[9] + ', ' + a[10] + ', ' + a[11] + ', ' + a[12] + ', ' + a[13] + ', ' + a[14] + ', ' + a[15] + ')';
+  return "mat4(" + a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7] + ", " + a[8] + ", " + a[9] + ", " + a[10] + ", " + a[11] + ", " + a[12] + ", " + a[13] + ", " + a[14] + ", " + a[15] + ")";
 }
 /**
  * Returns Frobenius norm of a mat4
  *
- * @param {mat4} a the matrix to calculate Frobenius norm of
+ * @param {ReadonlyMat4} a the matrix to calculate Frobenius norm of
  * @returns {Number} Frobenius norm
  */
 
 function frob$3(a) {
-  return Math.hypot(a[0], a[1], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15]);
+  return Math.hypot(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15]);
 }
 /**
  * Adds two mat4's
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the first operand
- * @param {mat4} b the second operand
+ * @param {ReadonlyMat4} a the first operand
+ * @param {ReadonlyMat4} b the second operand
  * @returns {mat4} out
  */
 
@@ -3512,8 +3516,8 @@ function add$3(out, a, b) {
  * Subtracts matrix b from matrix a
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the first operand
- * @param {mat4} b the second operand
+ * @param {ReadonlyMat4} a the first operand
+ * @param {ReadonlyMat4} b the second operand
  * @returns {mat4} out
  */
 
@@ -3540,7 +3544,7 @@ function subtract$3(out, a, b) {
  * Multiply each element of the matrix by a scalar.
  *
  * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to scale
+ * @param {ReadonlyMat4} a the matrix to scale
  * @param {Number} b amount to scale the matrix's elements by
  * @returns {mat4} out
  */
@@ -3568,8 +3572,8 @@ function multiplyScalar$3(out, a, b) {
  * Adds two mat4's after multiplying each element of the second operand by a scalar value.
  *
  * @param {mat4} out the receiving vector
- * @param {mat4} a the first operand
- * @param {mat4} b the second operand
+ * @param {ReadonlyMat4} a the first operand
+ * @param {ReadonlyMat4} b the second operand
  * @param {Number} scale the amount to scale b's elements by before adding
  * @returns {mat4} out
  */
@@ -3596,8 +3600,8 @@ function multiplyScalarAndAdd$3(out, a, b, scale) {
 /**
  * Returns whether or not the matrices have exactly the same elements in the same position (when compared with ===)
  *
- * @param {mat4} a The first matrix.
- * @param {mat4} b The second matrix.
+ * @param {ReadonlyMat4} a The first matrix.
+ * @param {ReadonlyMat4} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
@@ -3607,8 +3611,8 @@ function exactEquals$3(a, b) {
 /**
  * Returns whether or not the matrices have approximately the same elements in the same position.
  *
- * @param {mat4} a The first matrix.
- * @param {mat4} b The second matrix.
+ * @param {ReadonlyMat4} a The first matrix.
+ * @param {ReadonlyMat4} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
  */
 
@@ -3661,6 +3665,7 @@ var mul$3 = multiply$3;
 var sub$3 = subtract$3;
 
 var mat4 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$3,
   clone: clone$3,
   copy: copy$3,
@@ -3735,7 +3740,7 @@ function create$4() {
 /**
  * Creates a new vec3 initialized with values from an existing vector
  *
- * @param {vec3} a vector to clone
+ * @param {ReadonlyVec3} a vector to clone
  * @returns {vec3} a new 3D vector
  */
 
@@ -3749,7 +3754,7 @@ function clone$4(a) {
 /**
  * Calculates the length of a vec3
  *
- * @param {vec3} a vector to calculate length of
+ * @param {ReadonlyVec3} a vector to calculate length of
  * @returns {Number} length of a
  */
 
@@ -3779,7 +3784,7 @@ function fromValues$4(x, y, z) {
  * Copy the values from one vec3 to another
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the source vector
+ * @param {ReadonlyVec3} a the source vector
  * @returns {vec3} out
  */
 
@@ -3809,8 +3814,8 @@ function set$4(out, x, y, z) {
  * Adds two vec3's
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {vec3} out
  */
 
@@ -3824,8 +3829,8 @@ function add$4(out, a, b) {
  * Subtracts vector b from vector a
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {vec3} out
  */
 
@@ -3839,8 +3844,8 @@ function subtract$4(out, a, b) {
  * Multiplies two vec3's
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {vec3} out
  */
 
@@ -3854,8 +3859,8 @@ function multiply$4(out, a, b) {
  * Divides two vec3's
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {vec3} out
  */
 
@@ -3869,7 +3874,7 @@ function divide(out, a, b) {
  * Math.ceil the components of a vec3
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a vector to ceil
+ * @param {ReadonlyVec3} a vector to ceil
  * @returns {vec3} out
  */
 
@@ -3883,7 +3888,7 @@ function ceil(out, a) {
  * Math.floor the components of a vec3
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a vector to floor
+ * @param {ReadonlyVec3} a vector to floor
  * @returns {vec3} out
  */
 
@@ -3897,8 +3902,8 @@ function floor(out, a) {
  * Returns the minimum of two vec3's
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {vec3} out
  */
 
@@ -3912,8 +3917,8 @@ function min(out, a, b) {
  * Returns the maximum of two vec3's
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {vec3} out
  */
 
@@ -3927,7 +3932,7 @@ function max(out, a, b) {
  * Math.round the components of a vec3
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a vector to round
+ * @param {ReadonlyVec3} a vector to round
  * @returns {vec3} out
  */
 
@@ -3941,7 +3946,7 @@ function round(out, a) {
  * Scales a vec3 by a scalar number
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the vector to scale
+ * @param {ReadonlyVec3} a the vector to scale
  * @param {Number} b amount to scale the vector by
  * @returns {vec3} out
  */
@@ -3956,8 +3961,8 @@ function scale$4(out, a, b) {
  * Adds two vec3's after scaling the second operand by a scalar value
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @param {Number} scale the amount to scale b by before adding
  * @returns {vec3} out
  */
@@ -3971,8 +3976,8 @@ function scaleAndAdd(out, a, b, scale) {
 /**
  * Calculates the euclidian distance between two vec3's
  *
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {Number} distance between a and b
  */
 
@@ -3985,8 +3990,8 @@ function distance(a, b) {
 /**
  * Calculates the squared euclidian distance between two vec3's
  *
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {Number} squared distance between a and b
  */
 
@@ -3999,7 +4004,7 @@ function squaredDistance(a, b) {
 /**
  * Calculates the squared length of a vec3
  *
- * @param {vec3} a vector to calculate squared length of
+ * @param {ReadonlyVec3} a vector to calculate squared length of
  * @returns {Number} squared length of a
  */
 
@@ -4013,7 +4018,7 @@ function squaredLength(a) {
  * Negates the components of a vec3
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a vector to negate
+ * @param {ReadonlyVec3} a vector to negate
  * @returns {vec3} out
  */
 
@@ -4027,7 +4032,7 @@ function negate(out, a) {
  * Returns the inverse of the components of a vec3
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a vector to invert
+ * @param {ReadonlyVec3} a vector to invert
  * @returns {vec3} out
  */
 
@@ -4041,7 +4046,7 @@ function inverse(out, a) {
  * Normalize a vec3
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a vector to normalize
+ * @param {ReadonlyVec3} a vector to normalize
  * @returns {vec3} out
  */
 
@@ -4064,8 +4069,8 @@ function normalize(out, a) {
 /**
  * Calculates the dot product of two vec3's
  *
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {Number} dot product of a and b
  */
 
@@ -4076,8 +4081,8 @@ function dot(a, b) {
  * Computes the cross product of two vec3's
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @returns {vec3} out
  */
 
@@ -4097,8 +4102,8 @@ function cross(out, a, b) {
  * Performs a linear interpolation between two vec3's
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
  * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
  * @returns {vec3} out
  */
@@ -4116,10 +4121,10 @@ function lerp(out, a, b, t) {
  * Performs a hermite interpolation with two control points
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @param {vec3} c the third operand
- * @param {vec3} d the fourth operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
+ * @param {ReadonlyVec3} c the third operand
+ * @param {ReadonlyVec3} d the fourth operand
  * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
  * @returns {vec3} out
  */
@@ -4139,10 +4144,10 @@ function hermite(out, a, b, c, d, t) {
  * Performs a bezier interpolation with two control points
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @param {vec3} c the third operand
- * @param {vec3} d the fourth operand
+ * @param {ReadonlyVec3} a the first operand
+ * @param {ReadonlyVec3} b the second operand
+ * @param {ReadonlyVec3} c the third operand
+ * @param {ReadonlyVec3} d the fourth operand
  * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
  * @returns {vec3} out
  */
@@ -4183,8 +4188,8 @@ function random(out, scale) {
  * 4th vector component is implicitly '1'
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the vector to transform
- * @param {mat4} m matrix to transform with
+ * @param {ReadonlyVec3} a the vector to transform
+ * @param {ReadonlyMat4} m matrix to transform with
  * @returns {vec3} out
  */
 
@@ -4203,8 +4208,8 @@ function transformMat4(out, a, m) {
  * Transforms the vec3 with a mat3.
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the vector to transform
- * @param {mat3} m the 3x3 matrix to transform with
+ * @param {ReadonlyVec3} a the vector to transform
+ * @param {ReadonlyMat3} m the 3x3 matrix to transform with
  * @returns {vec3} out
  */
 
@@ -4222,8 +4227,8 @@ function transformMat3(out, a, m) {
  * Can also be used for dual quaternions. (Multiply it with the real part)
  *
  * @param {vec3} out the receiving vector
- * @param {vec3} a the vector to transform
- * @param {quat} q quaternion to transform with
+ * @param {ReadonlyVec3} a the vector to transform
+ * @param {ReadonlyQuat} q quaternion to transform with
  * @returns {vec3} out
  */
 
@@ -4263,13 +4268,13 @@ function transformQuat(out, a, q) {
 /**
  * Rotate a 3D vector around the x-axis
  * @param {vec3} out The receiving vec3
- * @param {vec3} a The vec3 point to rotate
- * @param {vec3} b The origin of the rotation
- * @param {Number} c The angle of rotation
+ * @param {ReadonlyVec3} a The vec3 point to rotate
+ * @param {ReadonlyVec3} b The origin of the rotation
+ * @param {Number} rad The angle of rotation in radians
  * @returns {vec3} out
  */
 
-function rotateX$1(out, a, b, c) {
+function rotateX$1(out, a, b, rad) {
   var p = [],
       r = []; //Translate point to the origin
 
@@ -4278,8 +4283,8 @@ function rotateX$1(out, a, b, c) {
   p[2] = a[2] - b[2]; //perform rotation
 
   r[0] = p[0];
-  r[1] = p[1] * Math.cos(c) - p[2] * Math.sin(c);
-  r[2] = p[1] * Math.sin(c) + p[2] * Math.cos(c); //translate to correct position
+  r[1] = p[1] * Math.cos(rad) - p[2] * Math.sin(rad);
+  r[2] = p[1] * Math.sin(rad) + p[2] * Math.cos(rad); //translate to correct position
 
   out[0] = r[0] + b[0];
   out[1] = r[1] + b[1];
@@ -4289,13 +4294,13 @@ function rotateX$1(out, a, b, c) {
 /**
  * Rotate a 3D vector around the y-axis
  * @param {vec3} out The receiving vec3
- * @param {vec3} a The vec3 point to rotate
- * @param {vec3} b The origin of the rotation
- * @param {Number} c The angle of rotation
+ * @param {ReadonlyVec3} a The vec3 point to rotate
+ * @param {ReadonlyVec3} b The origin of the rotation
+ * @param {Number} rad The angle of rotation in radians
  * @returns {vec3} out
  */
 
-function rotateY$1(out, a, b, c) {
+function rotateY$1(out, a, b, rad) {
   var p = [],
       r = []; //Translate point to the origin
 
@@ -4303,9 +4308,9 @@ function rotateY$1(out, a, b, c) {
   p[1] = a[1] - b[1];
   p[2] = a[2] - b[2]; //perform rotation
 
-  r[0] = p[2] * Math.sin(c) + p[0] * Math.cos(c);
+  r[0] = p[2] * Math.sin(rad) + p[0] * Math.cos(rad);
   r[1] = p[1];
-  r[2] = p[2] * Math.cos(c) - p[0] * Math.sin(c); //translate to correct position
+  r[2] = p[2] * Math.cos(rad) - p[0] * Math.sin(rad); //translate to correct position
 
   out[0] = r[0] + b[0];
   out[1] = r[1] + b[1];
@@ -4315,13 +4320,13 @@ function rotateY$1(out, a, b, c) {
 /**
  * Rotate a 3D vector around the z-axis
  * @param {vec3} out The receiving vec3
- * @param {vec3} a The vec3 point to rotate
- * @param {vec3} b The origin of the rotation
- * @param {Number} c The angle of rotation
+ * @param {ReadonlyVec3} a The vec3 point to rotate
+ * @param {ReadonlyVec3} b The origin of the rotation
+ * @param {Number} rad The angle of rotation in radians
  * @returns {vec3} out
  */
 
-function rotateZ$1(out, a, b, c) {
+function rotateZ$1(out, a, b, rad) {
   var p = [],
       r = []; //Translate point to the origin
 
@@ -4329,8 +4334,8 @@ function rotateZ$1(out, a, b, c) {
   p[1] = a[1] - b[1];
   p[2] = a[2] - b[2]; //perform rotation
 
-  r[0] = p[0] * Math.cos(c) - p[1] * Math.sin(c);
-  r[1] = p[0] * Math.sin(c) + p[1] * Math.cos(c);
+  r[0] = p[0] * Math.cos(rad) - p[1] * Math.sin(rad);
+  r[1] = p[0] * Math.sin(rad) + p[1] * Math.cos(rad);
   r[2] = p[2]; //translate to correct position
 
   out[0] = r[0] + b[0];
@@ -4340,25 +4345,23 @@ function rotateZ$1(out, a, b, c) {
 }
 /**
  * Get the angle between two 3D vectors
- * @param {vec3} a The first operand
- * @param {vec3} b The second operand
+ * @param {ReadonlyVec3} a The first operand
+ * @param {ReadonlyVec3} b The second operand
  * @returns {Number} The angle in radians
  */
 
 function angle(a, b) {
-  var tempA = fromValues$4(a[0], a[1], a[2]);
-  var tempB = fromValues$4(b[0], b[1], b[2]);
-  normalize(tempA, tempA);
-  normalize(tempB, tempB);
-  var cosine = dot(tempA, tempB);
-
-  if (cosine > 1.0) {
-    return 0;
-  } else if (cosine < -1.0) {
-    return Math.PI;
-  } else {
-    return Math.acos(cosine);
-  }
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      bx = b[0],
+      by = b[1],
+      bz = b[2],
+      mag1 = Math.sqrt(ax * ax + ay * ay + az * az),
+      mag2 = Math.sqrt(bx * bx + by * by + bz * bz),
+      mag = mag1 * mag2,
+      cosine = mag && dot(a, b) / mag;
+  return Math.acos(Math.min(Math.max(cosine, -1), 1));
 }
 /**
  * Set the components of a vec3 to zero
@@ -4376,18 +4379,18 @@ function zero(out) {
 /**
  * Returns a string representation of a vector
  *
- * @param {vec3} a vector to represent as a string
+ * @param {ReadonlyVec3} a vector to represent as a string
  * @returns {String} string representation of the vector
  */
 
 function str$4(a) {
-  return 'vec3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ')';
+  return "vec3(" + a[0] + ", " + a[1] + ", " + a[2] + ")";
 }
 /**
  * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
  *
- * @param {vec3} a The first vector.
- * @param {vec3} b The second vector.
+ * @param {ReadonlyVec3} a The first vector.
+ * @param {ReadonlyVec3} b The second vector.
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
@@ -4397,8 +4400,8 @@ function exactEquals$4(a, b) {
 /**
  * Returns whether or not the vectors have approximately the same elements in the same position.
  *
- * @param {vec3} a The first vector.
- * @param {vec3} b The second vector.
+ * @param {ReadonlyVec3} a The first vector.
+ * @param {ReadonlyVec3} b The second vector.
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
@@ -4500,6 +4503,7 @@ var forEach = function () {
 }();
 
 var vec3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$4,
   clone: clone$4,
   length: length,
@@ -4576,7 +4580,7 @@ function create$5() {
 /**
  * Creates a new vec4 initialized with values from an existing vector
  *
- * @param {vec4} a vector to clone
+ * @param {ReadonlyVec4} a vector to clone
  * @returns {vec4} a new 4D vector
  */
 
@@ -4610,7 +4614,7 @@ function fromValues$5(x, y, z, w) {
  * Copy the values from one vec4 to another
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the source vector
+ * @param {ReadonlyVec4} a the source vector
  * @returns {vec4} out
  */
 
@@ -4643,8 +4647,8 @@ function set$5(out, x, y, z, w) {
  * Adds two vec4's
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @returns {vec4} out
  */
 
@@ -4659,8 +4663,8 @@ function add$5(out, a, b) {
  * Subtracts vector b from vector a
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @returns {vec4} out
  */
 
@@ -4675,8 +4679,8 @@ function subtract$5(out, a, b) {
  * Multiplies two vec4's
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @returns {vec4} out
  */
 
@@ -4691,8 +4695,8 @@ function multiply$5(out, a, b) {
  * Divides two vec4's
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @returns {vec4} out
  */
 
@@ -4707,7 +4711,7 @@ function divide$1(out, a, b) {
  * Math.ceil the components of a vec4
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a vector to ceil
+ * @param {ReadonlyVec4} a vector to ceil
  * @returns {vec4} out
  */
 
@@ -4722,7 +4726,7 @@ function ceil$1(out, a) {
  * Math.floor the components of a vec4
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a vector to floor
+ * @param {ReadonlyVec4} a vector to floor
  * @returns {vec4} out
  */
 
@@ -4737,8 +4741,8 @@ function floor$1(out, a) {
  * Returns the minimum of two vec4's
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @returns {vec4} out
  */
 
@@ -4753,8 +4757,8 @@ function min$1(out, a, b) {
  * Returns the maximum of two vec4's
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @returns {vec4} out
  */
 
@@ -4769,7 +4773,7 @@ function max$1(out, a, b) {
  * Math.round the components of a vec4
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a vector to round
+ * @param {ReadonlyVec4} a vector to round
  * @returns {vec4} out
  */
 
@@ -4784,7 +4788,7 @@ function round$1(out, a) {
  * Scales a vec4 by a scalar number
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the vector to scale
+ * @param {ReadonlyVec4} a the vector to scale
  * @param {Number} b amount to scale the vector by
  * @returns {vec4} out
  */
@@ -4800,8 +4804,8 @@ function scale$5(out, a, b) {
  * Adds two vec4's after scaling the second operand by a scalar value
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @param {Number} scale the amount to scale b by before adding
  * @returns {vec4} out
  */
@@ -4816,8 +4820,8 @@ function scaleAndAdd$1(out, a, b, scale) {
 /**
  * Calculates the euclidian distance between two vec4's
  *
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @returns {Number} distance between a and b
  */
 
@@ -4831,8 +4835,8 @@ function distance$1(a, b) {
 /**
  * Calculates the squared euclidian distance between two vec4's
  *
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @returns {Number} squared distance between a and b
  */
 
@@ -4846,7 +4850,7 @@ function squaredDistance$1(a, b) {
 /**
  * Calculates the length of a vec4
  *
- * @param {vec4} a vector to calculate length of
+ * @param {ReadonlyVec4} a vector to calculate length of
  * @returns {Number} length of a
  */
 
@@ -4860,7 +4864,7 @@ function length$1(a) {
 /**
  * Calculates the squared length of a vec4
  *
- * @param {vec4} a vector to calculate squared length of
+ * @param {ReadonlyVec4} a vector to calculate squared length of
  * @returns {Number} squared length of a
  */
 
@@ -4875,7 +4879,7 @@ function squaredLength$1(a) {
  * Negates the components of a vec4
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a vector to negate
+ * @param {ReadonlyVec4} a vector to negate
  * @returns {vec4} out
  */
 
@@ -4890,7 +4894,7 @@ function negate$1(out, a) {
  * Returns the inverse of the components of a vec4
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a vector to invert
+ * @param {ReadonlyVec4} a vector to invert
  * @returns {vec4} out
  */
 
@@ -4905,7 +4909,7 @@ function inverse$1(out, a) {
  * Normalize a vec4
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a vector to normalize
+ * @param {ReadonlyVec4} a vector to normalize
  * @returns {vec4} out
  */
 
@@ -4929,8 +4933,8 @@ function normalize$1(out, a) {
 /**
  * Calculates the dot product of two vec4's
  *
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @returns {Number} dot product of a and b
  */
 
@@ -4940,10 +4944,10 @@ function dot$1(a, b) {
 /**
  * Returns the cross-product of three vectors in a 4-dimensional space
  *
- * @param {vec4} result the receiving vector
- * @param {vec4} U the first vector
- * @param {vec4} V the second vector
- * @param {vec4} W the third vector
+ * @param {ReadonlyVec4} result the receiving vector
+ * @param {ReadonlyVec4} U the first vector
+ * @param {ReadonlyVec4} V the second vector
+ * @param {ReadonlyVec4} W the third vector
  * @returns {vec4} result
  */
 
@@ -4968,8 +4972,8 @@ function cross$1(out, u, v, w) {
  * Performs a linear interpolation between two vec4's
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
+ * @param {ReadonlyVec4} a the first operand
+ * @param {ReadonlyVec4} b the second operand
  * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
  * @returns {vec4} out
  */
@@ -5024,8 +5028,8 @@ function random$1(out, scale) {
  * Transforms the vec4 with a mat4.
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the vector to transform
- * @param {mat4} m matrix to transform with
+ * @param {ReadonlyVec4} a the vector to transform
+ * @param {ReadonlyMat4} m matrix to transform with
  * @returns {vec4} out
  */
 
@@ -5044,8 +5048,8 @@ function transformMat4$1(out, a, m) {
  * Transforms the vec4 with a quat
  *
  * @param {vec4} out the receiving vector
- * @param {vec4} a the vector to transform
- * @param {quat} q quaternion to transform with
+ * @param {ReadonlyVec4} a the vector to transform
+ * @param {ReadonlyQuat} q quaternion to transform with
  * @returns {vec4} out
  */
 
@@ -5086,18 +5090,18 @@ function zero$1(out) {
 /**
  * Returns a string representation of a vector
  *
- * @param {vec4} a vector to represent as a string
+ * @param {ReadonlyVec4} a vector to represent as a string
  * @returns {String} string representation of the vector
  */
 
 function str$5(a) {
-  return 'vec4(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
+  return "vec4(" + a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ")";
 }
 /**
  * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
  *
- * @param {vec4} a The first vector.
- * @param {vec4} b The second vector.
+ * @param {ReadonlyVec4} a The first vector.
+ * @param {ReadonlyVec4} b The second vector.
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
@@ -5107,8 +5111,8 @@ function exactEquals$5(a, b) {
 /**
  * Returns whether or not the vectors have approximately the same elements in the same position.
  *
- * @param {vec4} a The first vector.
- * @param {vec4} b The second vector.
+ * @param {ReadonlyVec4} a The first vector.
+ * @param {ReadonlyVec4} b The second vector.
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
@@ -5214,6 +5218,7 @@ var forEach$1 = function () {
 }();
 
 var vec4 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$5,
   clone: clone$5,
   fromValues: fromValues$5,
@@ -5299,7 +5304,7 @@ function identity$4(out) {
  * then returns it.
  *
  * @param {quat} out the receiving quaternion
- * @param {vec3} axis the axis around which to rotate
+ * @param {ReadonlyVec3} axis the axis around which to rotate
  * @param {Number} rad the angle in radians
  * @returns {quat} out
  **/
@@ -5323,7 +5328,7 @@ function setAxisAngle(out, axis, rad) {
  *  angle -90 is the same as the quaternion formed by
  *  [0, 0, 1] and 270. This method favors the latter.
  * @param  {vec3} out_axis  Vector receiving the axis of rotation
- * @param  {quat} q     Quaternion to be decomposed
+ * @param  {ReadonlyQuat} q     Quaternion to be decomposed
  * @return {Number}     Angle, in radians, of the rotation
  */
 
@@ -5347,8 +5352,8 @@ function getAxisAngle(out_axis, q) {
 /**
  * Gets the angular distance between two unit quaternions
  *
- * @param  {quat} a     Origin unit quaternion 
- * @param  {quat} b     Destination unit quaternion
+ * @param  {ReadonlyQuat} a     Origin unit quaternion
+ * @param  {ReadonlyQuat} b     Destination unit quaternion
  * @return {Number}     Angle, in radians, between the two quaternions
  */
 
@@ -5360,8 +5365,8 @@ function getAngle(a, b) {
  * Multiplies two quat's
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
+ * @param {ReadonlyQuat} a the first operand
+ * @param {ReadonlyQuat} b the second operand
  * @returns {quat} out
  */
 
@@ -5384,7 +5389,7 @@ function multiply$6(out, a, b) {
  * Rotates a quaternion by the given angle about the X axis
  *
  * @param {quat} out quat receiving operation result
- * @param {quat} a quat to rotate
+ * @param {ReadonlyQuat} a quat to rotate
  * @param {number} rad angle (in radians) to rotate
  * @returns {quat} out
  */
@@ -5407,7 +5412,7 @@ function rotateX$2(out, a, rad) {
  * Rotates a quaternion by the given angle about the Y axis
  *
  * @param {quat} out quat receiving operation result
- * @param {quat} a quat to rotate
+ * @param {ReadonlyQuat} a quat to rotate
  * @param {number} rad angle (in radians) to rotate
  * @returns {quat} out
  */
@@ -5430,7 +5435,7 @@ function rotateY$2(out, a, rad) {
  * Rotates a quaternion by the given angle about the Z axis
  *
  * @param {quat} out quat receiving operation result
- * @param {quat} a quat to rotate
+ * @param {ReadonlyQuat} a quat to rotate
  * @param {number} rad angle (in radians) to rotate
  * @returns {quat} out
  */
@@ -5455,7 +5460,7 @@ function rotateZ$2(out, a, rad) {
  * Any existing W component will be ignored.
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate W component of
+ * @param {ReadonlyQuat} a quat to calculate W component of
  * @returns {quat} out
  */
 
@@ -5473,7 +5478,7 @@ function calculateW(out, a) {
  * Calculate the exponential of a unit quaternion.
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate the exponential of
+ * @param {ReadonlyQuat} a quat to calculate the exponential of
  * @returns {quat} out
  */
 
@@ -5495,7 +5500,7 @@ function exp(out, a) {
  * Calculate the natural logarithm of a unit quaternion.
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate the exponential of
+ * @param {ReadonlyQuat} a quat to calculate the exponential of
  * @returns {quat} out
  */
 
@@ -5516,7 +5521,7 @@ function ln(out, a) {
  * Calculate the scalar power of a unit quaternion.
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate the exponential of
+ * @param {ReadonlyQuat} a quat to calculate the exponential of
  * @param {Number} b amount to scale the quaternion by
  * @returns {quat} out
  */
@@ -5531,8 +5536,8 @@ function pow(out, a, b) {
  * Performs a spherical linear interpolation between two quat
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
+ * @param {ReadonlyQuat} a the first operand
+ * @param {ReadonlyQuat} b the second operand
  * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
  * @returns {quat} out
  */
@@ -5583,7 +5588,7 @@ function slerp(out, a, b, t) {
 }
 /**
  * Generates a random unit quaternion
- * 
+ *
  * @param {quat} out the receiving quaternion
  * @returns {quat} out
  */
@@ -5606,7 +5611,7 @@ function random$2(out) {
  * Calculates the inverse of a quat
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate inverse of
+ * @param {ReadonlyQuat} a quat to calculate inverse of
  * @returns {quat} out
  */
 
@@ -5629,7 +5634,7 @@ function invert$4(out, a) {
  * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate conjugate of
+ * @param {ReadonlyQuat} a quat to calculate conjugate of
  * @returns {quat} out
  */
 
@@ -5647,7 +5652,7 @@ function conjugate(out, a) {
  * to renormalize the quaternion yourself where necessary.
  *
  * @param {quat} out the receiving quaternion
- * @param {mat3} m rotation matrix
+ * @param {ReadonlyMat3} m rotation matrix
  * @returns {quat} out
  * @function
  */
@@ -5716,17 +5721,17 @@ function fromEuler(out, x, y, z) {
 /**
  * Returns a string representation of a quatenion
  *
- * @param {quat} a vector to represent as a string
+ * @param {ReadonlyQuat} a vector to represent as a string
  * @returns {String} string representation of the vector
  */
 
 function str$6(a) {
-  return 'quat(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
+  return "quat(" + a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ")";
 }
 /**
  * Creates a new quat initialized with values from an existing quaternion
  *
- * @param {quat} a quaternion to clone
+ * @param {ReadonlyQuat} a quaternion to clone
  * @returns {quat} a new quaternion
  * @function
  */
@@ -5748,7 +5753,7 @@ var fromValues$6 = fromValues$5;
  * Copy the values from one quat to another
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a the source quaternion
+ * @param {ReadonlyQuat} a the source quaternion
  * @returns {quat} out
  * @function
  */
@@ -5771,8 +5776,8 @@ var set$6 = set$5;
  * Adds two quat's
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
+ * @param {ReadonlyQuat} a the first operand
+ * @param {ReadonlyQuat} b the second operand
  * @returns {quat} out
  * @function
  */
@@ -5788,7 +5793,7 @@ var mul$6 = multiply$6;
  * Scales a quat by a scalar number
  *
  * @param {quat} out the receiving vector
- * @param {quat} a the vector to scale
+ * @param {ReadonlyQuat} a the vector to scale
  * @param {Number} b amount to scale the vector by
  * @returns {quat} out
  * @function
@@ -5798,8 +5803,8 @@ var scale$6 = scale$5;
 /**
  * Calculates the dot product of two quat's
  *
- * @param {quat} a the first operand
- * @param {quat} b the second operand
+ * @param {ReadonlyQuat} a the first operand
+ * @param {ReadonlyQuat} b the second operand
  * @returns {Number} dot product of a and b
  * @function
  */
@@ -5809,8 +5814,8 @@ var dot$2 = dot$1;
  * Performs a linear interpolation between two quat's
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
+ * @param {ReadonlyQuat} a the first operand
+ * @param {ReadonlyQuat} b the second operand
  * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
  * @returns {quat} out
  * @function
@@ -5820,7 +5825,7 @@ var lerp$2 = lerp$1;
 /**
  * Calculates the length of a quat
  *
- * @param {quat} a vector to calculate length of
+ * @param {ReadonlyQuat} a vector to calculate length of
  * @returns {Number} length of a
  */
 
@@ -5834,7 +5839,7 @@ var len$2 = length$2;
 /**
  * Calculates the squared length of a quat
  *
- * @param {quat} a vector to calculate squared length of
+ * @param {ReadonlyQuat} a vector to calculate squared length of
  * @returns {Number} squared length of a
  * @function
  */
@@ -5850,7 +5855,7 @@ var sqrLen$2 = squaredLength$2;
  * Normalize a quat
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a quaternion to normalize
+ * @param {ReadonlyQuat} a quaternion to normalize
  * @returns {quat} out
  * @function
  */
@@ -5859,8 +5864,8 @@ var normalize$2 = normalize$1;
 /**
  * Returns whether or not the quaternions have exactly the same elements in the same position (when compared with ===)
  *
- * @param {quat} a The first quaternion.
- * @param {quat} b The second quaternion.
+ * @param {ReadonlyQuat} a The first quaternion.
+ * @param {ReadonlyQuat} b The second quaternion.
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
@@ -5868,8 +5873,8 @@ var exactEquals$6 = exactEquals$5;
 /**
  * Returns whether or not the quaternions have approximately the same elements in the same position.
  *
- * @param {quat} a The first vector.
- * @param {quat} b The second vector.
+ * @param {ReadonlyQuat} a The first vector.
+ * @param {ReadonlyQuat} b The second vector.
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
@@ -5881,8 +5886,8 @@ var equals$7 = equals$6;
  * Both vectors are assumed to be unit length.
  *
  * @param {quat} out the receiving quaternion.
- * @param {vec3} a the initial vector
- * @param {vec3} b the destination vector
+ * @param {ReadonlyVec3} a the initial vector
+ * @param {ReadonlyVec3} b the destination vector
  * @returns {quat} out
  */
 
@@ -5919,10 +5924,10 @@ var rotationTo = function () {
  * Performs a spherical linear interpolation with two control points
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @param {quat} c the third operand
- * @param {quat} d the fourth operand
+ * @param {ReadonlyQuat} a the first operand
+ * @param {ReadonlyQuat} b the second operand
+ * @param {ReadonlyQuat} c the third operand
+ * @param {ReadonlyQuat} d the fourth operand
  * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
  * @returns {quat} out
  */
@@ -5942,9 +5947,9 @@ var sqlerp = function () {
  * axes. Each axis is a vec3 and is expected to be unit length and
  * perpendicular to all other specified axes.
  *
- * @param {vec3} view  the vector representing the viewing direction
- * @param {vec3} right the vector representing the local "right" direction
- * @param {vec3} up    the vector representing the local "up" direction
+ * @param {ReadonlyVec3} view  the vector representing the viewing direction
+ * @param {ReadonlyVec3} right the vector representing the local "right" direction
+ * @param {ReadonlyVec3} up    the vector representing the local "up" direction
  * @returns {quat} out
  */
 
@@ -5965,6 +5970,7 @@ var setAxes = function () {
 }();
 
 var quat = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$6,
   identity: identity$4,
   setAxisAngle: setAxisAngle,
@@ -6039,7 +6045,7 @@ function create$7() {
 /**
  * Creates a new quat initialized with values from an existing quaternion
  *
- * @param {quat2} a dual quaternion to clone
+ * @param {ReadonlyQuat2} a dual quaternion to clone
  * @returns {quat2} new dual quaternion
  * @function
  */
@@ -6115,9 +6121,9 @@ function fromRotationTranslationValues(x1, y1, z1, w1, x2, y2, z2) {
 /**
  * Creates a dual quat from a quaternion and a translation
  *
- * @param {quat2} dual quaternion receiving operation result
- * @param {quat} q a normalized quaternion
- * @param {vec3} t tranlation vector
+ * @param {ReadonlyQuat2} dual quaternion receiving operation result
+ * @param {ReadonlyQuat} q a normalized quaternion
+ * @param {ReadonlyVec3} t tranlation vector
  * @returns {quat2} dual quaternion receiving operation result
  * @function
  */
@@ -6143,8 +6149,8 @@ function fromRotationTranslation$1(out, q, t) {
 /**
  * Creates a dual quat from a translation
  *
- * @param {quat2} dual quaternion receiving operation result
- * @param {vec3} t translation vector
+ * @param {ReadonlyQuat2} dual quaternion receiving operation result
+ * @param {ReadonlyVec3} t translation vector
  * @returns {quat2} dual quaternion receiving operation result
  * @function
  */
@@ -6163,8 +6169,8 @@ function fromTranslation$3(out, t) {
 /**
  * Creates a dual quat from a quaternion
  *
- * @param {quat2} dual quaternion receiving operation result
- * @param {quat} q the quaternion
+ * @param {ReadonlyQuat2} dual quaternion receiving operation result
+ * @param {ReadonlyQuat} q the quaternion
  * @returns {quat2} dual quaternion receiving operation result
  * @function
  */
@@ -6184,7 +6190,7 @@ function fromRotation$4(out, q) {
  * Creates a new dual quat from a matrix (4x4)
  *
  * @param {quat2} out the dual quaternion
- * @param {mat4} a the matrix
+ * @param {ReadonlyMat4} a the matrix
  * @returns {quat2} dual quat receiving operation result
  * @function
  */
@@ -6202,7 +6208,7 @@ function fromMat4$1(out, a) {
  * Copy the values from one dual quat to another
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the source dual quaternion
+ * @param {ReadonlyQuat2} a the source dual quaternion
  * @returns {quat2} out
  * @function
  */
@@ -6266,7 +6272,7 @@ function set$7(out, x1, y1, z1, w1, x2, y2, z2, w2) {
 /**
  * Gets the real part of a dual quat
  * @param  {quat} out real part
- * @param  {quat2} a Dual Quaternion
+ * @param  {ReadonlyQuat2} a Dual Quaternion
  * @return {quat} real part
  */
 
@@ -6274,7 +6280,7 @@ var getReal = copy$6;
 /**
  * Gets the dual part of a dual quat
  * @param  {quat} out dual part
- * @param  {quat2} a Dual Quaternion
+ * @param  {ReadonlyQuat2} a Dual Quaternion
  * @return {quat} dual part
  */
 
@@ -6289,7 +6295,7 @@ function getDual(out, a) {
  * Set the real component of a dual quat to the given quaternion
  *
  * @param {quat2} out the receiving quaternion
- * @param {quat} q a quaternion representing the real part
+ * @param {ReadonlyQuat} q a quaternion representing the real part
  * @returns {quat2} out
  * @function
  */
@@ -6299,7 +6305,7 @@ var setReal = copy$6;
  * Set the dual component of a dual quat to the given quaternion
  *
  * @param {quat2} out the receiving quaternion
- * @param {quat} q a quaternion representing the dual part
+ * @param {ReadonlyQuat} q a quaternion representing the dual part
  * @returns {quat2} out
  * @function
  */
@@ -6314,7 +6320,7 @@ function setDual(out, q) {
 /**
  * Gets the translation of a normalized dual quat
  * @param  {vec3} out translation
- * @param  {quat2} a Dual Quaternion to be decomposed
+ * @param  {ReadonlyQuat2} a Dual Quaternion to be decomposed
  * @return {vec3} translation
  */
 
@@ -6336,8 +6342,8 @@ function getTranslation$1(out, a) {
  * Translates a dual quat by the given vector
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to translate
- * @param {vec3} v vector to translate by
+ * @param {ReadonlyQuat2} a the dual quaternion to translate
+ * @param {ReadonlyVec3} v vector to translate by
  * @returns {quat2} out
  */
 
@@ -6367,7 +6373,7 @@ function translate$3(out, a, v) {
  * Rotates a dual quat around the X axis
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
+ * @param {ReadonlyQuat2} a the dual quaternion to rotate
  * @param {number} rad how far should the rotation be
  * @returns {quat2} out
  */
@@ -6400,7 +6406,7 @@ function rotateX$3(out, a, rad) {
  * Rotates a dual quat around the Y axis
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
+ * @param {ReadonlyQuat2} a the dual quaternion to rotate
  * @param {number} rad how far should the rotation be
  * @returns {quat2} out
  */
@@ -6433,7 +6439,7 @@ function rotateY$3(out, a, rad) {
  * Rotates a dual quat around the Z axis
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
+ * @param {ReadonlyQuat2} a the dual quaternion to rotate
  * @param {number} rad how far should the rotation be
  * @returns {quat2} out
  */
@@ -6466,8 +6472,8 @@ function rotateZ$3(out, a, rad) {
  * Rotates a dual quat by a given quaternion (a * q)
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
- * @param {quat} q quaternion to rotate by
+ * @param {ReadonlyQuat2} a the dual quaternion to rotate
+ * @param {ReadonlyQuat} q quaternion to rotate by
  * @returns {quat2} out
  */
 
@@ -6498,8 +6504,8 @@ function rotateByQuatAppend(out, a, q) {
  * Rotates a dual quat by a given quaternion (q * a)
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat} q quaternion to rotate by
- * @param {quat2} a the dual quaternion to rotate
+ * @param {ReadonlyQuat} q quaternion to rotate by
+ * @param {ReadonlyQuat2} a the dual quaternion to rotate
  * @returns {quat2} out
  */
 
@@ -6530,8 +6536,8 @@ function rotateByQuatPrepend(out, q, a) {
  * Rotates a dual quat around a given axis. Does the normalisation automatically
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the dual quaternion to rotate
- * @param {vec3} axis the axis to rotate around
+ * @param {ReadonlyQuat2} a the dual quaternion to rotate
+ * @param {ReadonlyVec3} axis the axis to rotate around
  * @param {Number} rad how far the rotation should be
  * @returns {quat2} out
  */
@@ -6571,8 +6577,8 @@ function rotateAroundAxis(out, a, axis, rad) {
  * Adds two dual quat's
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the first operand
- * @param {quat2} b the second operand
+ * @param {ReadonlyQuat2} a the first operand
+ * @param {ReadonlyQuat2} b the second operand
  * @returns {quat2} out
  * @function
  */
@@ -6592,8 +6598,8 @@ function add$7(out, a, b) {
  * Multiplies two dual quat's
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a the first operand
- * @param {quat2} b the second operand
+ * @param {ReadonlyQuat2} a the first operand
+ * @param {ReadonlyQuat2} b the second operand
  * @returns {quat2} out
  */
 
@@ -6634,7 +6640,7 @@ var mul$7 = multiply$7;
  * Scales a dual quat by a scalar number
  *
  * @param {quat2} out the receiving dual quat
- * @param {quat2} a the dual quat to scale
+ * @param {ReadonlyQuat2} a the dual quat to scale
  * @param {Number} b amount to scale the dual quat by
  * @returns {quat2} out
  * @function
@@ -6654,8 +6660,8 @@ function scale$7(out, a, b) {
 /**
  * Calculates the dot product of two dual quat's (The dot product of the real parts)
  *
- * @param {quat2} a the first operand
- * @param {quat2} b the second operand
+ * @param {ReadonlyQuat2} a the first operand
+ * @param {ReadonlyQuat2} b the second operand
  * @returns {Number} dot product of a and b
  * @function
  */
@@ -6666,8 +6672,8 @@ var dot$3 = dot$2;
  * NOTE: The resulting dual quaternions won't always be normalized (The error is most noticeable when t = 0.5)
  *
  * @param {quat2} out the receiving dual quat
- * @param {quat2} a the first operand
- * @param {quat2} b the second operand
+ * @param {ReadonlyQuat2} a the first operand
+ * @param {ReadonlyQuat2} b the second operand
  * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
  * @returns {quat2} out
  */
@@ -6689,7 +6695,7 @@ function lerp$3(out, a, b, t) {
  * Calculates the inverse of a dual quat. If they are normalized, conjugate is cheaper
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a dual quat to calculate inverse of
+ * @param {ReadonlyQuat2} a dual quat to calculate inverse of
  * @returns {quat2} out
  */
 
@@ -6710,7 +6716,7 @@ function invert$5(out, a) {
  * If the dual quaternion is normalized, this function is faster than quat2.inverse and produces the same result.
  *
  * @param {quat2} out the receiving quaternion
- * @param {quat2} a quat to calculate conjugate of
+ * @param {ReadonlyQuat2} a quat to calculate conjugate of
  * @returns {quat2} out
  */
 
@@ -6728,7 +6734,7 @@ function conjugate$1(out, a) {
 /**
  * Calculates the length of a dual quat
  *
- * @param {quat2} a dual quat to calculate length of
+ * @param {ReadonlyQuat2} a dual quat to calculate length of
  * @returns {Number} length of a
  * @function
  */
@@ -6743,7 +6749,7 @@ var len$3 = length$3;
 /**
  * Calculates the squared length of a dual quat
  *
- * @param {quat2} a dual quat to calculate squared length of
+ * @param {ReadonlyQuat2} a dual quat to calculate squared length of
  * @returns {Number} squared length of a
  * @function
  */
@@ -6759,7 +6765,7 @@ var sqrLen$3 = squaredLength$3;
  * Normalize a dual quat
  *
  * @param {quat2} out the receiving dual quaternion
- * @param {quat2} a dual quaternion to normalize
+ * @param {ReadonlyQuat2} a dual quaternion to normalize
  * @returns {quat2} out
  * @function
  */
@@ -6793,18 +6799,18 @@ function normalize$3(out, a) {
 /**
  * Returns a string representation of a dual quatenion
  *
- * @param {quat2} a dual quaternion to represent as a string
+ * @param {ReadonlyQuat2} a dual quaternion to represent as a string
  * @returns {String} string representation of the dual quat
  */
 
 function str$7(a) {
-  return 'quat2(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + a[6] + ', ' + a[7] + ')';
+  return "quat2(" + a[0] + ", " + a[1] + ", " + a[2] + ", " + a[3] + ", " + a[4] + ", " + a[5] + ", " + a[6] + ", " + a[7] + ")";
 }
 /**
  * Returns whether or not the dual quaternions have exactly the same elements in the same position (when compared with ===)
  *
- * @param {quat2} a the first dual quaternion.
- * @param {quat2} b the second dual quaternion.
+ * @param {ReadonlyQuat2} a the first dual quaternion.
+ * @param {ReadonlyQuat2} b the second dual quaternion.
  * @returns {Boolean} true if the dual quaternions are equal, false otherwise.
  */
 
@@ -6814,8 +6820,8 @@ function exactEquals$7(a, b) {
 /**
  * Returns whether or not the dual quaternions have approximately the same elements in the same position.
  *
- * @param {quat2} a the first dual quat.
- * @param {quat2} b the second dual quat.
+ * @param {ReadonlyQuat2} a the first dual quat.
+ * @param {ReadonlyQuat2} b the second dual quat.
  * @returns {Boolean} true if the dual quats are equal, false otherwise.
  */
 
@@ -6840,6 +6846,7 @@ function equals$8(a, b) {
 }
 
 var quat2 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$7,
   clone: clone$7,
   fromValues: fromValues$7,
@@ -6905,7 +6912,7 @@ function create$8() {
 /**
  * Creates a new vec2 initialized with values from an existing vector
  *
- * @param {vec2} a vector to clone
+ * @param {ReadonlyVec2} a vector to clone
  * @returns {vec2} a new 2D vector
  */
 
@@ -6933,7 +6940,7 @@ function fromValues$8(x, y) {
  * Copy the values from one vec2 to another
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the source vector
+ * @param {ReadonlyVec2} a the source vector
  * @returns {vec2} out
  */
 
@@ -6960,8 +6967,8 @@ function set$8(out, x, y) {
  * Adds two vec2's
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {vec2} out
  */
 
@@ -6974,8 +6981,8 @@ function add$8(out, a, b) {
  * Subtracts vector b from vector a
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {vec2} out
  */
 
@@ -6988,8 +6995,8 @@ function subtract$6(out, a, b) {
  * Multiplies two vec2's
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {vec2} out
  */
 
@@ -7002,8 +7009,8 @@ function multiply$8(out, a, b) {
  * Divides two vec2's
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {vec2} out
  */
 
@@ -7016,7 +7023,7 @@ function divide$2(out, a, b) {
  * Math.ceil the components of a vec2
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a vector to ceil
+ * @param {ReadonlyVec2} a vector to ceil
  * @returns {vec2} out
  */
 
@@ -7029,7 +7036,7 @@ function ceil$2(out, a) {
  * Math.floor the components of a vec2
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a vector to floor
+ * @param {ReadonlyVec2} a vector to floor
  * @returns {vec2} out
  */
 
@@ -7042,8 +7049,8 @@ function floor$2(out, a) {
  * Returns the minimum of two vec2's
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {vec2} out
  */
 
@@ -7056,8 +7063,8 @@ function min$2(out, a, b) {
  * Returns the maximum of two vec2's
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {vec2} out
  */
 
@@ -7070,7 +7077,7 @@ function max$2(out, a, b) {
  * Math.round the components of a vec2
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a vector to round
+ * @param {ReadonlyVec2} a vector to round
  * @returns {vec2} out
  */
 
@@ -7083,7 +7090,7 @@ function round$2(out, a) {
  * Scales a vec2 by a scalar number
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to scale
+ * @param {ReadonlyVec2} a the vector to scale
  * @param {Number} b amount to scale the vector by
  * @returns {vec2} out
  */
@@ -7097,8 +7104,8 @@ function scale$8(out, a, b) {
  * Adds two vec2's after scaling the second operand by a scalar value
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @param {Number} scale the amount to scale b by before adding
  * @returns {vec2} out
  */
@@ -7111,8 +7118,8 @@ function scaleAndAdd$2(out, a, b, scale) {
 /**
  * Calculates the euclidian distance between two vec2's
  *
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {Number} distance between a and b
  */
 
@@ -7124,8 +7131,8 @@ function distance$2(a, b) {
 /**
  * Calculates the squared euclidian distance between two vec2's
  *
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {Number} squared distance between a and b
  */
 
@@ -7137,7 +7144,7 @@ function squaredDistance$2(a, b) {
 /**
  * Calculates the length of a vec2
  *
- * @param {vec2} a vector to calculate length of
+ * @param {ReadonlyVec2} a vector to calculate length of
  * @returns {Number} length of a
  */
 
@@ -7149,7 +7156,7 @@ function length$4(a) {
 /**
  * Calculates the squared length of a vec2
  *
- * @param {vec2} a vector to calculate squared length of
+ * @param {ReadonlyVec2} a vector to calculate squared length of
  * @returns {Number} squared length of a
  */
 
@@ -7162,7 +7169,7 @@ function squaredLength$4(a) {
  * Negates the components of a vec2
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a vector to negate
+ * @param {ReadonlyVec2} a vector to negate
  * @returns {vec2} out
  */
 
@@ -7175,7 +7182,7 @@ function negate$2(out, a) {
  * Returns the inverse of the components of a vec2
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a vector to invert
+ * @param {ReadonlyVec2} a vector to invert
  * @returns {vec2} out
  */
 
@@ -7188,7 +7195,7 @@ function inverse$2(out, a) {
  * Normalize a vec2
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a vector to normalize
+ * @param {ReadonlyVec2} a vector to normalize
  * @returns {vec2} out
  */
 
@@ -7209,8 +7216,8 @@ function normalize$4(out, a) {
 /**
  * Calculates the dot product of two vec2's
  *
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {Number} dot product of a and b
  */
 
@@ -7222,8 +7229,8 @@ function dot$4(a, b) {
  * Note that the cross product must by definition produce a 3D vector
  *
  * @param {vec3} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @returns {vec3} out
  */
 
@@ -7237,8 +7244,8 @@ function cross$2(out, a, b) {
  * Performs a linear interpolation between two vec2's
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the first operand
- * @param {vec2} b the second operand
+ * @param {ReadonlyVec2} a the first operand
+ * @param {ReadonlyVec2} b the second operand
  * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
  * @returns {vec2} out
  */
@@ -7269,8 +7276,8 @@ function random$3(out, scale) {
  * Transforms the vec2 with a mat2
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to transform
- * @param {mat2} m matrix to transform with
+ * @param {ReadonlyVec2} a the vector to transform
+ * @param {ReadonlyMat2} m matrix to transform with
  * @returns {vec2} out
  */
 
@@ -7285,8 +7292,8 @@ function transformMat2(out, a, m) {
  * Transforms the vec2 with a mat2d
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to transform
- * @param {mat2d} m matrix to transform with
+ * @param {ReadonlyVec2} a the vector to transform
+ * @param {ReadonlyMat2d} m matrix to transform with
  * @returns {vec2} out
  */
 
@@ -7302,8 +7309,8 @@ function transformMat2d(out, a, m) {
  * 3rd vector component is implicitly '1'
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to transform
- * @param {mat3} m matrix to transform with
+ * @param {ReadonlyVec2} a the vector to transform
+ * @param {ReadonlyMat3} m matrix to transform with
  * @returns {vec2} out
  */
 
@@ -7320,8 +7327,8 @@ function transformMat3$1(out, a, m) {
  * 4th vector component is implicitly '1'
  *
  * @param {vec2} out the receiving vector
- * @param {vec2} a the vector to transform
- * @param {mat4} m matrix to transform with
+ * @param {ReadonlyVec2} a the vector to transform
+ * @param {ReadonlyMat4} m matrix to transform with
  * @returns {vec2} out
  */
 
@@ -7335,18 +7342,18 @@ function transformMat4$2(out, a, m) {
 /**
  * Rotate a 2D vector
  * @param {vec2} out The receiving vec2
- * @param {vec2} a The vec2 point to rotate
- * @param {vec2} b The origin of the rotation
- * @param {Number} c The angle of rotation
+ * @param {ReadonlyVec2} a The vec2 point to rotate
+ * @param {ReadonlyVec2} b The origin of the rotation
+ * @param {Number} rad The angle of rotation in radians
  * @returns {vec2} out
  */
 
-function rotate$4(out, a, b, c) {
+function rotate$4(out, a, b, rad) {
   //Translate point to the origin
   var p0 = a[0] - b[0],
       p1 = a[1] - b[1],
-      sinC = Math.sin(c),
-      cosC = Math.cos(c); //perform rotation and translate to correct position
+      sinC = Math.sin(rad),
+      cosC = Math.cos(rad); //perform rotation and translate to correct position
 
   out[0] = p0 * cosC - p1 * sinC + b[0];
   out[1] = p0 * sinC + p1 * cosC + b[1];
@@ -7354,8 +7361,8 @@ function rotate$4(out, a, b, c) {
 }
 /**
  * Get the angle between two 2D vectors
- * @param {vec2} a The first operand
- * @param {vec2} b The second operand
+ * @param {ReadonlyVec2} a The first operand
+ * @param {ReadonlyVec2} b The second operand
  * @returns {Number} The angle in radians
  */
 
@@ -7363,30 +7370,13 @@ function angle$1(a, b) {
   var x1 = a[0],
       y1 = a[1],
       x2 = b[0],
-      y2 = b[1];
-  var len1 = x1 * x1 + y1 * y1;
+      y2 = b[1],
+      // mag is the product of the magnitudes of a and b
+  mag = Math.sqrt(x1 * x1 + y1 * y1) * Math.sqrt(x2 * x2 + y2 * y2),
+      // mag &&.. short circuits if mag == 0
+  cosine = mag && (x1 * x2 + y1 * y2) / mag; // Math.min(Math.max(cosine, -1), 1) clamps the cosine between -1 and 1
 
-  if (len1 > 0) {
-    //TODO: evaluate use of glm_invsqrt here?
-    len1 = 1 / Math.sqrt(len1);
-  }
-
-  var len2 = x2 * x2 + y2 * y2;
-
-  if (len2 > 0) {
-    //TODO: evaluate use of glm_invsqrt here?
-    len2 = 1 / Math.sqrt(len2);
-  }
-
-  var cosine = (x1 * x2 + y1 * y2) * len1 * len2;
-
-  if (cosine > 1.0) {
-    return 0;
-  } else if (cosine < -1.0) {
-    return Math.PI;
-  } else {
-    return Math.acos(cosine);
-  }
+  return Math.acos(Math.min(Math.max(cosine, -1), 1));
 }
 /**
  * Set the components of a vec2 to zero
@@ -7403,18 +7393,18 @@ function zero$2(out) {
 /**
  * Returns a string representation of a vector
  *
- * @param {vec2} a vector to represent as a string
+ * @param {ReadonlyVec2} a vector to represent as a string
  * @returns {String} string representation of the vector
  */
 
 function str$8(a) {
-  return 'vec2(' + a[0] + ', ' + a[1] + ')';
+  return "vec2(" + a[0] + ", " + a[1] + ")";
 }
 /**
  * Returns whether or not the vectors exactly have the same elements in the same position (when compared with ===)
  *
- * @param {vec2} a The first vector.
- * @param {vec2} b The second vector.
+ * @param {ReadonlyVec2} a The first vector.
+ * @param {ReadonlyVec2} b The second vector.
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
@@ -7424,8 +7414,8 @@ function exactEquals$8(a, b) {
 /**
  * Returns whether or not the vectors have approximately the same elements in the same position.
  *
- * @param {vec2} a The first vector.
- * @param {vec2} b The second vector.
+ * @param {ReadonlyVec2} a The first vector.
+ * @param {ReadonlyVec2} b The second vector.
  * @returns {Boolean} True if the vectors are equal, false otherwise.
  */
 
@@ -7523,6 +7513,7 @@ var forEach$2 = function () {
 }();
 
 var vec2 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$8,
   clone: clone$8,
   fromValues: fromValues$8,

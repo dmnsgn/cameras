@@ -1,12 +1,22 @@
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
+function createCommonjsModule(fn, basedir, module) {
+	return module = {
+	  path: basedir,
+	  exports: {},
+	  require: function (path, base) {
+      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+    }
+	}, fn(module, module.exports), module.exports;
+}
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
 }
 
 var regl = createCommonjsModule(function (module, exports) {
 (function (global, factory) {
-	module.exports = factory();
+     module.exports = factory() ;
 }(commonjsGlobal, (function () {
 var isTypedArray = function (x) {
   return (
@@ -81,8 +91,20 @@ function checkIsTypedArray (data, message) {
   }
 }
 
+function standardTypeEh (value, type) {
+  switch (type) {
+    case 'number': return typeof value === 'number'
+    case 'object': return typeof value === 'object'
+    case 'string': return typeof value === 'string'
+    case 'boolean': return typeof value === 'boolean'
+    case 'function': return typeof value === 'function'
+    case 'undefined': return typeof value === 'undefined'
+    case 'symbol': return typeof value === 'symbol'
+  }
+}
+
 function checkTypeOf (value, type, message) {
-  if (typeof value !== type) {
+  if (!standardTypeEh(value, type)) {
     raise(
       'invalid parameter type' + encolon(message) +
       '. expected ' + type + ', got ' + (typeof value));
@@ -190,7 +212,7 @@ function parseSource (source, command) {
   files.unknown.lines.push(new ShaderLine(0, ''));
   for (var i = 0; i < lines.length; ++i) {
     var line = lines[i];
-    var parts = /^\s*\#\s*(\w+)\s+(.+)\s*$/.exec(line);
+    var parts = /^\s*#\s*(\w+)\s+(.+)\s*$/.exec(line);
     if (parts) {
       switch (parts[1]) {
         case 'line':
@@ -209,8 +231,8 @@ function parseSource (source, command) {
           var nameInfo = /SHADER_NAME(_B64)?\s+(.*)$/.exec(parts[2]);
           if (nameInfo) {
             files[fileNumber].name = (nameInfo[1]
-                ? decodeB64(nameInfo[2])
-                : nameInfo[2]);
+              ? decodeB64(nameInfo[2])
+              : nameInfo[2]);
           }
           break
       }
@@ -232,7 +254,7 @@ function parseErrorLog (errLog) {
     if (errMsg.length < 5) {
       return
     }
-    var parts = /^ERROR\:\s+(\d+)\:(\d+)\:\s*(.*)$/.exec(errMsg);
+    var parts = /^ERROR:\s+(\d+):(\d+):\s*(.*)$/.exec(errMsg);
     if (parts) {
       result.push(new ShaderError(
         parts[1] | 0,
@@ -295,7 +317,7 @@ function checkShaderError (gl, shader, source, type, command) {
           var offset = 0;
           line.errors.forEach(function (error) {
             var message = error.message;
-            var token = /^\s*\'(.*)\'\s*\:\s*(.*)$/.exec(message);
+            var token = /^\s*'(.*)'\s*:\s*(.*)$/.exec(message);
             if (token) {
               var tokenPat = token[1];
               message = token[2];
@@ -412,7 +434,7 @@ function checkParameterCommand (param, possibilities, message, command) {
 }
 
 function checkCommandType (value, type, message, command) {
-  if (typeof value !== type) {
+  if (!standardTypeEh(value, type)) {
     commandRaise(
       'invalid parameter type' + encolon(message) +
       '. expected ' + type + ', got ' + (typeof value),
@@ -503,7 +525,7 @@ function checkTexture2D (info, mipData, limits) {
   // Check texture shape
   check(w > 0 && w <= limits.maxTextureSize &&
         h > 0 && h <= limits.maxTextureSize,
-        'invalid texture shape');
+  'invalid texture shape');
 
   // check wrap mode
   if (info.wrapS !== GL_CLAMP_TO_EDGE || info.wrapT !== GL_CLAMP_TO_EDGE) {
@@ -625,7 +647,7 @@ function checkTextureCube (texture, info, faces, limits) {
         if (img.compressed) ; else if (img.data) {
           check(img.data.byteLength === mw * mh *
             Math.max(pixelSize(img.type, c), img.unpackAlignment),
-            'invalid data for image, buffer size is inconsistent with image format');
+          'invalid data for image, buffer size is inconsistent with image format');
         } else if (img.element) ; else if (img.copy) ;
       }
     }
@@ -688,8 +710,8 @@ function splitParts (str) {
   if (parts) {
     return (
       splitParts(str.substr(0, parts.index))
-      .concat(splitParts(parts[1]))
-      .concat(splitParts(str.substr(parts.index + parts[0].length)))
+        .concat(splitParts(parts[1]))
+        .concat(splitParts(str.substr(parts.index + parts[0].length)))
     )
   }
 
@@ -745,11 +767,11 @@ var raf = {
 
 /* globals performance */
 var clock = (typeof performance !== 'undefined' && performance.now)
-  ? function () { return performance.now() }
-  : function () { return +(new Date()) };
+    ? function () { return performance.now() }
+    : function () { return +(new Date()) };
 
 function createStringStore () {
-  var stringIds = {'': 0};
+  var stringIds = { '': 0 };
   var stringValues = [''];
   return {
     id: function (str) {
@@ -804,10 +826,25 @@ function createCanvas (element, onDone, pixelRatio) {
     });
   }
 
-  window.addEventListener('resize', resize, false);
+  var resizeObserver;
+  if (element !== document.body && typeof ResizeObserver === 'function') {
+    // ignore 'ResizeObserver' is not defined
+    // eslint-disable-next-line
+    resizeObserver = new ResizeObserver(function () {
+      // setTimeout to avoid flicker
+      setTimeout(resize);
+    });
+    resizeObserver.observe(element);
+  } else {
+    window.addEventListener('resize', resize, false);
+  }
 
   function onDestroy () {
-    window.removeEventListener('resize', resize);
+    if (resizeObserver) {
+      resizeObserver.disconnect();
+    } else {
+      window.removeEventListener('resize', resize);
+    }
     element.removeChild(canvas);
   }
 
@@ -948,6 +985,8 @@ function parseArgs (args_) {
       canvas = result.canvas;
       onDestroy = result.onDestroy;
     }
+    // workaround for chromium bug, premultiplied alpha value is platform dependent
+    if (contextAttributes.premultipliedAlpha === undefined) contextAttributes.premultipliedAlpha = true;
     gl = createContext(canvas, contextAttributes);
   }
 
@@ -1379,7 +1418,7 @@ function arrayShape$1 (array_) {
   return shape
 }
 
-var arrayTypes = {
+var arrayTypes =  {
 	"[object Int8Array]": 5120,
 	"[object Int16Array]": 5122,
 	"[object Int32Array]": 5124,
@@ -1457,7 +1496,7 @@ function transpose (
   }
 }
 
-function wrapBufferState (gl, stats, config, attributeState) {
+function wrapBufferState (gl, stats, config, destroyBuffer) {
   var bufferCount = 0;
   var bufferSet = {};
 
@@ -1473,7 +1512,7 @@ function wrapBufferState (gl, stats, config, attributeState) {
     this.persistentData = null;
 
     if (config.profile) {
-      this.stats = {size: 0};
+      this.stats = { size: 0 };
     }
   }
 
@@ -1614,13 +1653,8 @@ function wrapBufferState (gl, stats, config, attributeState) {
   function destroy (buffer) {
     stats.bufferCount--;
 
-    for (var i = 0; i < attributeState.state.length; ++i) {
-      var record = attributeState.state[i];
-      if (record.buffer === buffer) {
-        gl.disableVertexAttribArray(i);
-        record.buffer = null;
-      }
-    }
+    // remove attribute link
+    destroyBuffer(buffer);
 
     var handle = buffer.buffer;
     check$1(handle, 'buffer must not be deleted already');
@@ -1919,10 +1953,11 @@ function wrapElementsState (gl, extensions, bufferState, stats) {
     byteLength,
     type) {
     elements.buffer.bind();
+    var dtype;
     if (data) {
       var predictedType = type;
       if (!type && (
-          !isTypedArray(data) ||
+        !isTypedArray(data) ||
          (isNDArrayLike(data) && !isTypedArray(data.data)))) {
         predictedType = extensions.oes_element_index_uint
           ? GL_UNSIGNED_INT$2
@@ -1942,7 +1977,7 @@ function wrapElementsState (gl, extensions, bufferState, stats) {
       elements.buffer.byteLength = byteLength;
     }
 
-    var dtype = type;
+    dtype = type;
     if (!type) {
       switch (elements.buffer.dtype) {
         case GL_UNSIGNED_BYTE$4:
@@ -2038,10 +2073,10 @@ function wrapElementsState (gl, extensions, bufferState, stats) {
           if ('data' in options) {
             data = options.data;
             check$1(
-                Array.isArray(data) ||
+              Array.isArray(data) ||
                 isTypedArray(data) ||
                 isNDArrayLike(data),
-                'invalid data for element buffer');
+              'invalid data for element buffer');
           }
           if ('usage' in options) {
             check$1.parameter(
@@ -2291,6 +2326,7 @@ function objectName (str) {
 }
 
 var CANVAS_CLASS = objectName('HTMLCanvasElement');
+var OFFSCREENCANVAS_CLASS = objectName('OffscreenCanvas');
 var CONTEXT2D_CLASS = objectName('CanvasRenderingContext2D');
 var BITMAP_CLASS = objectName('ImageBitmap');
 var IMAGE_CLASS = objectName('HTMLImageElement');
@@ -2298,6 +2334,7 @@ var VIDEO_CLASS = objectName('HTMLVideoElement');
 
 var PIXEL_CLASSES = Object.keys(arrayTypes).concat([
   CANVAS_CLASS,
+  OFFSCREENCANVAS_CLASS,
   CONTEXT2D_CLASS,
   BITMAP_CLASS,
   IMAGE_CLASS,
@@ -2360,6 +2397,10 @@ function classString (x) {
 
 function isCanvasElement (object) {
   return classString(object) === CANVAS_CLASS
+}
+
+function isOffscreenCanvas (object) {
+  return classString(object) === OFFSCREENCANVAS_CLASS
 }
 
 function isContext2D (object) {
@@ -2650,7 +2691,10 @@ function createTextureSet (
         glenum === GL_LUMINANCE ||
         glenum === GL_LUMINANCE_ALPHA ||
         glenum === GL_DEPTH_COMPONENT ||
-        glenum === GL_DEPTH_STENCIL) {
+        glenum === GL_DEPTH_STENCIL ||
+        (extensions.ext_srgb &&
+                (glenum === GL_SRGB_EXT ||
+                 glenum === GL_SRGB_ALPHA_EXT))) {
       color[glenum] = glenum;
     } else if (glenum === GL_RGB5_A1 || key.indexOf('rgba') >= 0) {
       color[glenum] = GL_RGBA$1;
@@ -2728,13 +2772,13 @@ function createTextureSet (
       var type = options.type;
       check$1(extensions.oes_texture_float ||
         !(type === 'float' || type === 'float32'),
-        'you must enable the OES_texture_float extension in order to use floating point textures.');
+      'you must enable the OES_texture_float extension in order to use floating point textures.');
       check$1(extensions.oes_texture_half_float ||
         !(type === 'half float' || type === 'float16'),
-        'you must enable the OES_texture_half_float extension in order to use 16-bit floating point textures.');
+      'you must enable the OES_texture_half_float extension in order to use 16-bit floating point textures.');
       check$1(extensions.webgl_depth_texture ||
         !(type === 'uint16' || type === 'uint32' || type === 'depth stencil'),
-        'you must enable the WEBGL_depth_texture extension in order to use depth/stencil textures.');
+      'you must enable the WEBGL_depth_texture extension in order to use depth/stencil textures.');
       check$1.parameter(type, textureTypes,
         'invalid texture type');
       flags.type = textureTypes[type];
@@ -2784,7 +2828,7 @@ function createTextureSet (
       var formatStr = options.format;
       check$1(extensions.webgl_depth_texture ||
         !(formatStr === 'depth' || formatStr === 'depth stencil'),
-        'you must enable the WEBGL_depth_texture extension in order to use depth/stencil textures.');
+      'you must enable the WEBGL_depth_texture extension in order to use depth/stencil textures.');
       check$1.parameter(formatStr, textureFormats,
         'invalid texture format');
       var internalformat = flags.internalformat = textureFormats[formatStr];
@@ -2875,7 +2919,7 @@ function createTextureSet (
             image.yOffset >= 0 && image.yOffset < viewH &&
             image.width > 0 && image.width <= viewW &&
             image.height > 0 && image.height <= viewH,
-            'copy texture read out of bounds');
+      'copy texture read out of bounds');
     } else if (!data) {
       image.width = image.width || 1;
       image.height = image.height || 1;
@@ -2918,8 +2962,8 @@ function createTextureSet (
       image.format = image.internalformat = CHANNELS_FORMAT[shapeC];
       image.needsFree = true;
       transposeData(image, array, strideX, strideY, strideC, data.offset);
-    } else if (isCanvasElement(data) || isContext2D(data)) {
-      if (isCanvasElement(data)) {
+    } else if (isCanvasElement(data) || isOffscreenCanvas(data) || isContext2D(data)) {
+      if (isCanvasElement(data) || isOffscreenCanvas(data)) {
         image.element = data;
       } else {
         image.element = data.canvas;
@@ -2986,7 +3030,6 @@ function createTextureSet (
     var type = info.type;
     var width = info.width;
     var height = info.height;
-    var channels = info.channels;
 
     setFlags(info);
 
@@ -2999,16 +3042,7 @@ function createTextureSet (
       gl.copyTexImage2D(
         target, miplevel, format, info.xOffset, info.yOffset, width, height, 0);
     } else {
-      var nullData = !data;
-      if (nullData) {
-        data = pool.zero.allocType(type, width * height * channels);
-      }
-
-      gl.texImage2D(target, miplevel, format, width, height, 0, format, type, data);
-
-      if (nullData && data) {
-        pool.zero.freeType(data);
-      }
+      gl.texImage2D(target, miplevel, format, width, height, 0, format, type, data || null);
     }
   }
 
@@ -3111,14 +3145,17 @@ function createTextureSet (
     // but we do not yet support having multiple mipmap levels for compressed textures,
     // so we only test for level zero.
 
-    if (mipmap.compressed &&
-        (mipmap.internalformat === GL_COMPRESSED_RGB_S3TC_DXT1_EXT) ||
-        (mipmap.internalformat === GL_COMPRESSED_RGBA_S3TC_DXT1_EXT) ||
-        (mipmap.internalformat === GL_COMPRESSED_RGBA_S3TC_DXT3_EXT) ||
-        (mipmap.internalformat === GL_COMPRESSED_RGBA_S3TC_DXT5_EXT)) {
-      check$1(mipmap.width % 4 === 0 &&
-            mipmap.height % 4 === 0,
-            'for compressed texture formats, mipmap level 0 must have width and height that are a multiple of 4');
+    if (
+      mipmap.compressed &&
+      (
+        mipmap.internalformat === GL_COMPRESSED_RGB_S3TC_DXT1_EXT ||
+        mipmap.internalformat === GL_COMPRESSED_RGBA_S3TC_DXT1_EXT ||
+        mipmap.internalformat === GL_COMPRESSED_RGBA_S3TC_DXT3_EXT ||
+        mipmap.internalformat === GL_COMPRESSED_RGBA_S3TC_DXT5_EXT
+      )
+    ) {
+      check$1(mipmap.width % 4 === 0 && mipmap.height % 4 === 0,
+        'for compressed texture formats, mipmap level 0 must have width and height that are a multiple of 4');
     }
   }
 
@@ -3219,7 +3256,7 @@ function createTextureSet (
       var anisotropic = options.anisotropic;
       check$1(typeof anisotropic === 'number' &&
          anisotropic >= 1 && anisotropic <= limits.maxAnisotropic,
-        'aniso samples must be between 1 and ');
+      'aniso samples must be between 1 and ');
       info.anisotropic = options.anisotropic;
     }
 
@@ -3295,7 +3332,7 @@ function createTextureSet (
     this.texInfo = new TexInfo();
 
     if (config.profile) {
-      this.stats = {size: 0};
+      this.stats = { size: 0 };
     }
   }
 
@@ -3493,15 +3530,10 @@ function createTextureSet (
 
       tempBind(texture);
 
-      var data;
-      var channels = texture.channels;
-      var type = texture.type;
-
       for (var i = 0; texture.mipmask >> i; ++i) {
         var _w = w >> i;
         var _h = h >> i;
         if (!_w || !_h) break
-        data = pool.zero.allocType(type, _w * _h * channels);
         gl.texImage2D(
           GL_TEXTURE_2D$1,
           i,
@@ -3511,8 +3543,7 @@ function createTextureSet (
           0,
           texture.format,
           texture.type,
-          data);
-        if (data) pool.zero.freeType(data);
+          null);
       }
       tempRestore();
 
@@ -3578,14 +3609,14 @@ function createTextureSet (
           parseTexInfo(texInfo, a0);
           parseFlags(texture, a0);
           if ('faces' in a0) {
-            var face_input = a0.faces;
-            check$1(Array.isArray(face_input) && face_input.length === 6,
+            var faceInput = a0.faces;
+            check$1(Array.isArray(faceInput) && faceInput.length === 6,
               'cube faces must be a length 6 array');
             for (i = 0; i < 6; ++i) {
-              check$1(typeof face_input[i] === 'object' && !!face_input[i],
+              check$1(typeof faceInput[i] === 'object' && !!faceInput[i],
                 'invalid input for cube map face');
               copyFlags(faces[i], texture);
-              parseMipMapFromObject(faces[i], face_input[i]);
+              parseMipMapFromObject(faces[i], faceInput[i]);
             }
           } else {
             for (i = 0; i < 6; ++i) {
@@ -3903,7 +3934,7 @@ var wrapRenderbuffers = function (gl, extensions, limits, stats, config) {
     this.height = 0;
 
     if (config.profile) {
-      this.stats = {size: 0};
+      this.stats = { size: 0 };
     }
   }
 
@@ -4516,10 +4547,10 @@ function wrapFBOState (
             } else {
               check$1(extensions.oes_texture_float ||
                 !(colorType === 'float' || colorType === 'float32'),
-                'you must enable OES_texture_float in order to use floating point framebuffer objects');
+              'you must enable OES_texture_float in order to use floating point framebuffer objects');
               check$1(extensions.oes_texture_half_float ||
                 !(colorType === 'half float' || colorType === 'float16'),
-                'you must enable OES_texture_half_float in order to use 16-bit floating point framebuffer objects');
+              'you must enable OES_texture_half_float in order to use 16-bit floating point framebuffer objects');
             }
             check$1.oneOf(colorType, colorTypes, 'invalid color type');
           }
@@ -4657,7 +4688,7 @@ function wrapFBOState (
             colorTextureFormatEnums.indexOf(colorAttachments[i].texture._texture.format) >= 0) ||
           (colorAttachments[i].renderbuffer &&
             colorRenderbufferFormatEnums.indexOf(colorAttachments[i].renderbuffer._renderbuffer.format) >= 0),
-          'framebuffer color attachment ' + i + ' is invalid');
+        'framebuffer color attachment ' + i + ' is invalid');
 
         if (colorAttachments[i] && colorAttachments[i].texture) {
           var colorAttachmentSize =
@@ -4671,7 +4702,7 @@ function wrapFBOState (
             // (that is, the same numer of bits per pixel)
             // This is required by the GLES2.0 standard. See the beginning of Chapter 4 in that document.
             check$1(commonColorAttachmentSize === colorAttachmentSize,
-                  'all color attachments much have the same number of bits per pixel.');
+              'all color attachments much have the same number of bits per pixel.');
           }
         }
       }
@@ -4681,19 +4712,19 @@ function wrapFBOState (
           depthAttachment.texture._texture.format === GL_DEPTH_COMPONENT$1) ||
         (depthAttachment.renderbuffer &&
           depthAttachment.renderbuffer._renderbuffer.format === GL_DEPTH_COMPONENT16$1),
-        'invalid depth attachment for framebuffer object');
+      'invalid depth attachment for framebuffer object');
       incRefAndCheckShape(stencilAttachment, width, height);
       check$1(!stencilAttachment ||
         (stencilAttachment.renderbuffer &&
           stencilAttachment.renderbuffer._renderbuffer.format === GL_STENCIL_INDEX8$1),
-        'invalid stencil attachment for framebuffer object');
+      'invalid stencil attachment for framebuffer object');
       incRefAndCheckShape(depthStencilAttachment, width, height);
       check$1(!depthStencilAttachment ||
         (depthStencilAttachment.texture &&
           depthStencilAttachment.texture._texture.format === GL_DEPTH_STENCIL$2) ||
         (depthStencilAttachment.renderbuffer &&
           depthStencilAttachment.renderbuffer._renderbuffer.format === GL_DEPTH_STENCIL$2),
-        'invalid depth-stencil attachment for framebuffer object');
+      'invalid depth-stencil attachment for framebuffer object');
 
       // decrement references
       decFBORefs(framebuffer);
@@ -4992,6 +5023,7 @@ function wrapFBOState (
 }
 
 var GL_FLOAT$6 = 5126;
+var GL_ARRAY_BUFFER$1 = 34962;
 
 function AttributeRecord () {
   this.state = 0;
@@ -5014,18 +5046,254 @@ function wrapAttributeState (
   gl,
   extensions,
   limits,
-  stringStore) {
+  stats,
+  bufferState) {
   var NUM_ATTRIBUTES = limits.maxAttributes;
   var attributeBindings = new Array(NUM_ATTRIBUTES);
   for (var i = 0; i < NUM_ATTRIBUTES; ++i) {
     attributeBindings[i] = new AttributeRecord();
   }
+  var vaoCount = 0;
+  var vaoSet = {};
 
-  return {
+  var state = {
     Record: AttributeRecord,
     scope: {},
-    state: attributeBindings
+    state: attributeBindings,
+    currentVAO: null,
+    targetVAO: null,
+    restore: extVAO() ? restoreVAO : function () {},
+    createVAO: createVAO,
+    getVAO: getVAO,
+    destroyBuffer: destroyBuffer,
+    setVAO: extVAO() ? setVAOEXT : setVAOEmulated,
+    clear: extVAO() ? destroyVAOEXT : function () {}
+  };
+
+  function destroyBuffer (buffer) {
+    for (var i = 0; i < attributeBindings.length; ++i) {
+      var record = attributeBindings[i];
+      if (record.buffer === buffer) {
+        gl.disableVertexAttribArray(i);
+        record.buffer = null;
+      }
+    }
   }
+
+  function extVAO () {
+    return extensions.oes_vertex_array_object
+  }
+
+  function extInstanced () {
+    return extensions.angle_instanced_arrays
+  }
+
+  function getVAO (vao) {
+    if (typeof vao === 'function' && vao._vao) {
+      return vao._vao
+    }
+    return null
+  }
+
+  function setVAOEXT (vao) {
+    if (vao === state.currentVAO) {
+      return
+    }
+    var ext = extVAO();
+    if (vao) {
+      ext.bindVertexArrayOES(vao.vao);
+    } else {
+      ext.bindVertexArrayOES(null);
+    }
+    state.currentVAO = vao;
+  }
+
+  function setVAOEmulated (vao) {
+    if (vao === state.currentVAO) {
+      return
+    }
+    if (vao) {
+      vao.bindAttrs();
+    } else {
+      var exti = extInstanced();
+      for (var i = 0; i < attributeBindings.length; ++i) {
+        var binding = attributeBindings[i];
+        if (binding.buffer) {
+          gl.enableVertexAttribArray(i);
+          gl.vertexAttribPointer(i, binding.size, binding.type, binding.normalized, binding.stride, binding.offfset);
+          if (exti) {
+            exti.vertexAttribDivisorANGLE(i, binding.divisor);
+          }
+        } else {
+          gl.disableVertexAttribArray(i);
+          gl.vertexAttrib4f(i, binding.x, binding.y, binding.z, binding.w);
+        }
+      }
+    }
+    state.currentVAO = vao;
+  }
+
+  function destroyVAOEXT () {
+    values(vaoSet).forEach(function (vao) {
+      vao.destroy();
+    });
+  }
+
+  function REGLVAO () {
+    this.id = ++vaoCount;
+    this.attributes = [];
+    var extension = extVAO();
+    if (extension) {
+      this.vao = extension.createVertexArrayOES();
+    } else {
+      this.vao = null;
+    }
+    vaoSet[this.id] = this;
+    this.buffers = [];
+  }
+
+  REGLVAO.prototype.bindAttrs = function () {
+    var exti = extInstanced();
+    var attributes = this.attributes;
+    for (var i = 0; i < attributes.length; ++i) {
+      var attr = attributes[i];
+      if (attr.buffer) {
+        gl.enableVertexAttribArray(i);
+        gl.bindBuffer(GL_ARRAY_BUFFER$1, attr.buffer.buffer);
+        gl.vertexAttribPointer(i, attr.size, attr.type, attr.normalized, attr.stride, attr.offset);
+        if (exti) {
+          exti.vertexAttribDivisorANGLE(i, attr.divisor);
+        }
+      } else {
+        gl.disableVertexAttribArray(i);
+        gl.vertexAttrib4f(i, attr.x, attr.y, attr.z, attr.w);
+      }
+    }
+    for (var j = attributes.length; j < NUM_ATTRIBUTES; ++j) {
+      gl.disableVertexAttribArray(j);
+    }
+  };
+
+  REGLVAO.prototype.refresh = function () {
+    var ext = extVAO();
+    if (ext) {
+      ext.bindVertexArrayOES(this.vao);
+      this.bindAttrs();
+      state.currentVAO = this;
+    }
+  };
+
+  REGLVAO.prototype.destroy = function () {
+    if (this.vao) {
+      var extension = extVAO();
+      if (this === state.currentVAO) {
+        state.currentVAO = null;
+        extension.bindVertexArrayOES(null);
+      }
+      extension.deleteVertexArrayOES(this.vao);
+      this.vao = null;
+    }
+    if (vaoSet[this.id]) {
+      delete vaoSet[this.id];
+      stats.vaoCount -= 1;
+    }
+  };
+
+  function restoreVAO () {
+    var ext = extVAO();
+    if (ext) {
+      values(vaoSet).forEach(function (vao) {
+        vao.refresh();
+      });
+    }
+  }
+
+  function createVAO (_attr) {
+    var vao = new REGLVAO();
+    stats.vaoCount += 1;
+
+    function updateVAO (attributes) {
+      check$1(Array.isArray(attributes), 'arguments to vertex array constructor must be an array');
+      check$1(attributes.length < NUM_ATTRIBUTES, 'too many attributes');
+      check$1(attributes.length > 0, 'must specify at least one attribute');
+
+      for (var j = 0; j < vao.buffers.length; ++j) {
+        vao.buffers[j].destroy();
+      }
+      vao.buffers.length = 0;
+
+      var nattributes = vao.attributes;
+      nattributes.length = attributes.length;
+      for (var i = 0; i < attributes.length; ++i) {
+        var spec = attributes[i];
+        var rec = nattributes[i] = new AttributeRecord();
+        if (Array.isArray(spec) || isTypedArray(spec) || isNDArrayLike(spec)) {
+          var buf = bufferState.create(spec, GL_ARRAY_BUFFER$1, false, true);
+          rec.buffer = bufferState.getBuffer(buf);
+          rec.size = rec.buffer.dimension | 0;
+          rec.normalized = false;
+          rec.type = rec.buffer.dtype;
+          rec.offset = 0;
+          rec.stride = 0;
+          rec.divisor = 0;
+          rec.state = 1;
+          vao.buffers.push(buf);
+        } else if (bufferState.getBuffer(spec)) {
+          rec.buffer = bufferState.getBuffer(spec);
+          rec.size = rec.buffer.dimension | 0;
+          rec.normalized = false;
+          rec.type = rec.buffer.dtype;
+          rec.offset = 0;
+          rec.stride = 0;
+          rec.divisor = 0;
+          rec.state = 1;
+        } else if (bufferState.getBuffer(spec.buffer)) {
+          rec.buffer = bufferState.getBuffer(spec.buffer);
+          rec.size = ((+spec.size) || rec.buffer.dimension) | 0;
+          rec.normalized = !!spec.normalized || false;
+          if ('type' in spec) {
+            check$1.parameter(spec.type, glTypes, 'invalid buffer type');
+            rec.type = glTypes[spec.type];
+          } else {
+            rec.type = rec.buffer.dtype;
+          }
+          rec.offset = (spec.offset || 0) | 0;
+          rec.stride = (spec.stride || 0) | 0;
+          rec.divisor = (spec.divisor || 0) | 0;
+          rec.state = 1;
+
+          check$1(rec.size >= 1 && rec.size <= 4, 'size must be between 1 and 4');
+          check$1(rec.offset >= 0, 'invalid offset');
+          check$1(rec.stride >= 0 && rec.stride <= 255, 'stride must be between 0 and 255');
+          check$1(rec.divisor >= 0, 'divisor must be positive');
+          check$1(!rec.divisor || !!extensions.angle_instanced_arrays, 'ANGLE_instanced_arrays must be enabled to use divisor');
+        } else if ('x' in spec) {
+          check$1(i > 0, 'first attribute must not be a constant');
+          rec.x = +spec.x || 0;
+          rec.y = +spec.y || 0;
+          rec.z = +spec.z || 0;
+          rec.w = +spec.w || 0;
+          rec.state = 2;
+        } else {
+          check$1(false, 'invalid attribute spec for location ' + i);
+        }
+      }
+
+      vao.refresh();
+      return updateVAO
+    }
+
+    updateVAO.destroy = function () {
+      vao.destroy();
+    };
+
+    updateVAO._vao = vao;
+    updateVAO._reglType = 'vao';
+
+    return updateVAO(_attr)
+  }
+
+  return state
 }
 
 var GL_FRAGMENT_SHADER = 35632;
@@ -5098,7 +5366,7 @@ function wrapShaderState (gl, stringStore, stats, config) {
     }
   }
 
-  function linkProgram (desc, command) {
+  function linkProgram (desc, command, attributeLocations) {
     var i, info;
 
     // -------------------------------
@@ -5110,6 +5378,13 @@ function wrapShaderState (gl, stringStore, stats, config) {
     var program = desc.program = gl.createProgram();
     gl.attachShader(program, fragShader);
     gl.attachShader(program, vertShader);
+    if (attributeLocations) {
+      for (i = 0; i < attributeLocations.length; ++i) {
+        var binding = attributeLocations[i];
+        gl.bindAttribLocation(program, binding[0], binding[1]);
+      }
+    }
+
     gl.linkProgram(program);
     check$1.linkError(
       gl,
@@ -5195,7 +5470,9 @@ function wrapShaderState (gl, stringStore, stats, config) {
     fragShaders = {};
     vertShaders = {};
     for (var i = 0; i < programList.length; ++i) {
-      linkProgram(programList[i]);
+      linkProgram(programList[i], null, programList[i].attributes.map(function (info) {
+        return [info.location, info.name]
+      }));
     }
   }
 
@@ -5216,7 +5493,7 @@ function wrapShaderState (gl, stringStore, stats, config) {
       stats.shaderCount = 0;
     },
 
-    program: function (vertId, fragId, command) {
+    program: function (vertId, fragId, command, attribLocations) {
       check$1.command(vertId >= 0, 'missing vertex shader', command);
       check$1.command(fragId >= 0, 'missing fragment shader', command);
 
@@ -5224,15 +5501,17 @@ function wrapShaderState (gl, stringStore, stats, config) {
       if (!cache) {
         cache = programCache[fragId] = {};
       }
-      var program = cache[vertId];
-      if (!program) {
-        program = new REGLProgram(fragId, vertId);
-        stats.shaderCount++;
-
-        linkProgram(program, command);
-        cache[vertId] = program;
-        programList.push(program);
+      var prevProgram = cache[vertId];
+      if (prevProgram && !attribLocations) {
+        return prevProgram
       }
+      var program = new REGLProgram(fragId, vertId);
+      stats.shaderCount++;
+      linkProgram(program, command, attribLocations);
+      if (!prevProgram) {
+        cache[vertId] = program;
+      }
+      programList.push(program);
       return program
     },
 
@@ -5268,7 +5547,7 @@ function wrapReadPixels (
     } else {
       check$1(
         framebufferState.next.colorAttachments[0].texture !== null,
-          'You cannot read from a renderbuffer');
+        'You cannot read from a renderbuffer');
       type = framebufferState.next.colorAttachments[0].texture._texture.type;
 
       if (extensions.oes_texture_float) {
@@ -5351,8 +5630,8 @@ function wrapReadPixels (
     // Run read pixels
     gl.pixelStorei(GL_PACK_ALIGNMENT, 4);
     gl.readPixels(x, y, width, height, GL_RGBA$3,
-                  type,
-                  data);
+      type,
+      data);
 
     return data
   }
@@ -5611,6 +5890,7 @@ var S_PRIMITIVE = 'primitive';
 var S_COUNT = 'count';
 var S_OFFSET = 'offset';
 var S_INSTANCES = 'instances';
+var S_VAO = 'vao';
 
 var SUFFIX_WIDTH = 'Width';
 var SUFFIX_HEIGHT = 'Height';
@@ -5635,7 +5915,7 @@ var NESTED_OPTIONS = [
   S_POLYGON_OFFSET_OFFSET
 ];
 
-var GL_ARRAY_BUFFER$1 = 34962;
+var GL_ARRAY_BUFFER$2 = 34962;
 var GL_ELEMENT_ARRAY_BUFFER$1 = 34963;
 
 var GL_FRAGMENT_SHADER$1 = 35632;
@@ -5967,6 +6247,7 @@ function reglCore (
     buffer: bufferState,
     shader: shaderState,
     attributes: attributeState.state,
+    vao: attributeState,
     uniforms: uniformState,
     framebuffer: framebufferState,
     extensions: extensions,
@@ -6061,8 +6342,8 @@ function reglCore (
           ];
           return block.def(
             link(x.data), '.call(',
-              argList.slice(0, Math.max(x.data.length + 1, 4)),
-             ')')
+            argList.slice(0, Math.max(x.data.length + 1, 4)),
+            ')')
         case DYN_PROP$1:
           return block.def(shared.props, x.data)
         case DYN_CONTEXT$1:
@@ -6328,7 +6609,30 @@ function reglCore (
     }
   }
 
-  function parseProgram (options) {
+  function parseAttribLocations (options, attributes) {
+    var staticOptions = options.static;
+    var staticProgram =
+      typeof staticOptions[S_FRAG] === 'string' &&
+      typeof staticOptions[S_VERT] === 'string';
+    if (staticProgram) {
+      if (Object.keys(attributes.dynamic).length > 0) {
+        return null
+      }
+      var staticAttributes = attributes.static;
+      var sAttributes = Object.keys(staticAttributes);
+      if (sAttributes.length > 0 && typeof staticAttributes[sAttributes[0]] === 'number') {
+        var bindings = [];
+        for (var i = 0; i < sAttributes.length; ++i) {
+          check$1(typeof staticAttributes[sAttributes[i]] === 'number', 'must specify all vertex attribute locations when using vaos');
+          bindings.push([staticAttributes[sAttributes[i]] | 0, sAttributes[i]]);
+        }
+        return bindings
+      }
+    }
+    return null
+  }
+
+  function parseProgram (options, env, attribLocations) {
     var staticOptions = options.static;
     var dynamicOptions = options.dynamic;
 
@@ -6367,7 +6671,7 @@ function reglCore (
     var program = null;
     var progVar;
     if (isStatic(frag) && isStatic(vert)) {
-      program = shaderState.program(vert.id, frag.id);
+      program = shaderState.program(vert.id, frag.id, null, attribLocations);
       progVar = createStaticDecl(function (env, scope) {
         return env.link(program)
       });
@@ -6781,10 +7085,10 @@ function reglCore (
                 var INVALID_BLEND_COMBINATIONS = env.constants.invalidBlendCombinations;
 
                 env.assert(scope,
-                           INVALID_BLEND_COMBINATIONS +
+                  INVALID_BLEND_COMBINATIONS +
                            '.indexOf(' + srcRGB + '+", "+' + dstRGB + ') === -1 ',
-                           'unallowed blending combination for (srcRGB, dstRGB)'
-                          );
+                  'unallowed blending combination for (srcRGB, dstRGB)'
+                );
               });
 
               var SRC_RGB = scope.def(BLEND_FUNCS, '[', srcRGB, ']');
@@ -7184,7 +7488,7 @@ function reglCore (
       if (isBufferArgs(value)) {
         record.state = ATTRIB_STATE_POINTER;
         record.buffer = bufferState.getBuffer(
-          bufferState.create(value, GL_ARRAY_BUFFER$1, false, true));
+          bufferState.create(value, GL_ARRAY_BUFFER$2, false, true));
         record.type = 0;
       } else {
         var buffer = bufferState.getBuffer(value);
@@ -7216,7 +7520,7 @@ function reglCore (
           } else {
             if (isBufferArgs(value.buffer)) {
               buffer = bufferState.getBuffer(
-                bufferState.create(value.buffer, GL_ARRAY_BUFFER$1, false, true));
+                bufferState.create(value.buffer, GL_ARRAY_BUFFER$2, false, true));
             } else {
               buffer = bufferState.getBuffer(value.buffer);
             }
@@ -7347,7 +7651,7 @@ function reglCore (
         block(
           'if(', IS_BUFFER_ARGS, '(', VALUE, ')){',
           result.isStream, '=true;',
-          BUFFER, '=', BUFFER_STATE, '.createStream(', GL_ARRAY_BUFFER$1, ',', VALUE, ');',
+          BUFFER, '=', BUFFER_STATE, '.createStream(', GL_ARRAY_BUFFER$2, ',', VALUE, ');',
           TYPE, '=', BUFFER, '.dtype;',
           '}else{',
           BUFFER, '=', BUFFER_STATE, '.getBuffer(', VALUE, ');',
@@ -7369,7 +7673,7 @@ function reglCore (
           }).join(''),
           '}}else{',
           'if(', IS_BUFFER_ARGS, '(', VALUE, '.buffer)){',
-          BUFFER, '=', BUFFER_STATE, '.createStream(', GL_ARRAY_BUFFER$1, ',', VALUE, '.buffer);',
+          BUFFER, '=', BUFFER_STATE, '.createStream(', GL_ARRAY_BUFFER$2, ',', VALUE, '.buffer);',
           '}else{',
           BUFFER, '=', BUFFER_STATE, '.getBuffer(', VALUE, '.buffer);',
           '}',
@@ -7398,6 +7702,27 @@ function reglCore (
     });
 
     return attributeDefs
+  }
+
+  function parseVAO (options, env) {
+    var staticOptions = options.static;
+    var dynamicOptions = options.dynamic;
+    if (S_VAO in staticOptions) {
+      var vao = staticOptions[S_VAO];
+      if (vao !== null && attributeState.getVAO(vao) === null) {
+        vao = attributeState.createVAO(vao);
+      }
+      return createStaticDecl(function (env) {
+        return env.link(attributeState.getVAO(vao))
+      })
+    } else if (S_VAO in dynamicOptions) {
+      var dyn = dynamicOptions[S_VAO];
+      return createDynamicDecl(dyn, function (env, scope) {
+        var vaoRef = env.invoke(scope, dyn);
+        return scope.def(env.shared.vao + '.getVAO(' + vaoRef + ')')
+      })
+    }
+    return null
   }
 
   function parseContext (context) {
@@ -7440,7 +7765,8 @@ function reglCore (
         S_OFFSET,
         S_COUNT,
         S_INSTANCES,
-        S_PROFILE
+        S_PROFILE,
+        S_VAO
       ].concat(GL_STATE_NAMES);
 
       function checkKeys (dict) {
@@ -7456,11 +7782,13 @@ function reglCore (
       checkKeys(dynamicOptions);
     });
 
-    var framebuffer = parseFramebuffer(options, env);
+    var attribLocations = parseAttribLocations(options, attributes);
+
+    var framebuffer = parseFramebuffer(options);
     var viewportAndScissor = parseViewportScissor(options, framebuffer, env);
     var draw = parseDraw(options, env);
     var state = parseGLState(options, env);
-    var shader = parseProgram(options, env);
+    var shader = parseProgram(options, env, attribLocations);
 
     function copyBox (name) {
       var defn = viewportAndScissor[name];
@@ -7478,13 +7806,38 @@ function reglCore (
       draw: draw,
       shader: shader,
       state: state,
-      dirty: dirty
+      dirty: dirty,
+      scopeVAO: null,
+      drawVAO: null,
+      useVAO: false,
+      attributes: {}
     };
 
-    result.profile = parseProfile(options, env);
+    result.profile = parseProfile(options);
     result.uniforms = parseUniforms(uniforms, env);
-    result.attributes = parseAttributes(attributes, env);
-    result.context = parseContext(context, env);
+    result.drawVAO = result.scopeVAO = parseVAO(options);
+    // special case: check if we can statically allocate a vertex array object for this program
+    if (!result.drawVAO && shader.program && !attribLocations && extensions.angle_instanced_arrays) {
+      var useVAO = true;
+      var staticBindings = shader.program.attributes.map(function (attr) {
+        var binding = attributes.static[attr];
+        useVAO = useVAO && !!binding;
+        return binding
+      });
+      if (useVAO && staticBindings.length > 0) {
+        var vao = attributeState.getVAO(attributeState.createVAO(staticBindings));
+        result.drawVAO = new Declaration(null, null, null, function (env, scope) {
+          return env.link(vao)
+        });
+        result.useVAO = true;
+      }
+    }
+    if (attribLocations) {
+      result.useVAO = true;
+    } else {
+      result.attributes = parseAttributes(attributes, env);
+    }
+    result.context = parseContext(context);
     return result
   }
 
@@ -7598,8 +7951,8 @@ function reglCore (
         if (param in GL_FLAGS) {
           ifte(
             env.cond(NEXT)
-                .then(GL, '.enable(', GL_FLAGS[param], ');')
-                .else(GL, '.disable(', GL_FLAGS[param], ');'),
+              .then(GL, '.enable(', GL_FLAGS[param], ');')
+              .else(GL, '.disable(', GL_FLAGS[param], ');'),
             CURRENT_STATE, '.', param, '=', NEXT, ';');
         } else {
           ifte(
@@ -7805,7 +8158,7 @@ function reglCore (
             return BINDING + '.' + key + '!==' + record[key]
           }).join('||'),
           '){',
-          GL, '.bindBuffer(', GL_ARRAY_BUFFER$1, ',', BUFFER, '.buffer);',
+          GL, '.bindBuffer(', GL_ARRAY_BUFFER$2, ',', BUFFER, '.buffer);',
           GL, '.vertexAttribPointer(', [
             LOCATION,
             SIZE,
@@ -8075,46 +8428,46 @@ function reglCore (
             checkType('number');
             break
           case GL_INT_VEC2:
-            checkVector(2, 'number');
+            checkVector(2);
             break
           case GL_INT_VEC3:
-            checkVector(3, 'number');
+            checkVector(3);
             break
           case GL_INT_VEC4:
-            checkVector(4, 'number');
+            checkVector(4);
             break
           case GL_FLOAT$8:
             checkType('number');
             break
           case GL_FLOAT_VEC2:
-            checkVector(2, 'number');
+            checkVector(2);
             break
           case GL_FLOAT_VEC3:
-            checkVector(3, 'number');
+            checkVector(3);
             break
           case GL_FLOAT_VEC4:
-            checkVector(4, 'number');
+            checkVector(4);
             break
           case GL_BOOL:
             checkType('boolean');
             break
           case GL_BOOL_VEC2:
-            checkVector(2, 'boolean');
+            checkVector(2);
             break
           case GL_BOOL_VEC3:
-            checkVector(3, 'boolean');
+            checkVector(3);
             break
           case GL_BOOL_VEC4:
-            checkVector(4, 'boolean');
+            checkVector(4);
             break
           case GL_FLOAT_MAT2:
-            checkVector(4, 'number');
+            checkVector(4);
             break
           case GL_FLOAT_MAT3:
-            checkVector(9, 'number');
+            checkVector(9);
             break
           case GL_FLOAT_MAT4:
-            checkVector(16, 'number');
+            checkVector(16);
             break
           case GL_SAMPLER_2D:
             checkTexture(GL_TEXTURE_2D$3);
@@ -8396,9 +8749,18 @@ function reglCore (
   // ===================================================
   function emitDrawBody (env, draw, args, program) {
     injectExtensions(env, draw);
-    emitAttributes(env, draw, args, program.attributes, function () {
-      return true
-    });
+    if (args.useVAO) {
+      if (args.drawVAO) {
+        draw(env.shared.vao, '.setVAO(', args.drawVAO.append(env, draw), ');');
+      } else {
+        draw(env.shared.vao, '.setVAO(', env.shared.vao, '.targetVAO);');
+      }
+    } else {
+      draw(env.shared.vao, '.setVAO(null);');
+      emitAttributes(env, draw, args, program.attributes, function () {
+        return true
+      });
+    }
     emitUniforms(env, draw, args, program.uniforms, function () {
       return true
     });
@@ -8424,6 +8786,7 @@ function reglCore (
     if (args.shader.program) {
       emitDrawBody(env, draw, args, args.shader.program);
     } else {
+      draw(env.shared.vao, '.setVAO(null);');
       var drawCache = env.global.def('{}');
       var PROG_ID = draw.def(program, '.id');
       var CACHED_PROC = draw.def(drawCache, '[', PROG_ID, ']');
@@ -8521,8 +8884,24 @@ function reglCore (
         }), '(', PROGRAM, ');}',
         CACHED_PROC, '.call(this,a0[', BATCH_ID, '],', BATCH_ID, ');');
     } else {
-      emitAttributes(env, outer, args, program.attributes, isOuterDefn);
-      emitAttributes(env, inner, args, program.attributes, isInnerDefn);
+      if (args.useVAO) {
+        if (args.drawVAO) {
+          if (isInnerDefn(args.drawVAO)) {
+            // vao is a prop
+            inner(env.shared.vao, '.setVAO(', args.drawVAO.append(env, inner), ');');
+          } else {
+            // vao is invariant
+            outer(env.shared.vao, '.setVAO(', args.drawVAO.append(env, outer), ');');
+          }
+        } else {
+          // scoped vao binding
+          outer(env.shared.vao, '.setVAO(', env.shared.vao, '.targetVAO);');
+        }
+      } else {
+        outer(env.shared.vao, '.setVAO(null);');
+        emitAttributes(env, outer, args, program.attributes, isOuterDefn);
+        emitAttributes(env, inner, args, program.attributes, isInnerDefn);
+      }
       emitUniforms(env, outer, args, program.uniforms, isOuterDefn);
       emitUniforms(env, inner, args, program.uniforms, isInnerDefn);
       emitDraw(env, outer, inner, args);
@@ -8604,6 +8983,7 @@ function reglCore (
           args,
           args.shader.program);
       } else {
+        batch(env.shared.vao, '.setVAO(null);');
         var batchCache = env.global.def('{}');
         var PROG_ID = batch.def(PROGRAM, '.id');
         var CACHED_PROC = batch.def(batchCache, '[', PROG_ID, ']');
@@ -8679,6 +9059,10 @@ function reglCore (
         scope.set(scopeAttrib, '.' + prop, record[prop]);
       });
     });
+
+    if (args.scopeVAO) {
+      scope.set(shared.vao, '.targetVAO', args.scopeVAO.append(env, scope));
+    }
 
     function saveShader (name) {
       var shader = args.shader[name];
@@ -8834,29 +9218,34 @@ function reglCore (
       if (extInstancing) {
         INSTANCING = env.link(extInstancing);
       }
+
+      // update vertex array bindings
+      if (extensions.oes_vertex_array_object) {
+        refresh(env.link(extensions.oes_vertex_array_object), '.bindVertexArrayOES(null);');
+      }
       for (var i = 0; i < limits.maxAttributes; ++i) {
         var BINDING = refresh.def(shared.attributes, '[', i, ']');
         var ifte = env.cond(BINDING, '.buffer');
         ifte.then(
           GL, '.enableVertexAttribArray(', i, ');',
           GL, '.bindBuffer(',
-            GL_ARRAY_BUFFER$1, ',',
-            BINDING, '.buffer.buffer);',
+          GL_ARRAY_BUFFER$2, ',',
+          BINDING, '.buffer.buffer);',
           GL, '.vertexAttribPointer(',
-            i, ',',
-            BINDING, '.size,',
-            BINDING, '.type,',
-            BINDING, '.normalized,',
-            BINDING, '.stride,',
-            BINDING, '.offset);'
+          i, ',',
+          BINDING, '.size,',
+          BINDING, '.type,',
+          BINDING, '.normalized,',
+          BINDING, '.stride,',
+          BINDING, '.offset);'
         ).else(
           GL, '.disableVertexAttribArray(', i, ');',
           GL, '.vertexAttrib4f(',
-            i, ',',
-            BINDING, '.x,',
-            BINDING, '.y,',
-            BINDING, '.z,',
-            BINDING, '.w);',
+          i, ',',
+          BINDING, '.x,',
+          BINDING, '.y,',
+          BINDING, '.z,',
+          BINDING, '.w);',
           BINDING, '.buffer=null;');
         refresh(ifte);
         if (extInstancing) {
@@ -8866,6 +9255,9 @@ function reglCore (
             BINDING, '.divisor);');
         }
       }
+      refresh(
+        env.shared.vao, '.currentVAO=null;',
+        env.shared.vao, '.setVAO(', env.shared.vao, '.targetVAO);');
 
       Object.keys(GL_FLAGS).forEach(function (flag) {
         var cap = GL_FLAGS[flag];
@@ -8927,6 +9319,7 @@ function reglCore (
 
 function stats () {
   return {
+    vaoCount: 0,
     bufferCount: 0,
     elementsCount: 0,
     framebufferCount: 0,
@@ -9142,16 +9535,20 @@ function wrapREGL (args) {
   };
 
   var limits = wrapLimits(gl, extensions);
-  var attributeState = wrapAttributeState(
-    gl,
-    extensions,
-    limits,
-    stringStore);
   var bufferState = wrapBufferState(
     gl,
     stats$$1,
     config,
-    attributeState);
+    destroyBuffer);
+  var attributeState = wrapAttributeState(
+    gl,
+    extensions,
+    limits,
+    stats$$1,
+    bufferState);
+  function destroyBuffer (buffer) {
+    return attributeState.destroyBuffer(buffer)
+  }
   var elementState = wrapElementsState(gl, extensions, bufferState, stats$$1);
   var shaderState = wrapShaderState(gl, stringStore, stats$$1, config);
   var textureState = createTextureSet(
@@ -9276,6 +9673,7 @@ function wrapREGL (args) {
     textureState.restore();
     renderbufferState.restore();
     framebufferState.restore();
+    attributeState.restore();
     if (timer) {
       timer.restore();
     }
@@ -9312,6 +9710,7 @@ function wrapREGL (args) {
     textureState.clear();
     elementState.clear();
     bufferState.clear();
+    attributeState.clear();
 
     if (timer) {
       timer.clear();
@@ -9331,6 +9730,7 @@ function wrapREGL (args) {
       delete result.uniforms;
       delete result.attributes;
       delete result.context;
+      delete result.vao;
 
       if ('stencil' in result && result.stencil.op) {
         result.stencil.opBack = result.stencil.opFront = result.stencil.op;
@@ -9353,6 +9753,10 @@ function wrapREGL (args) {
       merge('polygonOffset');
       merge('scissor');
       merge('sample');
+
+      if ('vao' in options) {
+        result.vao = options.vao;
+      }
 
       return result
     }
@@ -9414,12 +9818,10 @@ function wrapREGL (args) {
           for (i = 0; i < args; ++i) {
             scope.call(this, null, body, i);
           }
-          return
         } else if (Array.isArray(args)) {
           for (i = 0; i < args.length; ++i) {
             scope.call(this, args[i], body, i);
           }
-          return
         } else {
           return scope.call(this, args, body, 0)
         }
@@ -9611,6 +10013,7 @@ function wrapREGL (args) {
     renderbuffer: renderbufferState.create,
     framebuffer: framebufferState.create,
     framebufferCube: framebufferState.createCube,
+    vao: attributeState.createVAO,
 
     // Expose context attributes
     attributes: glAttributes,

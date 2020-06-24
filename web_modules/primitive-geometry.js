@@ -1270,6 +1270,7 @@ function equals$1(a, b) {
 }
 
 var common = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   EPSILON: EPSILON,
   get ARRAY_TYPE () { return ARRAY_TYPE; },
   RANDOM: RANDOM,
@@ -1712,6 +1713,7 @@ var mul = multiply;
 var sub$1 = subtract$1;
 
 var mat2 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$1,
   clone: clone,
   copy: copy$1,
@@ -2224,6 +2226,7 @@ var mul$1 = multiply$1;
 var sub$2 = subtract$2;
 
 var mat2d = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$2,
   clone: clone$1,
   copy: copy$2,
@@ -3060,6 +3063,7 @@ var mul$2 = multiply$2;
 var sub$3 = subtract$3;
 
 var mat3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$3,
   fromMat4: fromMat4,
   clone: clone$2,
@@ -4934,6 +4938,7 @@ var mul$3 = multiply$3;
 var sub$4 = subtract$4;
 
 var mat4 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$4,
   clone: clone$3,
   copy: copy$4,
@@ -5770,6 +5775,7 @@ var forEach = function () {
 }();
 
 var vec3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$5,
   clone: clone$4,
   length: length$1,
@@ -6433,6 +6439,7 @@ var forEach$1 = function () {
 }();
 
 var vec4 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$6,
   clone: clone$5,
   fromValues: fromValues$5,
@@ -7132,6 +7139,7 @@ var setAxes = function () {
 }();
 
 var quat = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$7,
   identity: identity$5,
   setAxisAngle: setAxisAngle,
@@ -8011,6 +8019,7 @@ function equals$9(a, b) {
 }
 
 var quat2 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$8,
   clone: clone$7,
   fromValues: fromValues$7,
@@ -8677,6 +8686,7 @@ var forEach$2 = function () {
 }();
 
 var vec2 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   create: create$9,
   clone: clone$8,
   fromValues: fromValues$8,
@@ -8723,9 +8733,8 @@ var vec2 = /*#__PURE__*/Object.freeze({
   forEach: forEach$2
 });
 
-
-
 var glMatrix = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   glMatrix: common,
   mat2: mat2,
   mat2d: mat2d,
@@ -9042,16 +9051,5 @@ var primitiveGeometry = {
   torus: primitiveTorus,
   cylinder: primitiveCylinder
 };
-var primitiveGeometry_1 = primitiveGeometry.quad;
-var primitiveGeometry_2 = primitiveGeometry.plane;
-var primitiveGeometry_3 = primitiveGeometry.cube;
-var primitiveGeometry_4 = primitiveGeometry.roundedCube;
-var primitiveGeometry_5 = primitiveGeometry.capsule;
-var primitiveGeometry_6 = primitiveGeometry.sphere;
-var primitiveGeometry_7 = primitiveGeometry.icosphere;
-var primitiveGeometry_8 = primitiveGeometry.ellipsoid;
-var primitiveGeometry_9 = primitiveGeometry.torus;
-var primitiveGeometry_10 = primitiveGeometry.cylinder;
 
 export default primitiveGeometry;
-export { primitiveGeometry_5 as capsule, primitiveGeometry_3 as cube, primitiveGeometry_10 as cylinder, primitiveGeometry_8 as ellipsoid, primitiveGeometry_7 as icosphere, primitiveGeometry_2 as plane, primitiveGeometry_1 as quad, primitiveGeometry_4 as roundedCube, primitiveGeometry_6 as sphere, primitiveGeometry_9 as torus };
