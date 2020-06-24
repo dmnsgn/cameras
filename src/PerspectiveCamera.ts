@@ -1,10 +1,13 @@
 import { mat4 } from "gl-matrix";
 
 import Camera from "./Camera.js";
-import { PerspectiveCameraOptions } from "./types.d.js";
+
+import { PerspectiveCameraOptions, Radian, CameraType } from "./types.d.js";
 
 export default class PerspectiveCamera extends Camera {
-  public fov: number = Math.PI / 4;
+  public readonly type: CameraType = CameraType.Perspective;
+
+  public fov: Radian = Math.PI / 4;
   public aspect?: number = 1;
 
   constructor(options?: PerspectiveCameraOptions) {

@@ -1,15 +1,32 @@
-import { PerspectiveCamera, OrthographicCamera } from "./lib/index.js";
+import {
+  PerspectiveCamera,
+  OrthographicCamera,
+  Controls,
+} from "./lib/index.js";
 
 import createRegl from "regl";
 import Geometries from "primitive-geometry";
-import * as dat from "dat.gui";
+import { vec3 } from "gl-matrix";
 
 // Camera
+const regl = createRegl();
+
+const clone = (obj) => JSON.parse(JSON.stringify(obj));
 const commonOptions = {
-  position: [3, 3, 3]
+  position: [3, 3, 3],
+  // target: [0, -0.5, 0],
 };
-const perspectiveCamera = new PerspectiveCamera(commonOptions);
-const orthographicCamera = new OrthographicCamera(commonOptions);
+const perspectiveCamera = new PerspectiveCamera(clone(commonOptions));
+const orthographicCamera = new OrthographicCamera(clone(commonOptions));
+const perspectiveCameraControls = new Controls({
+  element: regl._gl.canvas,
+  camera: perspectiveCamera,
+});
+const orthographicCameraControls = new Controls({
+  position: [1, 1, 1],
+  element: regl._gl.canvas,
+  camera: orthographicCamera,
+});
 
 const onResize = () => {
   const viewportWidth = window.innerWidth;
@@ -26,8 +43,8 @@ const onResize = () => {
     view: {
       offset: [viewWidth * 0.5, 0],
       size,
-      totalSize
-    }
+      totalSize,
+    },
   });
   perspectiveCamera.updateProjectionMatrix();
 
@@ -39,8 +56,8 @@ const onResize = () => {
     view: {
       offset: [-viewWidth * 0.5, 0],
       size,
-      totalSize
-    }
+      totalSize,
+    },
   });
 
   orthographicCamera.updateProjectionMatrix();
@@ -48,7 +65,6 @@ const onResize = () => {
 onResize();
 
 // Render
-const regl = createRegl();
 const cube = Geometries.cube();
 
 const drawGeometry = regl({
@@ -69,44 +85,45 @@ const drawGeometry = regl({
     varying vec3 vNormal;
 
     void main () {
-      gl_FragColor = vec4(abs(vNormal), 1.0);
+      gl_FragColor = vec4(vNormal * 0.5 + 0.5, 1.0);
     }`,
   uniforms: {
     projection: regl.prop("projection"),
-    view: regl.prop("view")
+    view: regl.prop("view"),
   },
   attributes: {
     position: cube.positions,
-    normal: cube.normals
+    normal: cube.normals,
   },
-  elements: cube.cells
+  elements: cube.cells,
 });
 
 regl.frame(() => {
   regl.clear({
-    color: [0, 0, 0, 1]
+    color: [0, 0, 0, 1],
   });
+
+  perspectiveCameraControls.update();
+  perspectiveCamera.position = perspectiveCameraControls.position;
+  perspectiveCamera.target = perspectiveCameraControls.target;
   perspectiveCamera.update();
+
+  orthographicCameraControls.update();
+  orthographicCamera.position = orthographicCameraControls.position;
+  orthographicCamera.target = orthographicCameraControls.target;
+  orthographicCamera.zoom = vec3.length(orthographicCameraControls.position);
+  orthographicCamera.updateProjectionMatrix();
   orthographicCamera.update();
 
   drawGeometry({
     projection: perspectiveCamera.projectionMatrix,
-    view: perspectiveCamera.viewMatrix
+    view: perspectiveCamera.viewMatrix,
   });
 
   drawGeometry({
     projection: orthographicCamera.projectionMatrix,
-    view: orthographicCamera.viewMatrix
+    view: orthographicCamera.viewMatrix,
   });
 });
 
 window.addEventListener("resize", onResize);
-
-// GUI
-const gui = new dat.GUI();
-gui.add(perspectiveCamera, "fov", 0, Math.PI).onChange(() => {
-  perspectiveCamera.updateProjectionMatrix();
-});
-gui.add(orthographicCamera, "zoom", 0, 10).onChange(() => {
-  orthographicCamera.updateProjectionMatrix();
-});
