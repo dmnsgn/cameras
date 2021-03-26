@@ -1,13 +1,22 @@
-# cameras [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
+# cameras
 
-[![npm version](https://badge.fury.io/js/cameras.svg)](https://www.npmjs.com/package/cameras)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![npm version](https://img.shields.io/npm/v/cameras)](https://www.npmjs.com/package/cameras)
+[![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://www.npmjs.com/package/cameras)
+[![npm minzipped size](https://img.shields.io/bundlephobia/minzip/cameras)](https://www.npmjs.com/package/cameras)
+[![dependencies](https://img.shields.io/david/dmnsgn/cameras)](https://github.com/dmnsgn/cameras/blob/main/package.json)
+[![types](https://img.shields.io/npm/types/cameras)](https://github.com/microsoft/TypeScript)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-fa6673.svg)](https://conventionalcommits.org)
+[![styled with prettier](https://img.shields.io/badge/styled_with-Prettier-f8bc45.svg?logo=prettier)](https://github.com/prettier/prettier)
+[![linted with eslint](https://img.shields.io/badge/linted_with-ES_Lint-4B32C3.svg?logo=eslint)](https://github.com/eslint/eslint)
+[![license](https://img.shields.io/github/license/dmnsgn/cameras)](https://github.com/dmnsgn/cameras/blob/main/LICENSE.md)
 
 Cameras for 3D rendering.
 
-![](https://raw.githubusercontent.com/dmnsgn/cameras/master/screenshot.jpg)
+[![paypal](https://img.shields.io/badge/donate-paypal-informational?logo=paypal)](https://paypal.me/dmnsgn)
+[![coinbase](https://img.shields.io/badge/donate-coinbase-informational?logo=coinbase)](https://commerce.coinbase.com/checkout/56cbdf28-e323-48d8-9c98-7019e72c97f3)
+[![twitter](https://img.shields.io/twitter/follow/dmnsgn?style=social)](https://twitter.com/dmnsgn)
 
-See the [demo](https://dmnsgn.github.io/cameras/) and its [source](demo.js) for a usage example.
+![](https://raw.githubusercontent.com/dmnsgn/cameras/master/screenshot.jpg)
 
 ## Installation
 
@@ -15,9 +24,9 @@ See the [demo](https://dmnsgn.github.io/cameras/) and its [source](demo.js) for 
 npm install cameras
 ```
 
-[![NPM](https://nodei.co/npm/cameras.png)](https://nodei.co/npm/cameras/)
-
 ## Usage
+
+See the [demo](https://dmnsgn.github.io/cameras/) and its [source](index.html).
 
 ```js
 import { PerspectiveCamera } from "cameras";
@@ -50,8 +59,8 @@ perspectiveCamera.updateProjectionMatrix();
 
 ## API
 
-See the [Typescript types](src/types.d.ts) for options (PerspectiveCameraOptions, OrthographicCameraOptions, ControlsOptions).
+See the [documentation](https://dmnsgn.github.io/cameras/docs) and [Typescript types](src/types.ts).
 
 ## License
 
-MIT. See [license file](https://github.com/dmnsgn/cameras/blob/master/LICENSE.md).
+MIT. See [license file](https://github.com/dmnsgn/cameras/blob/main/LICENSE.md).

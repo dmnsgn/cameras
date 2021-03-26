@@ -2,7 +2,7 @@ import { mat4 } from "gl-matrix";
 
 import Camera from "./Camera.js";
 
-import { OrthographicCameraOptions, CameraType } from "./types.d.js";
+import { OrthographicCameraOptions, CameraType } from "./types.js";
 
 export default class OrthographicCamera extends Camera {
   public readonly type: CameraType = CameraType.Orthographic;

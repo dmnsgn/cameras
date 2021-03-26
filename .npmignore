@@ -1,6 +1,10 @@
 web_modules
-screenshot.jpg
+examples
+docs
+coverage
+test
+.github
+screenshot.*
 index.html
-demo.js
-src/*
-!src/types.d.ts
+tsconfig.json
+.editorconfig
