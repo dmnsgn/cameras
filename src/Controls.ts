@@ -101,6 +101,8 @@ export default class Controls {
 
   // Actions
   private handleDolly(event: PointerManagerEvent): void {
+    if (!this.dolly) return;
+
     let delta = event.dy;
     switch (event.state) {
       case PointerManagerState.MouseLeft:
@@ -143,6 +145,8 @@ export default class Controls {
   }
 
   private handleRotate(event: PointerManagerEvent): void {
+    if (!this.rotate) return;
+
     this.handleRotateAzimuth(event);
     this.handleRotatePolar(event);
   }
