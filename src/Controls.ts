@@ -12,7 +12,7 @@ import {
   ControlsConfig,
   PointerManagerState,
   PointerManagerEvent,
-} from "./types.d.js";
+} from "./types.js";
 
 const { EPSILON } = glMatrix;
 const PI2 = Math.PI * 2;

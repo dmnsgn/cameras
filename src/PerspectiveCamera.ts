@@ -2,7 +2,7 @@ import { mat4 } from "gl-matrix";
 
 import Camera from "./Camera.js";
 
-import { PerspectiveCameraOptions, Radian, CameraType } from "./types.d.js";
+import { PerspectiveCameraOptions, Radian, CameraType } from "./types.js";
 
 export default class PerspectiveCamera extends Camera {
   public readonly type: CameraType = CameraType.Perspective;

@@ -1,6 +1,6 @@
 import { mat4, vec3 } from "gl-matrix";
 
-import { CameraType, CameraOptions, CameraView } from "./types.d.js";
+import { CameraType, CameraOptions, CameraView } from "./types.js";
 
 export default class Camera {
   public readonly type: CameraType = CameraType.Camera;

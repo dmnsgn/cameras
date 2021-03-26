@@ -2,22 +2,6 @@
   "name": "cameras",
   "version": "2.0.0",
   "description": "Cameras for 3D rendering.",
-  "type": "module",
-  "main": "lib/index.js",
-  "module": "lib/index.js",
-  "types": "src/types.d.ts",
-  "scripts": {
-    "prepare": "npx snowpack",
-    "clean": "rm -rf lib",
-    "dev": "snowpack dev",
-    "build": "babel src --out-dir lib --extensions .js,.ts --ignore '**/*.d.js'",
-    "lint": "eslint 'src/**/*.{js,ts}'",
-    "format": "prettier 'src/**/*.{js,ts}' --write",
-    "format:check": "prettier 'src/**/*.{js,ts}' --check",
-    "preversion": "npm run clean",
-    "version": "npm run build && git add -A",
-    "postversion": "git push origin master && git push --tags && npm publish"
-  },
   "keywords": [
     "cameras",
     "perspective",
@@ -25,100 +9,38 @@
     "3d",
     "webgl"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/dmnsgn/cameras.git"
-  },
   "homepage": "https://github.com/dmnsgn/cameras",
-  "bugs": {
-    "url": "https://github.com/dmnsgn/cameras/issues"
-  },
-  "author": "Damien Seguin (https://github.com/dmnsgn)",
+  "bugs": "https://github.com/dmnsgn/cameras/issues",
+  "repository": "dmnsgn/cameras",
+  "funding": [
+    {
+      "type": "individual",
+      "url": "https://paypal.me/dmnsgn"
+    },
+    {
+      "type": "individual",
+      "url": "https://commerce.coinbase.com/checkout/56cbdf28-e323-48d8-9c98-7019e72c97f3"
+    }
+  ],
   "license": "MIT",
+  "author": "Damien Seguin (https://github.com/dmnsgn)",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "dependencies": {
     "clamp": "^1.0.1",
     "gl-matrix": "^3.3.0",
     "normalize-wheel": "^1.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
-    "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.10.3",
-    "@babel/preset-env": "^7.10.3",
-    "@babel/preset-typescript": "^7.10.1",
-    "@types/clamp": "^1.0.0",
-    "@types/hammerjs": "^2.0.36",
-    "@typescript-eslint/eslint-plugin": "^3.4.0",
-    "@typescript-eslint/parser": "^3.4.0",
-    "es-module-shims": "^0.4.7",
-    "eslint": "^7.3.1",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5",
-    "primitive-geometry": "^1.1.0",
-    "regl": "^1.6.1",
-    "snowpack": "^2.5.4",
-    "typescript": "^3.9.5"
+    "core-js": "^3.9.1",
+    "es-module-shims": "^0.10.3",
+    "primitive-geometry": "^1.2.1",
+    "regl": "^2.1.0",
+    "tslib": "^2.1.0"
   },
-  "snowpack": {
-    "install": [
-      "es-module-shims/dist/es-module-shims.js",
-      "regl",
-      "clamp",
-      "gl-matrix",
-      "primitive-geometry"
-    ],
-    "scripts": {
-      "mount:index": "mount ./ --to /",
-      "mount:src": "mount ./src --to /lib",
-      "run:babel": "babel src --out-dir lib --extensions .js,.ts --ignore '**/*.d.js'",
-      "run:babel::watch": "$1 --watch --verbose --source-maps inline",
-      "run:tsc": "tsc --noEmit",
-      "run:tsc::watch": "$1 --watch"
-    }
-  },
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "extends": [
-      "eslint:recommended",
-      "plugin:prettier/recommended",
-      "plugin:@typescript-eslint/recommended"
-    ],
-    "plugins": [
-      "prettier",
-      "@typescript-eslint"
-    ],
-    "rules": {
-      "prettier/prettier": "error"
-    },
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
-    "env": {
-      "es6": true,
-      "browser": true
-    }
-  },
-  "eslintIgnore": [
-    "node_modules"
-  ],
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "modules": false,
-          "useBuiltIns": false,
-          "targets": "last 1 Chrome version"
-        }
-      ],
-      "@babel/preset-typescript"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-object-rest-spread"
-    ]
+  "engines": {
+    "node": ">=15.0.0",
+    "npm": ">=7.0.0"
   }
 }

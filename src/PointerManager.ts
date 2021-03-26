@@ -6,7 +6,7 @@ import {
   PointerManagerState,
   PointerManagerEvent,
   PointerManagerConfig,
-} from "./types.d.js";
+} from "./types.js";
 
 const HAS_TOUCH_EVENTS = "TouchEvent" in window;
 const EVENT_LISTENER_OPTIONS = {
