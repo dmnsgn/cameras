@@ -40,7 +40,7 @@
       } from "./lib/index.js";
 
       import createRegl from "regl";
-      import Geometries from "primitive-geometry";
+      import { cube } from "primitive-geometry";
       import { vec3 } from "gl-matrix";
 
       // Camera
@@ -100,7 +100,7 @@
       onResize();
 
       // Render
-      const cube = Geometries.cube();
+      const geometry = cube();
 
       const drawGeometry = regl({
         vert: /* glsl */ `
@@ -127,10 +127,10 @@
           view: regl.prop("view"),
         },
         attributes: {
-          position: cube.positions,
-          normal: cube.normals,
+          position: geometry.positions,
+          normal: geometry.normals,
         },
-        elements: cube.cells,
+        elements: geometry.cells,
       });
 
       regl.frame(() => {

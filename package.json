@@ -33,11 +33,11 @@
     "normalize-wheel": "^1.0.1"
   },
   "devDependencies": {
-    "core-js": "^3.9.1",
-    "es-module-shims": "^0.10.3",
-    "primitive-geometry": "^1.2.1",
+    "core-js": "^3.11.1",
+    "es-module-shims": "^0.10.4",
+    "primitive-geometry": "^2.0.0",
     "regl": "^2.1.0",
-    "tslib": "^2.1.0"
+    "tslib": "^2.2.0"
   },
   "engines": {
     "node": ">=15.0.0",
