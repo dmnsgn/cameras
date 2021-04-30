@@ -1,10 +1,12 @@
 {
   "imports": {
     "clamp": "./clamp.js",
-    "es-module-shims/dist/es-module-shims.js": "./es-module-shims/dist/es-module-shims.js",
+    "core-js": "./core-js.js",
+    "es-module-shims": "./es-module-shims.js",
     "gl-matrix": "./gl-matrix.js",
     "normalize-wheel": "./normalize-wheel.js",
     "primitive-geometry": "./primitive-geometry.js",
-    "regl": "./regl.js"
+    "regl": "./regl.js",
+    "tslib": "./tslib.js"
   }
 }

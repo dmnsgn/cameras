@@ -1,3 +1,7 @@
+import './common/es.typed-array.float32-array-0e9ad630.js';
+import './common/well-known-symbol-bf6efb60.js';
+import './common/inherit-if-required-74c30a56.js';
+
 /**
  * Common utilities
  * @module glMatrix

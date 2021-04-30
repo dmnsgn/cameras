@@ -1,3 +1,6 @@
+import './common/es.string.replace-4af9ff0c.js';
+import './common/well-known-symbol-bf6efb60.js';
+
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
@@ -43,22 +46,20 @@
  *  another copy of "event || window.event".
  *
  */
+var _populated = false; // Browsers
 
-var _populated = false;
+var _ie, _firefox, _opera, _webkit, _chrome; // Actual IE browser for compatibility mode
 
-// Browsers
-var _ie, _firefox, _opera, _webkit, _chrome;
 
-// Actual IE browser for compatibility mode
-var _ie_real_version;
+var _ie_real_version; // Platforms
 
-// Platforms
-var _osx, _windows, _linux, _android;
 
-// Architectures
-var _win64;
+var _osx, _windows, _linux, _android; // Architectures
 
-// Devices
+
+var _win64; // Devices
+
+
 var _iphone, _ipad, _native;
 
 var _mobile;
@@ -68,44 +69,41 @@ function _populate() {
     return;
   }
 
-  _populated = true;
-
-  // To work around buggy JS libraries that can't handle multi-digit
+  _populated = true; // To work around buggy JS libraries that can't handle multi-digit
   // version numbers, Opera 10's user agent string claims it's Opera
   // 9, then later includes a Version/X.Y field:
   //
   // Opera/9.80 (foo) Presto/2.2.15 Version/10.10
+
   var uas = navigator.userAgent;
   var agent = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(uas);
-  var os    = /(Mac OS X)|(Windows)|(Linux)/.exec(uas);
-
+  var os = /(Mac OS X)|(Windows)|(Linux)/.exec(uas);
   _iphone = /\b(iPhone|iP[ao]d)/.exec(uas);
   _ipad = /\b(iP[ao]d)/.exec(uas);
   _android = /Android/i.exec(uas);
   _native = /FBAN\/\w+;/i.exec(uas);
-  _mobile = /Mobile/i.exec(uas);
-
-  // Note that the IE team blog would have you believe you should be checking
+  _mobile = /Mobile/i.exec(uas); // Note that the IE team blog would have you believe you should be checking
   // for 'Win64; x64'.  But MSDN then reveals that you can actually be coming
   // from either x64 or ia64;  so ultimately, you should just check for Win64
   // as in indicator of whether you're in 64-bit IE.  32-bit IE on 64-bit
   // Windows will send 'WOW64' instead.
-  _win64 = !!(/Win64/.exec(uas));
+
+  _win64 = !!/Win64/.exec(uas);
 
   if (agent) {
-    _ie = agent[1] ? parseFloat(agent[1]) : (
-          agent[5] ? parseFloat(agent[5]) : NaN);
-    // IE compatibility mode
+    _ie = agent[1] ? parseFloat(agent[1]) : agent[5] ? parseFloat(agent[5]) : NaN; // IE compatibility mode
+
     if (_ie && document && document.documentMode) {
       _ie = document.documentMode;
-    }
-    // grab the "true" ie version from the trident token if available
+    } // grab the "true" ie version from the trident token if available
+
+
     var trident = /(?:Trident\/(\d+.\d+))/.exec(uas);
     _ie_real_version = trident ? parseFloat(trident[1]) + 4 : _ie;
-
     _firefox = agent[2] ? parseFloat(agent[2]) : NaN;
-    _opera   = agent[3] ? parseFloat(agent[3]) : NaN;
-    _webkit  = agent[4] ? parseFloat(agent[4]) : NaN;
+    _opera = agent[3] ? parseFloat(agent[3]) : NaN;
+    _webkit = agent[4] ? parseFloat(agent[4]) : NaN;
+
     if (_webkit) {
       // We do not add the regexp to the above test, because it will always
       // match 'safari' only since 'AppleWebKit' appears before 'Chrome' in
@@ -127,27 +125,26 @@ function _populate() {
       // digits.  If only one set of digits is found, returns just the major
       // version number.
       var ver = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
-
       _osx = ver ? parseFloat(ver[1].replace('_', '.')) : true;
     } else {
       _osx = false;
     }
+
     _windows = !!os[2];
-    _linux   = !!os[3];
+    _linux = !!os[3];
   } else {
     _osx = _windows = _linux = false;
   }
 }
 
 var UserAgent_DEPRECATED = {
-
   /**
    *  Check if the UA is Internet Explorer.
    *
    *
    *  @return float|NaN Version number (if match) or NaN.
    */
-  ie: function() {
+  ie: function () {
     return _populate() || _ie;
   },
 
@@ -157,17 +154,16 @@ var UserAgent_DEPRECATED = {
    * @return bool true if in compatibility mode, false if
    * not compatibility mode or not ie
    */
-  ieCompatibilityMode: function() {
-    return _populate() || (_ie_real_version > _ie);
+  ieCompatibilityMode: function () {
+    return _populate() || _ie_real_version > _ie;
   },
-
 
   /**
    * Whether the browser is 64-bit IE.  Really, this is kind of weak sauce;  we
    * only need this because Skype can't handle 64-bit IE yet.  We need to remove
    * this when we don't need it -- tracked by #601957.
    */
-  ie64: function() {
+  ie64: function () {
     return UserAgent_DEPRECATED.ie() && _win64;
   },
 
@@ -177,10 +173,9 @@ var UserAgent_DEPRECATED = {
    *
    *  @return float|NaN Version number (if match) or NaN.
    */
-  firefox: function() {
+  firefox: function () {
     return _populate() || _firefox;
   },
-
 
   /**
    *  Check if the UA is Opera.
@@ -188,10 +183,9 @@ var UserAgent_DEPRECATED = {
    *
    *  @return float|NaN Version number (if match) or NaN.
    */
-  opera: function() {
+  opera: function () {
     return _populate() || _opera;
   },
-
 
   /**
    *  Check if the UA is WebKit.
@@ -199,7 +193,7 @@ var UserAgent_DEPRECATED = {
    *
    *  @return float|NaN Version number (if match) or NaN.
    */
-  webkit: function() {
+  webkit: function () {
     return _populate() || _webkit;
   },
 
@@ -207,7 +201,7 @@ var UserAgent_DEPRECATED = {
    *  For Push
    *  WILL BE REMOVED VERY SOON. Use UserAgent_DEPRECATED.webkit
    */
-  safari: function() {
+  safari: function () {
     return UserAgent_DEPRECATED.webkit();
   },
 
@@ -217,20 +211,18 @@ var UserAgent_DEPRECATED = {
    *
    *  @return float|NaN Version number (if match) or NaN.
    */
-  chrome : function() {
+  chrome: function () {
     return _populate() || _chrome;
   },
-
 
   /**
    *  Check if the user is running Windows.
    *
    *  @return bool `true' if the user's OS is Windows.
    */
-  windows: function() {
+  windows: function () {
     return _populate() || _windows;
   },
-
 
   /**
    *  Check if the user is running Mac OS X.
@@ -238,7 +230,7 @@ var UserAgent_DEPRECATED = {
    *  @return float|bool   Returns a float if a version number is detected,
    *                       otherwise true/false.
    */
-  osx: function() {
+  osx: function () {
     return _populate() || _osx;
   },
 
@@ -247,7 +239,7 @@ var UserAgent_DEPRECATED = {
    *
    * @return bool `true' if the user's OS is some flavor of Linux.
    */
-  linux: function() {
+  linux: function () {
     return _populate() || _linux;
   },
 
@@ -257,28 +249,23 @@ var UserAgent_DEPRECATED = {
    * @return bool `true' if the user is running some flavor of the
    *    iPhone OS.
    */
-  iphone: function() {
+  iphone: function () {
     return _populate() || _iphone;
   },
-
-  mobile: function() {
-    return _populate() || (_iphone || _ipad || _android || _mobile);
+  mobile: function () {
+    return _populate() || _iphone || _ipad || _android || _mobile;
   },
-
-  nativeApp: function() {
+  nativeApp: function () {
     // webviews inside of the native apps
     return _populate() || _native;
   },
-
-  android: function() {
+  android: function () {
     return _populate() || _android;
   },
-
-  ipad: function() {
+  ipad: function () {
     return _populate() || _ipad;
   }
 };
-
 var UserAgent_DEPRECATED_1 = UserAgent_DEPRECATED;
 
 /**
@@ -292,45 +279,31 @@ var UserAgent_DEPRECATED_1 = UserAgent_DEPRECATED;
  * @providesModule ExecutionEnvironment
  */
 
-var canUseDOM = !!(
-  typeof window !== 'undefined' &&
-  window.document &&
-  window.document.createElement
-);
-
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 /**
  * Simple, lightweight module assisting with the detection and context of
  * Worker. Helps avoid circular dependencies and allows code to reason about
  * whether or not they are in a Worker, even if they never include the main
  * `ReactWorker` dependency.
  */
+
 var ExecutionEnvironment = {
-
   canUseDOM: canUseDOM,
-
   canUseWorkers: typeof Worker !== 'undefined',
-
-  canUseEventListeners:
-    canUseDOM && !!(window.addEventListener || window.attachEvent),
-
+  canUseEventListeners: canUseDOM && !!(window.addEventListener || window.attachEvent),
   canUseViewport: canUseDOM && !!window.screen,
-
   isInWorker: !canUseDOM // For now, this is true - might change in the future.
 
 };
-
 var ExecutionEnvironment_1 = ExecutionEnvironment;
 
 var useHasFeature;
-if (ExecutionEnvironment_1.canUseDOM) {
-  useHasFeature =
-    document.implementation &&
-    document.implementation.hasFeature &&
-    // always returns true in newer browsers as per the standard.
-    // @see http://dom.spec.whatwg.org/#dom-domimplementation-hasfeature
-    document.implementation.hasFeature('', '') !== true;
-}
 
+if (ExecutionEnvironment_1.canUseDOM) {
+  useHasFeature = document.implementation && document.implementation.hasFeature && // always returns true in newer browsers as per the standard.
+  // @see http://dom.spec.whatwg.org/#dom-domimplementation-hasfeature
+  document.implementation.hasFeature('', '') !== true;
+}
 /**
  * Checks if an event is supported in the current execution environment.
  *
@@ -345,14 +318,15 @@ if (ExecutionEnvironment_1.canUseDOM) {
  * @internal
  * @license Modernizr 3.0.0pre (Custom Build) | MIT
  */
+
+
 function isEventSupported(eventNameSuffix, capture) {
-  if (!ExecutionEnvironment_1.canUseDOM ||
-      capture && !('addEventListener' in document)) {
+  if (!ExecutionEnvironment_1.canUseDOM || capture && !('addEventListener' in document)) {
     return false;
   }
 
   var eventName = 'on' + eventNameSuffix;
-  var isSupported = eventName in document;
+  var isSupported = (eventName in document);
 
   if (!isSupported) {
     var element = document.createElement('div');
@@ -370,11 +344,9 @@ function isEventSupported(eventNameSuffix, capture) {
 
 var isEventSupported_1 = isEventSupported;
 
-// Reasonable defaults
-var PIXEL_STEP  = 10;
+var PIXEL_STEP = 10;
 var LINE_HEIGHT = 40;
 var PAGE_HEIGHT = 800;
-
 /**
  * Mouse wheel (and 2-finger trackpad) support on the web sucks.  It is
  * complicated, thus this doc is long and (hopefully) detailed enough to answer
@@ -475,18 +447,37 @@ var PAGE_HEIGHT = 800;
  *         Firefox v4/Win7  |     undefined    |       3
  *
  */
-function normalizeWheel(/*object*/ event) /*object*/ {
-  var sX = 0, sY = 0,       // spinX, spinY
-      pX = 0, pY = 0;       // pixelX, pixelY
 
+function normalizeWheel(
+/*object*/
+event)
+/*object*/
+{
+  var sX = 0,
+      sY = 0,
+      // spinX, spinY
+  pX = 0,
+      pY = 0; // pixelX, pixelY
   // Legacy
-  if ('detail'      in event) { sY = event.detail; }
-  if ('wheelDelta'  in event) { sY = -event.wheelDelta / 120; }
-  if ('wheelDeltaY' in event) { sY = -event.wheelDeltaY / 120; }
-  if ('wheelDeltaX' in event) { sX = -event.wheelDeltaX / 120; }
 
-  // side scrolling on FF with DOMMouseScroll
-  if ( 'axis' in event && event.axis === event.HORIZONTAL_AXIS ) {
+  if ('detail' in event) {
+    sY = event.detail;
+  }
+
+  if ('wheelDelta' in event) {
+    sY = -event.wheelDelta / 120;
+  }
+
+  if ('wheelDeltaY' in event) {
+    sY = -event.wheelDeltaY / 120;
+  }
+
+  if ('wheelDeltaX' in event) {
+    sX = -event.wheelDeltaX / 120;
+  } // side scrolling on FF with DOMMouseScroll
+
+
+  if ('axis' in event && event.axis === event.HORIZONTAL_AXIS) {
     sX = sY;
     sY = 0;
   }
@@ -494,41 +485,53 @@ function normalizeWheel(/*object*/ event) /*object*/ {
   pX = sX * PIXEL_STEP;
   pY = sY * PIXEL_STEP;
 
-  if ('deltaY' in event) { pY = event.deltaY; }
-  if ('deltaX' in event) { pX = event.deltaX; }
+  if ('deltaY' in event) {
+    pY = event.deltaY;
+  }
+
+  if ('deltaX' in event) {
+    pX = event.deltaX;
+  }
 
   if ((pX || pY) && event.deltaMode) {
-    if (event.deltaMode == 1) {          // delta in LINE units
+    if (event.deltaMode == 1) {
+      // delta in LINE units
       pX *= LINE_HEIGHT;
       pY *= LINE_HEIGHT;
-    } else {                             // delta in PAGE units
+    } else {
+      // delta in PAGE units
       pX *= PAGE_HEIGHT;
       pY *= PAGE_HEIGHT;
     }
+  } // Fall-back if spin cannot be determined
+
+
+  if (pX && !sX) {
+    sX = pX < 1 ? -1 : 1;
   }
 
-  // Fall-back if spin cannot be determined
-  if (pX && !sX) { sX = (pX < 1) ? -1 : 1; }
-  if (pY && !sY) { sY = (pY < 1) ? -1 : 1; }
+  if (pY && !sY) {
+    sY = pY < 1 ? -1 : 1;
+  }
 
-  return { spinX  : sX,
-           spinY  : sY,
-           pixelX : pX,
-           pixelY : pY };
+  return {
+    spinX: sX,
+    spinY: sY,
+    pixelX: pX,
+    pixelY: pY
+  };
 }
-
-
 /**
  * The best combination if you prefer spinX + spinY normalization.  It favors
  * the older DOMMouseScroll for Firefox, as FF does not include wheelDelta with
  * 'wheel' event, making spin speed determination impossible.
  */
-normalizeWheel.getEventType = function() /*string*/ {
-  return (UserAgent_DEPRECATED_1.firefox())
-           ? 'DOMMouseScroll'
-           : (isEventSupported_1('wheel'))
-               ? 'wheel'
-               : 'mousewheel';
+
+
+normalizeWheel.getEventType = function ()
+/*string*/
+{
+  return UserAgent_DEPRECATED_1.firefox() ? 'DOMMouseScroll' : isEventSupported_1('wheel') ? 'wheel' : 'mousewheel';
 };
 
 var normalizeWheel_1 = normalizeWheel;
@@ -536,3 +539,5 @@ var normalizeWheel_1 = normalizeWheel;
 var normalizeWheel$1 = normalizeWheel_1;
 
 export default normalizeWheel$1;
+var getEventType = normalizeWheel$1.getEventType;
+export { normalizeWheel$1 as __moduleExports, getEventType };
