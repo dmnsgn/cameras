@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.3](https://github.com/dmnsgn/cameras/compare/v3.0.2...v3.0.3) (2021-05-22)
+
+
+### Bug Fixes
+
+* use normalized wheel event in PointerManager removeEventListener ([4ce4374](https://github.com/dmnsgn/cameras/commit/4ce43742a1e5556679671519de1b6f9f7a97679c)), closes [#5](https://github.com/dmnsgn/cameras/issues/5)
+
+
+
 ## [3.0.2](https://github.com/dmnsgn/cameras/compare/v3.0.1...v3.0.2) (2021-04-30)
 
 
