@@ -9,6 +9,7 @@ import {
 } from "./types.js";
 
 const HAS_TOUCH_EVENTS = "TouchEvent" in window;
+const WHEEL_EVENT = normalizeWheel.getEventType();
 const EVENT_LISTENER_OPTIONS = {
   passive: false,
 };
@@ -61,10 +62,7 @@ export default class PointerManager {
     this.isElementRoot = this.element === document.body;
 
     if (this.config.wheel) {
-      this.element.addEventListener(
-        normalizeWheel.getEventType(),
-        this.onMouseWheel
-      );
+      this.element.addEventListener(WHEEL_EVENT, this.onMouseWheel);
     }
 
     if (this.config.drag) {
@@ -75,7 +73,7 @@ export default class PointerManager {
 
   public disable(): void {
     if (this.config.wheel) {
-      this.element.removeEventListener("wheel", this.onMouseWheel);
+      this.element.removeEventListener(WHEEL_EVENT, this.onMouseWheel);
     }
 
     if (this.config.drag) {
