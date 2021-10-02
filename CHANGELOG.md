@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.1.0](https://github.com/dmnsgn/cameras/compare/v3.0.3...v3.1.0) (2021-10-02)
+
+
+### Features
+
+* add exports field to package.json ([c1e40e4](https://github.com/dmnsgn/cameras/commit/c1e40e4d980d26185206b1c74e779b48133a022a))
+
+
+
 ## [3.0.3](https://github.com/dmnsgn/cameras/compare/v3.0.2...v3.0.3) (2021-05-22)
 
 
