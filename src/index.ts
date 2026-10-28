@@ -1,5 +1,5 @@
-export { default as Camera } from "./Camera.js";
-export { default as PerspectiveCamera } from "./PerspectiveCamera.js";
-export { default as OrthographicCamera } from "./OrthographicCamera.js";
-export { default as Controls } from "./Controls.js";
-export { default as PointerManager } from "./PointerManager.js";
+export * from "./camera/index.js";
+export * from "./core/index.js";
+export * from "./input/index.js";
+export * from "./controls/index.js";
+export * from "./rigs/index.js";
