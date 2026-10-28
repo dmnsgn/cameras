@@ -1,7 +1,172 @@
-<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>cameras</title><meta name="description" content="Documentation for cameras"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">cameras</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1> cameras</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
-<a href="#cameras" id="cameras" style="color: inherit; text-decoration: none;">
-  <h1>cameras</h1>
-</a>
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>cameras</title><meta name="description" content="Documentation for cameras"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script><style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --md-sys-color-primary: #f6be46;
+    --md-sys-color-on-primary: #412d00;
+    --md-sys-color-primary-container: #5d4200;
+    --md-sys-color-on-primary-container: #ffdea3;
+    --md-sys-color-secondary: #d9c4a0;
+    --md-sys-color-on-secondary: #3b2f15;
+    --md-sys-color-secondary-container: #53452a;
+    --md-sys-color-on-secondary-container: #f6e0bb;
+    --md-sys-color-tertiary: #b2cfa8;
+    --md-sys-color-on-tertiary: #1e361a;
+    --md-sys-color-tertiary-container: #344d2f;
+    --md-sys-color-on-tertiary-container: #cdebc2;
+    --md-sys-color-error: #ffb4ab;
+    --md-sys-color-on-error: #690005;
+    --md-sys-color-error-container: #93000a;
+    --md-sys-color-on-error-container: #ffb4ab;
+    --md-sys-color-background: #1e1b16;
+    --md-sys-color-on-background: #e9e1d9;
+    --md-sys-color-surface: #1e1b16;
+    --md-sys-color-on-surface: #e9e1d9;
+    --md-sys-color-surface-variant: #4e4639;
+    --md-sys-color-on-surface-variant: #d1c5b4;
+    --md-sys-color-outline: #9a8f80;
+    --md-sys-color-outline-variant: #4e4639;
+    --md-sys-color-shadow: #000000;
+    --md-sys-color-scrim: #000000;
+    --md-sys-color-inverse-surface: #e9e1d9;
+    --md-sys-color-inverse-on-surface: #34302a;
+    --md-sys-color-inverse-primary: #7a5900;
+    --md-sys-color-surface-dim: #16130e;
+    --md-sys-color-surface-bright: #3d3933;
+    --md-sys-color-surface-container-lowest: #110e09;
+    --md-sys-color-surface-container-low: #1e1b16;
+    --md-sys-color-surface-container: #221f1a;
+    --md-sys-color-surface-container-high: #2d2924;
+    --md-sys-color-surface-container-highest: #38342e
+  }
+}
+:root[data-theme="dark"] {
+  --md-sys-color-primary: #f6be46;
+  --md-sys-color-on-primary: #412d00;
+  --md-sys-color-primary-container: #5d4200;
+  --md-sys-color-on-primary-container: #ffdea3;
+  --md-sys-color-secondary: #d9c4a0;
+  --md-sys-color-on-secondary: #3b2f15;
+  --md-sys-color-secondary-container: #53452a;
+  --md-sys-color-on-secondary-container: #f6e0bb;
+  --md-sys-color-tertiary: #b2cfa8;
+  --md-sys-color-on-tertiary: #1e361a;
+  --md-sys-color-tertiary-container: #344d2f;
+  --md-sys-color-on-tertiary-container: #cdebc2;
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000a;
+  --md-sys-color-on-error-container: #ffb4ab;
+  --md-sys-color-background: #1e1b16;
+  --md-sys-color-on-background: #e9e1d9;
+  --md-sys-color-surface: #1e1b16;
+  --md-sys-color-on-surface: #e9e1d9;
+  --md-sys-color-surface-variant: #4e4639;
+  --md-sys-color-on-surface-variant: #d1c5b4;
+  --md-sys-color-outline: #9a8f80;
+  --md-sys-color-outline-variant: #4e4639;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-inverse-surface: #e9e1d9;
+  --md-sys-color-inverse-on-surface: #34302a;
+  --md-sys-color-inverse-primary: #7a5900;
+  --md-sys-color-surface-dim: #16130e;
+  --md-sys-color-surface-bright: #3d3933;
+  --md-sys-color-surface-container-lowest: #110e09;
+  --md-sys-color-surface-container-low: #1e1b16;
+  --md-sys-color-surface-container: #221f1a;
+  --md-sys-color-surface-container-high: #2d2924;
+  --md-sys-color-surface-container-highest: #38342e
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --md-sys-color-primary: #7a5900;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #ffdea3;
+    --md-sys-color-on-primary-container: #261900;
+    --md-sys-color-secondary: #6c5c3f;
+    --md-sys-color-on-secondary: #ffffff;
+    --md-sys-color-secondary-container: #f6e0bb;
+    --md-sys-color-on-secondary-container: #251a04;
+    --md-sys-color-tertiary: #4b6545;
+    --md-sys-color-on-tertiary: #ffffff;
+    --md-sys-color-tertiary-container: #cdebc2;
+    --md-sys-color-on-tertiary-container: #092007;
+    --md-sys-color-error: #ba1a1a;
+    --md-sys-color-on-error: #ffffff;
+    --md-sys-color-error-container: #ffdad6;
+    --md-sys-color-on-error-container: #410002;
+    --md-sys-color-background: #fffbff;
+    --md-sys-color-on-background: #1e1b16;
+    --md-sys-color-surface: #fffbff;
+    --md-sys-color-on-surface: #1e1b16;
+    --md-sys-color-surface-variant: #ede1cf;
+    --md-sys-color-on-surface-variant: #4e4639;
+    --md-sys-color-outline: #7f7667;
+    --md-sys-color-outline-variant: #d1c5b4;
+    --md-sys-color-shadow: #000000;
+    --md-sys-color-scrim: #000000;
+    --md-sys-color-inverse-surface: #34302a;
+    --md-sys-color-inverse-on-surface: #f8efe7;
+    --md-sys-color-inverse-primary: #f6be46;
+    --md-sys-color-surface-dim: #e1d9d0;
+    --md-sys-color-surface-bright: #fff8f2;
+    --md-sys-color-surface-container-lowest: #ffffff;
+    --md-sys-color-surface-container-low: #fbf2e9;
+    --md-sys-color-surface-container: #f5ede4;
+    --md-sys-color-surface-container-high: #efe7de;
+    --md-sys-color-surface-container-highest: #e9e1d9
+  }
+}
+:root[data-theme="light"] {
+  --md-sys-color-primary: #7a5900;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #ffdea3;
+  --md-sys-color-on-primary-container: #261900;
+  --md-sys-color-secondary: #6c5c3f;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #f6e0bb;
+  --md-sys-color-on-secondary-container: #251a04;
+  --md-sys-color-tertiary: #4b6545;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #cdebc2;
+  --md-sys-color-on-tertiary-container: #092007;
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-background: #fffbff;
+  --md-sys-color-on-background: #1e1b16;
+  --md-sys-color-surface: #fffbff;
+  --md-sys-color-on-surface: #1e1b16;
+  --md-sys-color-surface-variant: #ede1cf;
+  --md-sys-color-on-surface-variant: #4e4639;
+  --md-sys-color-outline: #7f7667;
+  --md-sys-color-outline-variant: #d1c5b4;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-inverse-surface: #34302a;
+  --md-sys-color-inverse-on-surface: #f8efe7;
+  --md-sys-color-inverse-primary: #f6be46;
+  --md-sys-color-surface-dim: #e1d9d0;
+  --md-sys-color-surface-bright: #fff8f2;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #fbf2e9;
+  --md-sys-color-surface-container: #f5ede4;
+  --md-sys-color-surface-container-high: #efe7de;
+  --md-sys-color-surface-container-highest: #e9e1d9
+}
+</style><link rel="stylesheet" href="assets/material-style.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container"><a href="index.html" class="title">cameras</a>
+<div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/>
+<ul role="listbox" id="tsd-search-results"></ul>
+<div id="tsd-search-status" aria-live="polite" aria-atomic="true">
+<div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<h1>cameras</h1></div>
+<div class="tsd-panel tsd-typography"><h1 id="cameras" class="tsd-anchor-link">cameras<a href="#cameras" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1>
 <p><a href="https://www.npmjs.com/package/cameras"><img src="https://img.shields.io/npm/v/cameras" alt="npm version"></a>
 <a href="https://www.npmjs.com/package/cameras"><img src="https://img.shields.io/badge/stability-stable-green.svg" alt="stability-stable"></a>
 <a href="https://bundlephobia.com/package/cameras"><img src="https://img.shields.io/bundlephobia/minzip/cameras" alt="npm minzipped size"></a>
@@ -11,32 +176,121 @@
 <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-Prettier-f8bc45.svg?logo=prettier" alt="styled with prettier"></a>
 <a href="https://github.com/eslint/eslint"><img src="https://img.shields.io/badge/linted_with-ES_Lint-4B32C3.svg?logo=eslint" alt="linted with eslint"></a>
 <a href="https://github.com/dmnsgn/cameras/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/dmnsgn/cameras" alt="license"></a></p>
-<p>Cameras for 3D rendering.</p>
+<p>Cameras, controls and cinematic rigs for 3D rendering: orbit, map, first person, fly and trackball controls, shots, rails, cranes, framing, handheld and shake, with a physical lens. Engine agnostic, WebGPU first.</p>
 <p><a href="https://paypal.me/dmnsgn"><img src="https://img.shields.io/badge/donate-paypal-informational?logo=paypal" alt="paypal"></a>
 <a href="https://commerce.coinbase.com/checkout/56cbdf28-e323-48d8-9c98-7019e72c97f3"><img src="https://img.shields.io/badge/donate-coinbase-informational?logo=coinbase" alt="coinbase"></a>
-<a href="https://twitter.com/dmnsgn"><img src="https://img.shields.io/twitter/follow/dmnsgn?style=social" alt="twitter"></a></p>
-<p><img src="https://raw.githubusercontent.com/dmnsgn/cameras/master/screenshot.jpg" alt=""></p>
+<a href="https://twitter.com/dmnsgn"><img src="https://img.shields.io/twitter/follow/dmnsgn?style=social" alt="twitter"></a>
+<a href="https://bsky.app/profile/dmnsgn.me"><img src="https://img.shields.io/badge/-blue?logo=bluesky&amp;label=Follow%20%40dmnsgn.me&amp;style=social" alt="bluesky"></a></p>
+<p><a href="https://gitHubUsername.github.io/cameras/"><img src="https://raw.githubusercontent.com/gitHubUsername/cameras/main/screenshot.jpg" alt="cameras screenshot"></a></p>
+<h2 id="installation" class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">cameras</span>
+</code><button type="button">Copy</button></pre>
 
-<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-  <h2>Installation</h2>
-</a>
-<pre><code class="language-bash"><span class="hl-0">npm install cameras</span>
-</code></pre>
+<h2 id="usage" class="tsd-anchor-link">Usage<a href="#usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>See the <a href="https://dmnsgn.github.io/cameras/">examples</a> and their <a href="media/examples">source</a>.</p>
+<pre><code class="js"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">PerspectiveCamera</span><span class="hl-1">, </span><span class="hl-4">OrbitControls</span><span class="hl-1">, </span><span class="hl-4">PointerManager</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;cameras&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">camera</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">PerspectiveCamera</span><span class="hl-1">({ </span><span class="hl-4">position:</span><span class="hl-1"> [</span><span class="hl-7">3</span><span class="hl-1">, </span><span class="hl-7">3</span><span class="hl-1">, </span><span class="hl-7">3</span><span class="hl-1">] });</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">input</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">PointerManager</span><span class="hl-1">(</span><span class="hl-4">canvas</span><span class="hl-1">).</span><span class="hl-0">enable</span><span class="hl-1">();</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">controls</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">OrbitControls</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">lens:</span><span class="hl-1"> </span><span class="hl-4">camera</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">position:</span><span class="hl-1"> [</span><span class="hl-7">3</span><span class="hl-1">, </span><span class="hl-7">3</span><span class="hl-1">, </span><span class="hl-7">3</span><span class="hl-1">],</span><br/><span class="hl-1">  </span><span class="hl-4">target:</span><span class="hl-1"> [</span><span class="hl-7">0</span><span class="hl-1">, </span><span class="hl-7">0</span><span class="hl-1">, </span><span class="hl-7">0</span><span class="hl-1">],</span><br/><span class="hl-1">  </span><span class="hl-4">dollyToCursor:</span><span class="hl-1"> </span><span class="hl-5">true</span><span class="hl-1">,</span><br/><span class="hl-1">}).</span><span class="hl-0">attach</span><span class="hl-1">(</span><span class="hl-4">input</span><span class="hl-1">);</span><br/><br/><span class="hl-8">// Frame loop: dt in seconds</span><br/><span class="hl-3">if</span><span class="hl-1"> (</span><span class="hl-4">controls</span><span class="hl-1">.</span><span class="hl-0">update</span><span class="hl-1">(</span><span class="hl-4">dt</span><span class="hl-1">)) {</span><br/><span class="hl-1">  </span><span class="hl-4">controls</span><span class="hl-1">.</span><span class="hl-0">applyTo</span><span class="hl-1">(</span><span class="hl-4">camera</span><span class="hl-1">);</span><br/><span class="hl-1">  </span><span class="hl-4">camera</span><span class="hl-1">.</span><span class="hl-0">updateProjectionMatrix</span><span class="hl-1">();</span><br/><span class="hl-1">  </span><span class="hl-4">camera</span><span class="hl-1">.</span><span class="hl-0">update</span><span class="hl-1">();</span><br/><span class="hl-1">}</span><br/><span class="hl-8">// Render with camera.projectionMatrix and camera.viewMatrix</span>
+</code><button type="button">Copy</button></pre>
 
-<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-  <h2>Usage</h2>
-</a>
-<p>See the <a href="https://dmnsgn.github.io/cameras/">demo</a> and its <a href="index.html">source</a>.</p>
-<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">PerspectiveCamera</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&quot;cameras&quot;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">perspectiveCamera</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">PerspectiveCamera</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">fov:</span><span class="hl-0"> </span><span class="hl-7">Math</span><span class="hl-0">.PI / </span><span class="hl-8">2</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">near:</span><span class="hl-0"> </span><span class="hl-8">1</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">far:</span><span class="hl-0"> </span><span class="hl-8">1000</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">position:</span><span class="hl-0"> [</span><span class="hl-8">3</span><span class="hl-0">, </span><span class="hl-8">3</span><span class="hl-0">, </span><span class="hl-8">3</span><span class="hl-0">],</span><br/><span class="hl-0">  </span><span class="hl-2">target:</span><span class="hl-0"> [</span><span class="hl-8">0</span><span class="hl-0">, </span><span class="hl-8">1</span><span class="hl-0">, </span><span class="hl-8">0</span><span class="hl-0">],</span><br/><span class="hl-0">});</span><br/><br/><span class="hl-9">// Create controls</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">perspectiveCameraControls</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">Controls</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-2">element:</span><span class="hl-0"> </span><span class="hl-2">regl</span><span class="hl-0">.</span><span class="hl-2">_gl</span><span class="hl-0">.</span><span class="hl-2">canvas</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-2">camera:</span><span class="hl-0"> </span><span class="hl-2">perspectiveCamera</span><span class="hl-0">,</span><br/><span class="hl-0">});</span><br/><br/><span class="hl-9">// Update controls and set camera with controls position/target</span><br/><span class="hl-2">perspectiveCameraControls</span><span class="hl-0">.</span><span class="hl-6">update</span><span class="hl-0">();</span><br/><span class="hl-2">perspectiveCamera</span><span class="hl-0">.</span><span class="hl-2">position</span><span class="hl-0"> = </span><span class="hl-2">perspectiveCameraControls</span><span class="hl-0">.</span><span class="hl-2">position</span><span class="hl-0">;</span><br/><span class="hl-2">perspectiveCamera</span><span class="hl-0">.</span><span class="hl-2">target</span><span class="hl-0"> = </span><span class="hl-2">perspectiveCameraControls</span><span class="hl-0">.</span><span class="hl-2">target</span><span class="hl-0">;</span><br/><br/><span class="hl-9">// Update view matrices (call when changing position/target/up)</span><br/><span class="hl-2">perspectiveCamera</span><span class="hl-0">.</span><span class="hl-6">update</span><span class="hl-0">();</span><br/><br/><span class="hl-9">// Update projection matrix  (call when changing near/far/view and other camera type specific options)</span><br/><span class="hl-2">perspectiveCamera</span><span class="hl-0">.</span><span class="hl-6">updateProjectionMatrix</span><span class="hl-0">();</span>
-</code></pre>
+<h3 id="modules" class="tsd-anchor-link">Modules<a href="#modules" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Each module is also available as a subpath export, e.g. <code>cameras/controls</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cameras/camera</code></td>
+<td><code>Camera</code>, <code>PerspectiveCamera</code>, <code>OrthographicCamera</code>, <code>projection</code>, <code>lens</code>: WebGPU depth by default, reversed-Z, infinite far, view offset, jitter, physical lens</td>
+</tr>
+<tr>
+<td><code>cameras/input</code></td>
+<td><code>PointerManager</code> (mouse, pen, touch, wheel, trackpad pinch, Safari gestures, pointer lock), <code>KeyboardManager</code>, <code>wheel</code>, <code>pointers</code>, <code>modifiers</code></td>
+</tr>
+<tr>
+<td><code>cameras/controls</code></td>
+<td><code>OrbitControls</code>, <code>MapControls</code>, <code>FirstPersonControls</code>, <code>FlyControls</code>, <code>TrackballControls</code>, bases <code>Controls</code>, <code>TargetControls</code>, <code>SteeringControls</code>, <code>bindings</code>, <code>gestures</code></td>
+</tr>
+<tr>
+<td><code>cameras/rigs</code></td>
+<td><code>Sequence</code> and camera moves, <code>RailRig</code>, <code>CraneRig</code>, <code>Switcher</code>, <code>PoseModifier</code>, <code>Composer</code>, <code>GroupFraming</code>, <code>FollowZoom</code>, <code>AutoFocus</code>, <code>Handheld</code>, <code>Shake</code></td>
+</tr>
+<tr>
+<td><code>cameras/core</code></td>
+<td><code>PoseSource</code>, <code>Emitter</code>, <code>pose</code>, <code>Spline</code>, math (spherical coordinates, angles, quaternions)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="design" class="tsd-anchor-link">Design<a href="#design" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li><strong>Input and controls are separate.</strong> <code>PointerManager</code> turns DOM events into gestures and knows nothing about cameras. Controllers never touch the DOM: every action is also a method.</li>
+<li><strong>Controllers and rigs output a pose</strong> (<code>position</code>, <code>target</code>, <code>up</code>, <code>orientation</code>, <code>zoom</code>, <code>fov</code>, <code>focusDistance</code>) applied to any camera through an adapter. They read a lens (<code>{ type, aspect, fov | size }</code>), which the camera classes satisfy.</li>
+<li><strong><code>update(dt)</code> is synchronous and frame rate independent.</strong> Damping uses closed-form critically damped springs. It returns whether the pose changed, for on-demand rendering. Events: <code>wake</code>, <code>update</code>, <code>rest</code>, plus <code>controlstart</code>, <code>control</code>, <code>controlend</code> and <code>transitionstart</code> for controllers.</li>
+<li><strong>Fling.</strong> Releasing a fast drag coasts with the release velocity, decaying with an <code>inertia</code> half-life (iOS scroll deceleration rates for orbit, map and trackball, off for first person and fly). The coast distance is the same at any frame rate. <code>controlend</code> waits for it, and a new press interrupts it.</li>
+<li><strong>Cinematographic vocabulary</strong>: arc, dolly, zoom, truck, pedestal, pan, tilt, roll, crane, rack focus, dolly zoom.</li>
+</ul>
+<h3 id="bindings" class="tsd-anchor-link">Bindings<a href="#bindings" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>Gestures map to actions by key. The most specific key wins, modifiers fall back to the plain key and <code>null</code> disables one.</p>
+<pre><code class="js"><span class="hl-4">controls</span><span class="hl-1">.</span><span class="hl-4">bindings</span><span class="hl-1">[</span><span class="hl-2">&quot;mouse:primary+shift&quot;</span><span class="hl-1">] = </span><span class="hl-2">&quot;truck-pedestal&quot;</span><span class="hl-1">;</span><br/><span class="hl-4">controls</span><span class="hl-1">.</span><span class="hl-4">bindings</span><span class="hl-1">[</span><span class="hl-2">&quot;wheel:trackpad&quot;</span><span class="hl-1">] = </span><span class="hl-2">&quot;truck-dolly&quot;</span><span class="hl-1">;</span><br/><span class="hl-4">controls</span><span class="hl-1">.</span><span class="hl-4">bindings</span><span class="hl-1">[</span><span class="hl-2">&quot;touch:2&quot;</span><span class="hl-1">] = [</span><span class="hl-2">&quot;dolly&quot;</span><span class="hl-1">, </span><span class="hl-2">&quot;truck-pedestal&quot;</span><span class="hl-1">, </span><span class="hl-2">&quot;twist&quot;</span><span class="hl-1">];</span><br/><span class="hl-4">controls</span><span class="hl-1">.</span><span class="hl-4">bindings</span><span class="hl-1">[</span><span class="hl-2">&quot;mouse:secondary&quot;</span><span class="hl-1">] = </span><span class="hl-5">null</span><span class="hl-1">;</span>
+</code><button type="button">Copy</button></pre>
 
-<a href="#api" id="api" style="color: inherit; text-decoration: none;">
-  <h2>API</h2>
-</a>
-<p>See the <a href="https://dmnsgn.github.io/cameras/docs">documentation</a> and <a href="src/types.ts">Typescript types</a>.</p>
+<p>Keys: <code>mouse:primary|secondary|auxiliary|back|forward</code> (and chords like <code>mouse:primary+secondary</code>), <code>pen:*</code>, <code>touch:1|2|3</code>, <code>locked</code>, <code>wheel</code>, <code>wheel:mouse|trackpad</code>, <code>pinch</code>, with <code>+shift</code>, <code>+ctrl</code>, <code>+alt</code>, <code>+meta</code>.</p>
+<h3 id="rigs-and-modifiers" class="tsd-anchor-link">Rigs and modifiers<a href="#rigs-and-modifiers" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="js"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">Sequence</span><span class="hl-1">, </span><span class="hl-4">Composer</span><span class="hl-1">, </span><span class="hl-4">Shake</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;cameras&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">sequence</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">Sequence</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">shots:</span><span class="hl-1"> [</span><br/><span class="hl-1">    { </span><span class="hl-4">shot:</span><span class="hl-1"> { </span><span class="hl-4">position:</span><span class="hl-1"> [</span><span class="hl-7">0</span><span class="hl-1">, </span><span class="hl-7">8</span><span class="hl-1">, </span><span class="hl-7">22</span><span class="hl-1">], </span><span class="hl-4">target:</span><span class="hl-1"> [</span><span class="hl-7">0</span><span class="hl-1">, </span><span class="hl-7">0</span><span class="hl-1">, </span><span class="hl-7">0</span><span class="hl-1">], </span><span class="hl-4">fov:</span><span class="hl-1"> </span><span class="hl-7">0.9</span><span class="hl-1"> }, </span><span class="hl-4">hold:</span><span class="hl-1"> </span><span class="hl-7">1</span><span class="hl-1"> },</span><br/><span class="hl-1">    {</span><br/><span class="hl-1">      </span><span class="hl-4">shot:</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-4">position:</span><span class="hl-1"> [</span><span class="hl-7">40</span><span class="hl-1">, </span><span class="hl-7">2</span><span class="hl-1">, </span><span class="hl-7">3</span><span class="hl-1">],</span><br/><span class="hl-1">        </span><span class="hl-4">target:</span><span class="hl-1"> [</span><span class="hl-7">40</span><span class="hl-1">, </span><span class="hl-7">0</span><span class="hl-1">, </span><span class="hl-7">0</span><span class="hl-1">],</span><br/><span class="hl-1">        </span><span class="hl-4">fov:</span><span class="hl-1"> </span><span class="hl-7">0.5</span><span class="hl-1">,</span><br/><span class="hl-1">        </span><span class="hl-4">focusDistance:</span><span class="hl-1"> </span><span class="hl-7">3</span><span class="hl-1">,</span><br/><span class="hl-1">      },</span><br/><span class="hl-1">      </span><span class="hl-4">duration:</span><span class="hl-1"> </span><span class="hl-7">4</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-4">move:</span><span class="hl-1"> </span><span class="hl-2">&quot;zoom-pan&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">  ],</span><br/><span class="hl-1">}).</span><span class="hl-0">play</span><span class="hl-1">();</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">composer</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">Composer</span><span class="hl-1">({ </span><span class="hl-4">lens:</span><span class="hl-1"> </span><span class="hl-4">camera</span><span class="hl-1">, </span><span class="hl-0">subject</span><span class="hl-4">:</span><span class="hl-1"> () </span><span class="hl-5">=&gt;</span><span class="hl-1"> </span><span class="hl-4">player</span><span class="hl-1">.</span><span class="hl-4">position</span><span class="hl-1"> });</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">shake</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-0">Shake</span><span class="hl-1">();</span><br/><span class="hl-4">shake</span><span class="hl-1">.</span><span class="hl-0">addTrauma</span><span class="hl-1">(</span><span class="hl-7">0.5</span><span class="hl-1">);</span><br/><br/><span class="hl-8">// Modifiers own their output pose: sources are never modified.</span><br/><span class="hl-4">sequence</span><span class="hl-1">.</span><span class="hl-0">update</span><span class="hl-1">(</span><span class="hl-4">dt</span><span class="hl-1">);</span><br/><span class="hl-4">composer</span><span class="hl-1">.</span><span class="hl-0">update</span><span class="hl-1">(</span><span class="hl-4">sequence</span><span class="hl-1">.</span><span class="hl-4">pose</span><span class="hl-1">, </span><span class="hl-4">dt</span><span class="hl-1">);</span><br/><span class="hl-4">shake</span><span class="hl-1">.</span><span class="hl-0">update</span><span class="hl-1">(</span><span class="hl-4">composer</span><span class="hl-1">.</span><span class="hl-4">pose</span><span class="hl-1">, </span><span class="hl-4">dt</span><span class="hl-1">);</span><br/><span class="hl-4">shake</span><span class="hl-1">.</span><span class="hl-0">applyTo</span><span class="hl-1">(</span><span class="hl-4">camera</span><span class="hl-1">);</span>
+</code><button type="button">Copy</button></pre>
 
-<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-  <h2>License</h2>
-</a>
+<p><code>sequence.seek(time)</code> is deterministic, for offline renders driven by their own clock.</p>
+<h2 id="api" class="tsd-anchor-link">API<a href="#api" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>See the <a href="https://dmnsgn.github.io/cameras/docs">documentation</a>.</p>
+<h2 id="license" class="tsd-anchor-link">License<a href="#license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <p>MIT. See <a href="https://github.com/dmnsgn/cameras/blob/main/LICENSE.md">license file</a>.</p>
-</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Modules</a></li><li class=" tsd-kind-module"><a href="modules/Camera.html">Camera</a></li><li class=" tsd-kind-module"><a href="modules/Controls.html">Controls</a></li><li class=" tsd-kind-module"><a href="modules/OrthographicCamera.html">Orthographic<wbr/>Camera</a></li><li class=" tsd-kind-module"><a href="modules/PerspectiveCamera.html">Perspective<wbr/>Camera</a></li><li class=" tsd-kind-module"><a href="modules/PointerManager.html">Pointer<wbr/>Manager</a></li><li class=" tsd-kind-module"><a href="modules/index.html">index</a></li><li class=" tsd-kind-module"><a href="modules/normalize_wheel.html">normalize-<wbr/>wheel</a></li><li class=" tsd-kind-module"><a href="modules/types.html">types</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li><li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li><li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
+</div></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg>
+<h3>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div>
+<div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg>
+<h3>On This Page</h3></summary>
+<div class="tsd-accordion-details"><a href="#cameras"><span>cameras</span></a>
+<ul>
+<li><a href="#installation"><span>Installation</span></a></li>
+<li><a href="#usage"><span>Usage</span></a></li>
+<li>
+<ul>
+<li><a href="#modules"><span>Modules</span></a></li>
+<li><a href="#design"><span>Design</span></a></li>
+<li><a href="#bindings"><span>Bindings</span></a></li>
+<li><a href="#rigs-and-modifiers"><span>Rigs and modifiers</span></a></li></ul></li>
+<li><a href="#api"><span>API</span></a></li>
+<li><a href="#license"><span>License</span></a></li></ul></div></details></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="modules.html">cameras</a>
+<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
+<li>Loading...</li></ul></nav></div></div></div><footer>
+<p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer>
+<div class="overlay"></div><script>
+          try {
+            const generateLinkElement = document.querySelector(".tsd-generator a");
+            const link = document.createElement("a");
+            Object.assign(link, {
+              href: "https://github.com/dmnsgn/typedoc-material-theme",
+              target: "_blank",
+              rel: "noreferrer",
+              innerText: "typedoc-material-theme."
+            });
+            generateLinkElement.insertAdjacentElement("afterend", link);
+            generateLinkElement.insertAdjacentText("afterend", " with ");
+          } catch (error) {
+
+          }
+        </script></body></html>

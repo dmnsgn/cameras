@@ -1,17 +1,27 @@
 {
   "name": "cameras",
-  "version": "3.1.1",
-  "description": "Cameras for 3D rendering.",
+  "version": "4.0.0-alpha.0",
+  "description": "Cameras, controls and cinematic rigs for 3D rendering: orbit, map, first person, fly and trackball controls, shots, rails, cranes, framing, handheld and shake, with a physical lens.",
   "keywords": [
     "cameras",
-    "perspective",
-    "orthographic",
+    "camera-controls",
+    "orbit-controls",
+    "first-person",
+    "fly",
+    "trackball",
+    "cinematography",
+    "webgpu",
+    "webgl",
     "3d",
-    "webgl"
+    "perspective",
+    "orthographic"
   ],
   "homepage": "https://github.com/dmnsgn/cameras",
   "bugs": "https://github.com/dmnsgn/cameras/issues",
-  "repository": "dmnsgn/cameras",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmnsgn/cameras.git"
+  },
   "funding": [
     {
       "type": "individual",
@@ -24,24 +34,59 @@
   ],
   "license": "MIT",
   "author": "Damien Seguin (https://github.com/dmnsgn)",
+  "sideEffects": false,
   "type": "module",
-  "exports": "./lib/index.js",
-  "main": "lib/index.js",
-  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./camera": {
+      "types": "./types/camera/index.d.ts",
+      "default": "./lib/camera/index.js"
+    },
+    "./core": {
+      "types": "./types/core/index.d.ts",
+      "default": "./lib/core/index.js"
+    },
+    "./input": {
+      "types": "./types/input/index.d.ts",
+      "default": "./lib/input/index.js"
+    },
+    "./controls": {
+      "types": "./types/controls/index.d.ts",
+      "default": "./lib/controls/index.js"
+    },
+    "./rigs": {
+      "types": "./types/rigs/index.d.ts",
+      "default": "./lib/rigs/index.js"
+    }
+  },
+  "main": "./lib/index.js",
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "test": "node --experimental-test-coverage --test-coverage-include='lib/**' --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test test/",
+    "test:watch": "node --watch --experimental-test-coverage --test test/"
+  },
   "dependencies": {
-    "clamp": "^1.0.1",
-    "gl-matrix": "^3.3.0",
-    "normalize-wheel": "^1.0.1"
+    "eerp": "^1.0.2",
+    "inverse-lerp": "^1.0.1",
+    "perlin-noise-1d": "^1.0.0",
+    "pex-geom": "^3.1.2",
+    "pex-math": "^4.5.0",
+    "ressort": "^1.0.0"
   },
   "devDependencies": {
-    "core-js": "^3.11.1",
-    "es-module-shims": "^0.10.4",
-    "primitive-geometry": "^2.0.0",
-    "regl": "^2.1.0",
-    "tslib": "^2.2.0"
+    "es-module-shims": "^2.8.4",
+    "geom-edges": "^2.0.0",
+    "pex-gpu": "^0.0.5",
+    "pex-random": "^3.0.0",
+    "primitive-geometry": "^3.3.1",
+    "tweakpane": "^4.0.5"
   },
+  "packageManager": "npm@11.3.0",
   "engines": {
-    "node": ">=15.0.0",
-    "npm": ">=7.0.0"
+    "node": ">=24.0.0",
+    "snowdev": ">=3.0.0-alpha.3"
   }
 }

@@ -1,6 +1,16 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+# [4.0.0-alpha.0](https://github.com/dmnsgn/cameras/compare/v3.1.1...v4.0.0-alpha.0) (2026-10-28)
+
+### Features
+
+* rewrite as a camera system with input, controls and cinematic rigs ([2164f6c](https://github.com/dmnsgn/cameras/commit/2164f6c76f3f60021cf7189183fe4258ed907ce6))
+
+### BREAKING CHANGES
+
+* new module layout and API; legacy Camera, Controls and PointerManager removed
 
 ## [3.1.1](https://github.com/dmnsgn/cameras/compare/v3.1.0...v3.1.1) (2021-11-12)
 

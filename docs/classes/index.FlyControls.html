@@ -1,0 +1,1242 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>FlyControls | cameras</title><meta name="description" content="Documentation for cameras"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script><style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --md-sys-color-primary: #f6be46;
+    --md-sys-color-on-primary: #412d00;
+    --md-sys-color-primary-container: #5d4200;
+    --md-sys-color-on-primary-container: #ffdea3;
+    --md-sys-color-secondary: #d9c4a0;
+    --md-sys-color-on-secondary: #3b2f15;
+    --md-sys-color-secondary-container: #53452a;
+    --md-sys-color-on-secondary-container: #f6e0bb;
+    --md-sys-color-tertiary: #b2cfa8;
+    --md-sys-color-on-tertiary: #1e361a;
+    --md-sys-color-tertiary-container: #344d2f;
+    --md-sys-color-on-tertiary-container: #cdebc2;
+    --md-sys-color-error: #ffb4ab;
+    --md-sys-color-on-error: #690005;
+    --md-sys-color-error-container: #93000a;
+    --md-sys-color-on-error-container: #ffb4ab;
+    --md-sys-color-background: #1e1b16;
+    --md-sys-color-on-background: #e9e1d9;
+    --md-sys-color-surface: #1e1b16;
+    --md-sys-color-on-surface: #e9e1d9;
+    --md-sys-color-surface-variant: #4e4639;
+    --md-sys-color-on-surface-variant: #d1c5b4;
+    --md-sys-color-outline: #9a8f80;
+    --md-sys-color-outline-variant: #4e4639;
+    --md-sys-color-shadow: #000000;
+    --md-sys-color-scrim: #000000;
+    --md-sys-color-inverse-surface: #e9e1d9;
+    --md-sys-color-inverse-on-surface: #34302a;
+    --md-sys-color-inverse-primary: #7a5900;
+    --md-sys-color-surface-dim: #16130e;
+    --md-sys-color-surface-bright: #3d3933;
+    --md-sys-color-surface-container-lowest: #110e09;
+    --md-sys-color-surface-container-low: #1e1b16;
+    --md-sys-color-surface-container: #221f1a;
+    --md-sys-color-surface-container-high: #2d2924;
+    --md-sys-color-surface-container-highest: #38342e
+  }
+}
+:root[data-theme="dark"] {
+  --md-sys-color-primary: #f6be46;
+  --md-sys-color-on-primary: #412d00;
+  --md-sys-color-primary-container: #5d4200;
+  --md-sys-color-on-primary-container: #ffdea3;
+  --md-sys-color-secondary: #d9c4a0;
+  --md-sys-color-on-secondary: #3b2f15;
+  --md-sys-color-secondary-container: #53452a;
+  --md-sys-color-on-secondary-container: #f6e0bb;
+  --md-sys-color-tertiary: #b2cfa8;
+  --md-sys-color-on-tertiary: #1e361a;
+  --md-sys-color-tertiary-container: #344d2f;
+  --md-sys-color-on-tertiary-container: #cdebc2;
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000a;
+  --md-sys-color-on-error-container: #ffb4ab;
+  --md-sys-color-background: #1e1b16;
+  --md-sys-color-on-background: #e9e1d9;
+  --md-sys-color-surface: #1e1b16;
+  --md-sys-color-on-surface: #e9e1d9;
+  --md-sys-color-surface-variant: #4e4639;
+  --md-sys-color-on-surface-variant: #d1c5b4;
+  --md-sys-color-outline: #9a8f80;
+  --md-sys-color-outline-variant: #4e4639;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-inverse-surface: #e9e1d9;
+  --md-sys-color-inverse-on-surface: #34302a;
+  --md-sys-color-inverse-primary: #7a5900;
+  --md-sys-color-surface-dim: #16130e;
+  --md-sys-color-surface-bright: #3d3933;
+  --md-sys-color-surface-container-lowest: #110e09;
+  --md-sys-color-surface-container-low: #1e1b16;
+  --md-sys-color-surface-container: #221f1a;
+  --md-sys-color-surface-container-high: #2d2924;
+  --md-sys-color-surface-container-highest: #38342e
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --md-sys-color-primary: #7a5900;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #ffdea3;
+    --md-sys-color-on-primary-container: #261900;
+    --md-sys-color-secondary: #6c5c3f;
+    --md-sys-color-on-secondary: #ffffff;
+    --md-sys-color-secondary-container: #f6e0bb;
+    --md-sys-color-on-secondary-container: #251a04;
+    --md-sys-color-tertiary: #4b6545;
+    --md-sys-color-on-tertiary: #ffffff;
+    --md-sys-color-tertiary-container: #cdebc2;
+    --md-sys-color-on-tertiary-container: #092007;
+    --md-sys-color-error: #ba1a1a;
+    --md-sys-color-on-error: #ffffff;
+    --md-sys-color-error-container: #ffdad6;
+    --md-sys-color-on-error-container: #410002;
+    --md-sys-color-background: #fffbff;
+    --md-sys-color-on-background: #1e1b16;
+    --md-sys-color-surface: #fffbff;
+    --md-sys-color-on-surface: #1e1b16;
+    --md-sys-color-surface-variant: #ede1cf;
+    --md-sys-color-on-surface-variant: #4e4639;
+    --md-sys-color-outline: #7f7667;
+    --md-sys-color-outline-variant: #d1c5b4;
+    --md-sys-color-shadow: #000000;
+    --md-sys-color-scrim: #000000;
+    --md-sys-color-inverse-surface: #34302a;
+    --md-sys-color-inverse-on-surface: #f8efe7;
+    --md-sys-color-inverse-primary: #f6be46;
+    --md-sys-color-surface-dim: #e1d9d0;
+    --md-sys-color-surface-bright: #fff8f2;
+    --md-sys-color-surface-container-lowest: #ffffff;
+    --md-sys-color-surface-container-low: #fbf2e9;
+    --md-sys-color-surface-container: #f5ede4;
+    --md-sys-color-surface-container-high: #efe7de;
+    --md-sys-color-surface-container-highest: #e9e1d9
+  }
+}
+:root[data-theme="light"] {
+  --md-sys-color-primary: #7a5900;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #ffdea3;
+  --md-sys-color-on-primary-container: #261900;
+  --md-sys-color-secondary: #6c5c3f;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #f6e0bb;
+  --md-sys-color-on-secondary-container: #251a04;
+  --md-sys-color-tertiary: #4b6545;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #cdebc2;
+  --md-sys-color-on-tertiary-container: #092007;
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-background: #fffbff;
+  --md-sys-color-on-background: #1e1b16;
+  --md-sys-color-surface: #fffbff;
+  --md-sys-color-on-surface: #1e1b16;
+  --md-sys-color-surface-variant: #ede1cf;
+  --md-sys-color-on-surface-variant: #4e4639;
+  --md-sys-color-outline: #7f7667;
+  --md-sys-color-outline-variant: #d1c5b4;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-inverse-surface: #34302a;
+  --md-sys-color-inverse-on-surface: #f8efe7;
+  --md-sys-color-inverse-primary: #f6be46;
+  --md-sys-color-surface-dim: #e1d9d0;
+  --md-sys-color-surface-bright: #fff8f2;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #fbf2e9;
+  --md-sys-color-surface-container: #f5ede4;
+  --md-sys-color-surface-container-high: #efe7de;
+  --md-sys-color-surface-container-highest: #e9e1d9
+}
+</style><link rel="stylesheet" href="../assets/material-style.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container"><a href="../index.html" class="title">cameras</a>
+<div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/>
+<ul role="listbox" id="tsd-search-results"></ul>
+<div id="tsd-search-status" aria-live="polite" aria-atomic="true">
+<div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<ul class="tsd-breadcrumb" aria-label="Breadcrumb">
+<li><a href="../modules/index.html">index</a></li>
+<li><a href="" aria-current="page">FlyControls</a></li></ul>
+<h1>Class FlyControls</h1></div>
+<section class="tsd-panel tsd-comment">
+<div class="tsd-comment tsd-typography"><p>Six degrees of freedom: pan, tilt and roll around the camera's own axes, move
+along them.</p>
+</div></section>
+<section class="tsd-panel tsd-hierarchy" data-refl="3467">
+<h4>Hierarchy (<a href="../hierarchy.html#index.FlyControls">View Summary</a>)</h4>
+<ul class="tsd-hierarchy">
+<li class="tsd-hierarchy-item"><a href="index.SteeringControls.html" class="tsd-signature-type tsd-kind-class">SteeringControls</a><span class="tsd-signature-symbol">&lt;</span><a href="../types/controls_FlyControls.FlyAction.html" class="tsd-signature-type tsd-kind-type-alias">FlyAction</a><span class="tsd-signature-symbol">,</span> <a href="../interfaces/controls_FlyControls.FlySettings.html" class="tsd-signature-type tsd-kind-interface">FlySettings</a><span class="tsd-signature-symbol">,</span> <a href="../interfaces/controls_FlyControls.FlyState.html" class="tsd-signature-type tsd-kind-interface">FlyState</a><span class="tsd-signature-symbol">&gt;</span>
+<ul class="tsd-hierarchy">
+<li class="tsd-hierarchy-item"><span class="tsd-hierarchy-target">FlyControls</span></li></ul></li></ul></section><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L118">controls/FlyControls.ts:118</a></li></ul></aside>
+<section class="tsd-panel-group tsd-index-group">
+<section class="tsd-panel tsd-index-panel">
+<details class="tsd-index-content tsd-accordion" open><summary class="tsd-accordion-summary tsd-index-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h5 class="tsd-index-heading uppercase">Index</h5></summary>
+<div class="tsd-accordion-details">
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading tsd-anchor-link" id="constructors">Constructors<a href="#constructors" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-index-list"><a href="#constructor" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Constructor"><use href="../assets/icons.svg#icon-512"></use></svg><span>constructor</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading tsd-anchor-link" id="properties">Properties<a href="#properties" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-index-list"><a href="#aimzoom" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>aim<wbr/>Zoom</span></a>
+<a href="#autolevel" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>auto<wbr/>Level</span></a>
+<a href="#bindings" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>bindings</span></a>
+<a href="#constrain" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>constrain</span></a>
+<a href="#droptime" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>drop<wbr/>Time</span></a>
+<a href="#inertia" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>inertia</span></a>
+<a href="#lens" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>lens?</span></a>
+<a href="#levelkeys" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>level<wbr/>Keys</span></a>
+<a href="#looksmoothtime" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>look<wbr/>Smooth<wbr/>Time</span></a>
+<a href="#lookspeed" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>look<wbr/>Speed</span></a>
+<a href="#minflingspeed" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>min<wbr/>Fling<wbr/>Speed</span></a>
+<a href="#movesmoothtime" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>move<wbr/>Smooth<wbr/>Time</span></a>
+<a href="#pose" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>pose</span></a>
+<a href="#position" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>position</span></a>
+<a href="#positionend" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>position<wbr/>End</span></a>
+<a href="#restthreshold" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>rest<wbr/>Threshold</span></a>
+<a href="#rollkeys" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>roll<wbr/>Keys</span></a>
+<a href="#rollspeed" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>roll<wbr/>Speed</span></a>
+<a href="#slowmultiplier" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>slow<wbr/>Multiplier</span></a>
+<a href="#speed" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>speed</span></a>
+<a href="#sprintmultiplier" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>sprint<wbr/>Multiplier</span></a>
+<a href="#upspace" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>up<wbr/>Space</span></a>
+<a href="#upspaceinverse" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>up<wbr/>Space<wbr/>Inverse</span></a>
+<a href="#upvector" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>up<wbr/>Vector</span></a>
+<a href="#zoombounds" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>Bounds</span></a>
+<a href="#zoomend" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>End</span></a>
+<a href="#zoomsmoothtime" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>Smooth<wbr/>Time</span></a>
+<a href="#zoomspeed" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>Speed</span></a>
+<a href="#zoomvalue" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>Value</span></a>
+<a href="#default_bindings" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>DEFAULT_<wbr/>BINDINGS</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading tsd-anchor-link" id="accessors">Accessors<a href="#accessors" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-index-list"><a href="#enabled" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>enabled</span></a>
+<a href="#input" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>input</span></a>
+<a href="#keyboard" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>keyboard</span></a>
+<a href="#keys" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>keys</span></a>
+<a href="#restangle" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>rest<wbr/>Angle</span></a>
+<a href="#up" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>up</span></a>
+<a href="#usercontrolling" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>user<wbr/>Controlling</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading tsd-anchor-link" id="methods">Methods<a href="#methods" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-index-list"><a href="#applyaction" class="tsd-index-link tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>apply<wbr/>Action</span></a>
+<a href="#applyposeoffset" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>apply<wbr/>Pose<wbr/>Offset?</span></a>
+<a href="#applyto" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>apply<wbr/>To</span></a>
+<a href="#attach" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>attach</span></a>
+<a href="#commit" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>commit</span></a>
+<a href="#detach" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>detach</span></a>
+<a href="#dispose" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>dispose</span></a>
+<a href="#emit" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>emit</span></a>
+<a href="#endaction" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>end<wbr/>Action</span></a>
+<a href="#getorientation" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Orientation</span></a>
+<a href="#getposition" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Position</span></a>
+<a href="#getstate" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>State</span></a>
+<a href="#getzoom" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Zoom</span></a>
+<a href="#invalidate" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>invalidate</span></a>
+<a href="#level" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>level</span></a>
+<a href="#lookat" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>look<wbr/>At</span></a>
+<a href="#move" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>move</span></a>
+<a href="#movebasis" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>move<wbr/>Basis</span></a>
+<a href="#on" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>on</span></a>
+<a href="#orientation" class="tsd-index-link tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>orientation</span></a>
+<a href="#removealllisteners" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>All<wbr/>Listeners</span></a>
+<a href="#reset" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>reset</span></a>
+<a href="#rotate" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>rotate</span></a>
+<a href="#savestate" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>save<wbr/>State</span></a>
+<a href="#set" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set</span></a>
+<a href="#setend" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>End</span></a>
+<a href="#setorientation" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>Orientation</span></a>
+<a href="#setorientationend" class="tsd-index-link tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>Orientation<wbr/>End</span></a>
+<a href="#setpose" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>Pose</span></a>
+<a href="#setposition" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>Position</span></a>
+<a href="#setstate" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>State</span></a>
+<a href="#startaction" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>start<wbr/>Action</span></a>
+<a href="#step" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>step</span></a>
+<a href="#steprotation" class="tsd-index-link tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>step<wbr/>Rotation</span></a>
+<a href="#stop" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>stop</span></a>
+<a href="#stoprotation" class="tsd-index-link tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>stop<wbr/>Rotation</span></a>
+<a href="#update" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update</span></a>
+<a href="#writepose" class="tsd-index-link tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>write<wbr/>Pose</span></a>
+<a href="#zoomto" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>zoom<wbr/>To</span></a>
+</div></section></div></details></section></section>
+<details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Constructors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h2 class="tsd-anchor-link" id="constructors-1">Constructors<a href="#constructors-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
+<section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="constructor"><span>constructor</span><a href="#constructor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="constructorflycontrols"><span class="tsd-signature-keyword">new</span> <span class="tsd-kind-constructor-signature">FlyControls</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">?:</span> <a href="../interfaces/controls_FlyControls.FlyControlsOptions.html" class="tsd-signature-type tsd-kind-interface">FlyControlsOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type tsd-kind-class">FlyControls</a><a href="#constructorflycontrols" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../interfaces/controls_FlyControls.FlyControlsOptions.html" class="tsd-signature-type tsd-kind-interface">FlyControlsOptions</a><span class="tsd-signature-symbol"> = {}</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="" class="tsd-signature-type tsd-kind-class">FlyControls</a></h4><aside class="tsd-sources">
+<p>Overrides <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#constructor">constructor</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L136">controls/FlyControls.ts:136</a></li></ul></aside></div></li></ul></section></section></details>
+<details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Properties"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h2 class="tsd-anchor-link" id="properties-1">Properties<a href="#properties-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
+<section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="aimzoom"><span>aim<wbr/>Zoom</span><a href="#aimzoom" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">aimZoom</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = AIM_ZOOM</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#aimzoom">aimZoom</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L114">controls/SteeringControls.ts:114</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="autolevel"><span>auto<wbr/>Level</span><a href="#autolevel" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">autoLevel</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L126">controls/FlyControls.ts:126</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="bindings"><span>bindings</span><a href="#bindings" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">bindings</span><span class="tsd-signature-symbol">:</span> <a href="../types/controls_types.Bindings.html" class="tsd-signature-type tsd-kind-type-alias">Bindings</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#action">Action</a><span class="tsd-signature-symbol">&gt;</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#bindings">bindings</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L51">controls/Controls.ts:51</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="constrain"><span>constrain</span><a href="#constrain" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">constrain</span><span class="tsd-signature-symbol">:</span> (<span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">position</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">)</span> <span class="tsd-signature-symbol">=&gt;</span> <span class="tsd-signature-type">void</span>) <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#constrain">constrain</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L116">controls/SteeringControls.ts:116</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="droptime"><span>drop<wbr/>Time</span><a href="#droptime" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">dropTime</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = DROP_TIME</span></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L127">controls/FlyControls.ts:127</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="inertia"><span>inertia</span><a href="#inertia" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">inertia</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+<div class="tsd-comment tsd-typography"><p>Half-life of the coasting velocity after a drag is released. 0 disables
+fling.</p>
+</div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#inertia">inertia</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L57">controls/Controls.ts:57</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="lens"><code class="tsd-tag">Optional</code><span>lens</span><a href="#lens" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">lens</span><span class="tsd-signature-symbol">?:</span> <a href="../interfaces/camera_types.Lens.html" class="tsd-signature-type tsd-kind-interface">Lens</a></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#lens">lens</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L52">controls/Controls.ts:52</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="levelkeys"><span>level<wbr/>Keys</span><a href="#levelkeys" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">levelKeys</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L128">controls/FlyControls.ts:128</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="looksmoothtime"><span>look<wbr/>Smooth<wbr/>Time</span><a href="#looksmoothtime" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">lookSmoothTime</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = POINTER_LAG</span></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L124">controls/FlyControls.ts:124</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="lookspeed"><span>look<wbr/>Speed</span><a href="#lookspeed" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">lookSpeed</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L122">controls/FlyControls.ts:122</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="minflingspeed"><span>min<wbr/>Fling<wbr/>Speed</span><a href="#minflingspeed" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">minFlingSpeed</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = MIN_FLING_SPEED</span></div>
+<div class="tsd-comment tsd-typography"><p>Release speed in CSS pixels per second below which a drag doesn't fling.</p>
+</div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#minflingspeed">minFlingSpeed</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L59">controls/Controls.ts:59</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="movesmoothtime"><span>move<wbr/>Smooth<wbr/>Time</span><a href="#movesmoothtime" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">moveSmoothTime</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = SPRING_SMOOTH_TIME</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#movesmoothtime">moveSmoothTime</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L110">controls/SteeringControls.ts:110</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="pose"><code class="tsd-tag">Readonly</code><span>pose</span><a href="#pose" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">pose</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/core_pose.Pose.html" class="tsd-signature-type tsd-kind-interface">Pose</a><span class="tsd-signature-symbol"> = ...</span></div>
+<div class="tsd-comment tsd-typography"><p>Output, updated by <code>update</code>.</p>
+</div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#pose">pose</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/core/PoseSource.ts#L47">core/PoseSource.ts:47</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="position"><code class="tsd-tag">Protected</code> <code class="tsd-tag">Readonly</code><span>position</span><a href="#position" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">position</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#position">position</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L121">controls/SteeringControls.ts:121</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="positionend"><code class="tsd-tag">Protected</code> <code class="tsd-tag">Readonly</code><span>position<wbr/>End</span><a href="#positionend" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">positionEnd</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#positionend">positionEnd</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L122">controls/SteeringControls.ts:122</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="restthreshold"><span>rest<wbr/>Threshold</span><a href="#restthreshold" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">restThreshold</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1e-4</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#restthreshold">restThreshold</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L115">controls/SteeringControls.ts:115</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="rollkeys"><span>roll<wbr/>Keys</span><a href="#rollkeys" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">rollKeys</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/controls_FlyControls.RollKeys.html" class="tsd-signature-type tsd-kind-interface">RollKeys</a><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L125">controls/FlyControls.ts:125</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="rollspeed"><span>roll<wbr/>Speed</span><a href="#rollspeed" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">rollSpeed</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L123">controls/FlyControls.ts:123</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="slowmultiplier"><span>slow<wbr/>Multiplier</span><a href="#slowmultiplier" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">slowMultiplier</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#slowmultiplier">slowMultiplier</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L109">controls/SteeringControls.ts:109</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="speed"><span>speed</span><a href="#speed" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">speed</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = WALK_SPEED</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#speed">speed</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L107">controls/SteeringControls.ts:107</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="sprintmultiplier"><span>sprint<wbr/>Multiplier</span><a href="#sprintmultiplier" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">sprintMultiplier</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = SPEED_FACTOR</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#sprintmultiplier">sprintMultiplier</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L108">controls/SteeringControls.ts:108</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="upspace"><code class="tsd-tag">Protected</code> <code class="tsd-tag">Readonly</code><span>up<wbr/>Space</span><a href="#upspace" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">upSpace</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Quat</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#upspace">upSpace</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L119">controls/SteeringControls.ts:119</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="upspaceinverse"><code class="tsd-tag">Protected</code> <code class="tsd-tag">Readonly</code><span>up<wbr/>Space<wbr/>Inverse</span><a href="#upspaceinverse" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">upSpaceInverse</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Quat</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#upspaceinverse">upSpaceInverse</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L120">controls/SteeringControls.ts:120</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="upvector"><code class="tsd-tag">Protected</code> <code class="tsd-tag">Readonly</code><span>up<wbr/>Vector</span><a href="#upvector" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">upVector</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#upvector">upVector</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L118">controls/SteeringControls.ts:118</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="zoombounds"><span>zoom<wbr/>Bounds</span><a href="#zoombounds" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">zoomBounds</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#zoombounds">zoomBounds</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L113">controls/SteeringControls.ts:113</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="zoomend"><code class="tsd-tag">Protected</code><span>zoom<wbr/>End</span><a href="#zoomend" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">zoomEnd</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#zoomend">zoomEnd</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L124">controls/SteeringControls.ts:124</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="zoomsmoothtime"><span>zoom<wbr/>Smooth<wbr/>Time</span><a href="#zoomsmoothtime" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">zoomSmoothTime</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = SPRING_SMOOTH_TIME</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#zoomsmoothtime">zoomSmoothTime</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L112">controls/SteeringControls.ts:112</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="zoomspeed"><span>zoom<wbr/>Speed</span><a href="#zoomspeed" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">zoomSpeed</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#zoomspeed">zoomSpeed</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L111">controls/SteeringControls.ts:111</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="zoomvalue"><code class="tsd-tag">Protected</code><span>zoom<wbr/>Value</span><a href="#zoomvalue" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">zoomValue</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#zoomvalue">zoomValue</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L123">controls/SteeringControls.ts:123</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="default_bindings"><code class="tsd-tag">Static</code> <code class="tsd-tag">Readonly</code><span>DEFAULT_<wbr/>BINDINGS</span><a href="#default_bindings" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">DEFAULT_BINDINGS</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../types/controls_types.Bindings.html" class="tsd-signature-type tsd-kind-type-alias">Bindings</a><span class="tsd-signature-symbol">&lt;</span><a href="../types/controls_FlyControls.FlyAction.html" class="tsd-signature-type tsd-kind-type-alias">FlyAction</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = DEFAULT_BINDINGS</span></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L119">controls/FlyControls.ts:119</a></li></ul></aside></section></section></details>
+<details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Accessors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h2 class="tsd-anchor-link" id="accessors-1">Accessors<a href="#accessors-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
+<section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="enabled"><span>enabled</span><a href="#enabled" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li>
+<div class="tsd-signature" id="enabledenabled"><span class="tsd-signature-keyword">get</span> <span class="tsd-kind-get-signature">enabled</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Ignore input when false. Programmatic methods still apply.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.enabled</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L76">controls/Controls.ts:76</a></li></ul></aside></div></li>
+<li>
+<div class="tsd-signature" id="enabledenabled-1"><span class="tsd-signature-keyword">set</span> <span class="tsd-kind-set-signature">enabled</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">boolean</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.enabled</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L79">controls/Controls.ts:79</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="input"><span>input</span><a href="#input" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li>
+<div class="tsd-signature" id="inputinput"><span class="tsd-signature-keyword">get</span> <span class="tsd-kind-get-signature">input</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <a href="input_PointerManager.default.html" class="tsd-signature-type tsd-kind-class">default</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></div>
+<div class="tsd-description">
+<h4 class="tsd-returns-title">Returns <a href="input_PointerManager.default.html" class="tsd-signature-type tsd-kind-class">default</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.input</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L89">controls/Controls.ts:89</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="keyboard"><span>keyboard</span><a href="#keyboard" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li>
+<div class="tsd-signature" id="keyboardkeyboard"><span class="tsd-signature-keyword">get</span> <span class="tsd-kind-get-signature">keyboard</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <a href="input_KeyboardManager.default.html" class="tsd-signature-type tsd-kind-class">default</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></div>
+<div class="tsd-description">
+<h4 class="tsd-returns-title">Returns <a href="input_KeyboardManager.default.html" class="tsd-signature-type tsd-kind-class">default</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.keyboard</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L93">controls/Controls.ts:93</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="keys"><span>keys</span><a href="#keys" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li>
+<div class="tsd-signature" id="keyskeys"><span class="tsd-signature-keyword">get</span> <span class="tsd-kind-get-signature">keys</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/controls_gestures.MovementKeys.html" class="tsd-signature-type tsd-kind-interface">MovementKeys</a></div>
+<div class="tsd-description">
+<h4 class="tsd-returns-title">Returns <a href="../interfaces/controls_gestures.MovementKeys.html" class="tsd-signature-type tsd-kind-interface">MovementKeys</a></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.keys</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L143">controls/SteeringControls.ts:143</a></li></ul></aside></div></li>
+<li>
+<div class="tsd-signature" id="keyskeys-1"><span class="tsd-signature-keyword">set</span> <span class="tsd-kind-set-signature">keys</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">keys</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/controls_gestures.MovementKeys.html" class="tsd-signature-type tsd-kind-interface">MovementKeys</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">keys</span>: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/controls_gestures.MovementKeys.html" class="tsd-signature-type tsd-kind-interface">MovementKeys</a><span class="tsd-signature-symbol">&gt;</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.keys</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L146">controls/SteeringControls.ts:146</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="restangle"><code class="tsd-tag">Protected</code><span>rest<wbr/>Angle</span><a href="#restangle" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li>
+<div class="tsd-signature" id="restanglerestangle"><span class="tsd-signature-keyword">get</span> <span class="tsd-kind-get-signature">restAngle</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-description">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.restAngle</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L329">controls/SteeringControls.ts:329</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="up"><span>up</span><a href="#up" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li>
+<div class="tsd-signature" id="upup"><span class="tsd-signature-keyword">get</span> <span class="tsd-kind-get-signature">up</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Fixed up axis of the world.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Vec3</span></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.up</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L151">controls/SteeringControls.ts:151</a></li></ul></aside></div></li>
+<li>
+<div class="tsd-signature" id="upup-1"><span class="tsd-signature-keyword">set</span> <span class="tsd-kind-set-signature">up</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">Vec3</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.up</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L154">controls/SteeringControls.ts:154</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="usercontrolling"><span>user<wbr/>Controlling</span><a href="#usercontrolling" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li>
+<div class="tsd-signature" id="usercontrollingusercontrolling"><span class="tsd-signature-keyword">get</span> <span class="tsd-kind-get-signature">userControlling</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>A user gesture, or the fling following it, is in progress.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
+<p>Inherited from SteeringControls.userControlling</p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L85">controls/Controls.ts:85</a></li></ul></aside></div></li></ul></section></section></details>
+<details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h2 class="tsd-anchor-link" id="methods-1">Methods<a href="#methods-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
+<section>
+<section class="tsd-panel tsd-member tsd-is-protected">
+<h3 class="tsd-anchor-link" id="applyaction"><code class="tsd-tag">Protected</code><span>apply<wbr/>Action</span><a href="#applyaction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="applyaction-1"><span class="tsd-kind-call-signature">applyAction</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">action</span><span class="tsd-signature-symbol">:</span> <a href="../types/controls_FlyControls.FlyAction.html" class="tsd-signature-type tsd-kind-type-alias">FlyAction</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">gesture</span><span class="tsd-signature-symbol">:</span> <a href="../types/controls_types.Gesture.html" class="tsd-signature-type tsd-kind-type-alias">Gesture</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#applyaction-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">action</span>: <a href="../types/controls_FlyControls.FlyAction.html" class="tsd-signature-type tsd-kind-type-alias">FlyAction</a></span></li>
+<li><span><span class="tsd-kind-parameter">gesture</span>: <a href="../types/controls_types.Gesture.html" class="tsd-signature-type tsd-kind-type-alias">Gesture</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Overrides <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#applyaction">applyAction</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L202">controls/FlyControls.ts:202</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="applyposeoffset"><code class="tsd-tag">Protected</code> <code class="tsd-tag">Optional</code><span>apply<wbr/>Pose<wbr/>Offset</span><a href="#applyposeoffset" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="applyposeoffset-1"><span class="tsd-kind-call-signature">applyPoseOffset</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">position</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#applyposeoffset-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Pose-only position offset, e.g. head bob.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">position</span>: <span class="tsd-signature-type">Vec3</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#applyposeoffset">applyPoseOffset</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L326">controls/SteeringControls.ts:326</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="applyto"><span>apply<wbr/>To</span><a href="#applyto" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="applyto-1"><span class="tsd-kind-call-signature">applyTo</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#applytot">T</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">object</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#applytot">T</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">adapter</span><span class="tsd-signature-symbol">?:</span> <a href="../types/core_pose.PoseAdapter.html" class="tsd-signature-type tsd-kind-type-alias">PoseAdapter</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#applytot">T</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#applytot">T</a><a href="#applyto-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Write the pose into an object, by default its <code>position</code>, <code>target</code>, <code>up</code>,
+<code>orientation</code>, <code>zoom</code>, <code>fov</code> and <code>focusDistance</code> when present.</p>
+</div>
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li><span id="applytot"><span class="tsd-kind-type-parameter">T</span></span></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">object</span>: <a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#applytot">T</a></span></li>
+<li><span><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">adapter</span>: <a href="../types/core_pose.PoseAdapter.html" class="tsd-signature-type tsd-kind-type-alias">PoseAdapter</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#applytot">T</a><span class="tsd-signature-symbol">&gt;</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#applytot">T</a></h4><p>Object</p>
+<aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#applyto">applyTo</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/core/PoseSource.ts#L91">core/PoseSource.ts:91</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="attach"><span>attach</span><a href="#attach" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="attach-1"><span class="tsd-kind-call-signature">attach</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">input</span><span class="tsd-signature-symbol">:</span> <a href="input_PointerManager.default.html" class="tsd-signature-type tsd-kind-class">default</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">keyboard</span><span class="tsd-signature-symbol">?:</span> <a href="input_KeyboardManager.default.html" class="tsd-signature-type tsd-kind-class">default</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#attach-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Listen to input managers. The managers stay owned by the caller.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">input</span>: <a href="input_PointerManager.default.html" class="tsd-signature-type tsd-kind-class">default</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></span></li>
+<li><span><span class="tsd-kind-parameter">keyboard</span>: <a href="input_KeyboardManager.default.html" class="tsd-signature-type tsd-kind-class">default</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#attach">attach</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L98">controls/Controls.ts:98</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="commit"><code class="tsd-tag">Protected</code><span>commit</span><a href="#commit" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="commit-1"><span class="tsd-kind-call-signature">commit</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#commit-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Animate towards a programmatic change, or jump to it.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#commit">commit</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L179">controls/Controls.ts:179</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="detach"><span>detach</span><a href="#detach" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="detach-1"><span class="tsd-kind-call-signature">detach</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#detach-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Stop listening to input.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#detach">detach</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L122">controls/Controls.ts:122</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="dispose"><span>dispose</span><a href="#dispose" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="dispose-1"><span class="tsd-kind-call-signature">dispose</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#dispose-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Detach and remove all listeners.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#dispose">dispose</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L165">controls/Controls.ts:165</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="emit"><code class="tsd-tag">Protected</code><span>emit</span><a href="#emit" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="emit-1"><span class="tsd-kind-call-signature">emit</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#emitk">K</a> <span class="tsd-signature-keyword">extends</span> <span class="tsd-signature-keyword">keyof</span> <a href="../interfaces/controls_types.ControlsEventMap.html" class="tsd-signature-type tsd-kind-interface">ControlsEventMap</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">type</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#emitk">K</a><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">event</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/controls_types.ControlsEventMap.html" class="tsd-signature-type tsd-kind-interface">ControlsEventMap</a><span class="tsd-signature-symbol">[</span><a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#emitk">K</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#emit-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li><span id="emitk"><span class="tsd-kind-type-parameter">K</span> <span class="tsd-signature-keyword">extends</span> <span class="tsd-signature-keyword">keyof</span> <a href="../interfaces/controls_types.ControlsEventMap.html" class="tsd-signature-type tsd-kind-interface">ControlsEventMap</a></span></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">type</span>: <a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#emitk">K</a></span></li>
+<li><span><span class="tsd-kind-parameter">event</span>: <a href="../interfaces/controls_types.ControlsEventMap.html" class="tsd-signature-type tsd-kind-interface">ControlsEventMap</a><span class="tsd-signature-symbol">[</span><a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#emitk">K</a><span class="tsd-signature-symbol">]</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#emit">emit</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/core/Emitter.ts#L43">core/Emitter.ts:43</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="endaction"><code class="tsd-tag">Protected</code><span>end<wbr/>Action</span><a href="#endaction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="endaction-1"><span class="tsd-kind-call-signature">endAction</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">action</span><span class="tsd-signature-symbol">:</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;roll&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;zoom&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;truck-dolly&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;truck-pedestal&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;pedestal&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;dolly&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;aim&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;pan-tilt&quot;</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#endaction-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>The press ends, before any fling.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">action</span>: <br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;roll&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;zoom&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;truck-dolly&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;truck-pedestal&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;pedestal&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;dolly&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;aim&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;pan-tilt&quot;</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#endaction">endAction</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L253">controls/SteeringControls.ts:253</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getorientation"><span>get<wbr/>Orientation</span><a href="#getorientation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getorientation-1"><span class="tsd-kind-call-signature">getOrientation</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">out</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Quat</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">end</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Quat</span><a href="#getorientation-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">out</span>: <span class="tsd-signature-type">Quat</span><span class="tsd-signature-symbol"> = ...</span></span></li>
+<li><span><span class="tsd-kind-parameter">end</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Quat</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L153">controls/FlyControls.ts:153</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="getposition"><span>get<wbr/>Position</span><a href="#getposition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="getposition-1"><span class="tsd-kind-call-signature">getPosition</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">out</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">end</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><a href="#getposition-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">out</span>: <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol"> = ...</span></span></li>
+<li><span><span class="tsd-kind-parameter">end</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Vec3</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#getposition">getPosition</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L161">controls/SteeringControls.ts:161</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="getstate"><span>get<wbr/>State</span><a href="#getstate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="getstate-1"><span class="tsd-kind-call-signature">getState</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/controls_FlyControls.FlyState.html" class="tsd-signature-type tsd-kind-interface">FlyState</a><a href="#getstate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Snapshot of the end state.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <a href="../interfaces/controls_FlyControls.FlyState.html" class="tsd-signature-type tsd-kind-interface">FlyState</a></h4><aside class="tsd-sources">
+<p>Overrides <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#getstate">getState</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L189">controls/FlyControls.ts:189</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="getzoom"><span>get<wbr/>Zoom</span><a href="#getzoom" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="getzoom-1"><span class="tsd-kind-call-signature">getZoom</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">end</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><a href="#getzoom-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">end</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#getzoom">getZoom</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L190">controls/SteeringControls.ts:190</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="invalidate"><code class="tsd-tag">Protected</code><span>invalidate</span><a href="#invalidate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="invalidate-1"><span class="tsd-kind-call-signature">invalidate</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#invalidate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Request a pose update on the next <code>update</code> even if nothing moves.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#invalidate">invalidate</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/core/PoseSource.ts#L96">core/PoseSource.ts:96</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="level"><span>level</span><a href="#level" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="level-1"><span class="tsd-kind-call-signature">level</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#level-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Bring the camera's up back to the world up, keeping the view direction.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L184">controls/FlyControls.ts:184</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="lookat"><span>look<wbr/>At</span><a href="#lookat" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="lookat-1"><span class="tsd-kind-call-signature">lookAt</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">target</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#lookat-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Look at a point, keeping the current roll as much as possible.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">target</span>: <span class="tsd-signature-type">Vec3</span></span></li>
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L177">controls/FlyControls.ts:177</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="move"><span>move</span><a href="#move" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="move-1"><span class="tsd-kind-call-signature">move</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">x</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">y</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">z</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#move-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Move in the camera frame: x right, y up, z forward. Walking controllers
+keep z on the ground.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">x</span>: <span class="tsd-signature-type">number</span></span></li>
+<li><span><span class="tsd-kind-parameter">y</span>: <span class="tsd-signature-type">number</span></span></li>
+<li><span><span class="tsd-kind-parameter">z</span>: <span class="tsd-signature-type">number</span></span></li>
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#move">move</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L185">controls/SteeringControls.ts:185</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="movebasis"><code class="tsd-tag">Protected</code><span>move<wbr/>Basis</span><a href="#movebasis" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="movebasis-1"><span class="tsd-kind-call-signature">moveBasis</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">right</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">up</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">forward</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#movebasis-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Right, up and forward unit vectors for movement.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">right</span>: <span class="tsd-signature-type">Vec3</span></span></li>
+<li><span><span class="tsd-kind-parameter">up</span>: <span class="tsd-signature-type">Vec3</span></span></li>
+<li><span><span class="tsd-kind-parameter">forward</span>: <span class="tsd-signature-type">Vec3</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#movebasis">moveBasis</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L311">controls/SteeringControls.ts:311</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="on"><span>on</span><a href="#on" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="on-1"><span class="tsd-kind-call-signature">on</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#onk">K</a> <span class="tsd-signature-keyword">extends</span> <span class="tsd-signature-keyword">keyof</span> <a href="../interfaces/controls_types.ControlsEventMap.html" class="tsd-signature-type tsd-kind-interface">ControlsEventMap</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">type</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#onk">K</a><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">listener</span><span class="tsd-signature-symbol">:</span> <a href="../types/core_Emitter.Listener.html" class="tsd-signature-type tsd-kind-type-alias">Listener</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/controls_types.ControlsEventMap.html" class="tsd-signature-type tsd-kind-interface">ControlsEventMap</a><span class="tsd-signature-symbol">[</span><a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#onk">K</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">__namedParameters</span><span class="tsd-signature-symbol">?:</span> <a href="../interfaces/core_Emitter.ListenerOptions.html" class="tsd-signature-type tsd-kind-interface">ListenerOptions</a><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">()</span> <span class="tsd-signature-symbol">=&gt;</span> <span class="tsd-signature-type">void</span><a href="#on-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Add a listener. Remove it with the returned function or an <code>AbortSignal</code>.</p>
+</div>
+<section class="tsd-panel">
+<h4>Type Parameters</h4>
+<ul class="tsd-type-parameter-list">
+<li><span id="onk"><span class="tsd-kind-type-parameter">K</span> <span class="tsd-signature-keyword">extends</span> <span class="tsd-signature-keyword">keyof</span> <a href="../interfaces/controls_types.ControlsEventMap.html" class="tsd-signature-type tsd-kind-interface">ControlsEventMap</a></span></li></ul></section>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">type</span>: <a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#onk">K</a></span></li>
+<li><span><span class="tsd-kind-parameter">listener</span>: <a href="../types/core_Emitter.Listener.html" class="tsd-signature-type tsd-kind-type-alias">Listener</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/controls_types.ControlsEventMap.html" class="tsd-signature-type tsd-kind-interface">ControlsEventMap</a><span class="tsd-signature-symbol">[</span><a class="tsd-signature-type tsd-kind-type-parameter" href="controls_Controls.default.html#onk">K</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></span></li>
+<li><span><span class="tsd-kind-parameter">__namedParameters</span>: <a href="../interfaces/core_Emitter.ListenerOptions.html" class="tsd-signature-type tsd-kind-interface">ListenerOptions</a><span class="tsd-signature-symbol"> = {}</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">()</span> <span class="tsd-signature-symbol">=&gt;</span> <span class="tsd-signature-type">void</span></h4><p>A function removing the listener.</p>
+<aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#on">on</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/core/Emitter.ts#L18">core/Emitter.ts:18</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected">
+<h3 class="tsd-anchor-link" id="orientation"><code class="tsd-tag">Protected</code><span>orientation</span><a href="#orientation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="orientation-1"><span class="tsd-kind-call-signature">orientation</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">out</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Quat</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Quat</span><a href="#orientation-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Current orientation.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">out</span>: <span class="tsd-signature-type">Quat</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Quat</span></h4><aside class="tsd-sources">
+<p>Overrides <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#orientation">orientation</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L225">controls/FlyControls.ts:225</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="removealllisteners"><code class="tsd-tag">Protected</code><span>remove<wbr/>All<wbr/>Listeners</span><a href="#removealllisteners" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="removealllisteners-1"><span class="tsd-kind-call-signature">removeAllListeners</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#removealllisteners-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#removealllisteners">removeAllListeners</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/core/Emitter.ts#L47">core/Emitter.ts:47</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="reset"><span>reset</span><a href="#reset" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="reset-1"><span class="tsd-kind-call-signature">reset</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#reset-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Go back to the state remembered by <code>saveState</code>, by default the initial one.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#reset">reset</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L152">controls/Controls.ts:152</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="rotate"><span>rotate</span><a href="#rotate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="rotate-1"><span class="tsd-kind-call-signature">rotate</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">pan</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">tilt</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">roll</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#rotate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Rotate around the camera's own up (pan, counter-clockwise), right (tilt,
+upwards) and back (roll, counter-clockwise) axes.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">pan</span>: <span class="tsd-signature-type">number</span></span></li>
+<li><span><span class="tsd-kind-parameter">tilt</span>: <span class="tsd-signature-type">number</span></span></li>
+<li><span><span class="tsd-kind-parameter">roll</span>: <span class="tsd-signature-type">number</span></span></li>
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L166">controls/FlyControls.ts:166</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="savestate"><span>save<wbr/>State</span><a href="#savestate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="savestate-1"><span class="tsd-kind-call-signature">saveState</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#savestate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Remember the end state for <code>reset</code>.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#savestate">saveState</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L146">controls/Controls.ts:146</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="set"><span>set</span><a href="#set" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="set-1"><span class="tsd-kind-call-signature">set</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/controls_FlyControls.FlySettings.html" class="tsd-signature-type tsd-kind-interface">FlySettings</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#set-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Update settings without aliasing the given arrays and objects.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">options</span>: <a href="../interfaces/controls_FlyControls.FlySettings.html" class="tsd-signature-type tsd-kind-interface">FlySettings</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#set">set</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/core/PoseSource.ts#L53">core/PoseSource.ts:53</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="setend"><code class="tsd-tag">Protected</code><span>set<wbr/>End</span><a href="#setend" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="setend-1"><span class="tsd-kind-call-signature">setEnd</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">position</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">zoom</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#setend-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Set the end position and zoom within the constraints.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">position</span>: <span class="tsd-signature-type">Vec3</span></span></li>
+<li><span><span class="tsd-kind-parameter">zoom</span>: <span class="tsd-signature-type">number</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#setend">setEnd</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L319">controls/SteeringControls.ts:319</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="setorientation"><span>set<wbr/>Orientation</span><a href="#setorientation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="setorientation-1"><span class="tsd-kind-call-signature">setOrientation</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">orientation</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Quat</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#setorientation-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">orientation</span>: <span class="tsd-signature-type">Quat</span></span></li>
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L157">controls/FlyControls.ts:157</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected">
+<h3 class="tsd-anchor-link" id="setorientationend"><code class="tsd-tag">Protected</code><span>set<wbr/>Orientation<wbr/>End</span><a href="#setorientationend" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="setorientationend-1"><span class="tsd-kind-call-signature">setOrientationEnd</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">orientation</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Quat</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#setorientationend-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">orientation</span>: <span class="tsd-signature-type">Quat</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Overrides <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#setorientationend">setOrientationEnd</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L221">controls/FlyControls.ts:221</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="setpose"><span>set<wbr/>Pose</span><a href="#setpose" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="setpose-1"><span class="tsd-kind-call-signature">setPose</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">position</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">orientation</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Quat</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#setpose-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Place the camera at a position, looking along an orientation, as closely as
+the controller represents it. The zoom is kept.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">position</span>: <span class="tsd-signature-type">Vec3</span></span></li>
+<li><span><span class="tsd-kind-parameter">orientation</span>: <span class="tsd-signature-type">Quat</span></span></li>
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#setpose">setPose</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L175">controls/SteeringControls.ts:175</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="setposition"><span>set<wbr/>Position</span><a href="#setposition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="setposition-1"><span class="tsd-kind-call-signature">setPosition</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">position</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Vec3</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#setposition-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Teleport, or travel with a transition.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">position</span>: <span class="tsd-signature-type">Vec3</span></span></li>
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#setposition">setPosition</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L166">controls/SteeringControls.ts:166</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="setstate"><span>set<wbr/>State</span><a href="#setstate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="setstate-1"><span class="tsd-kind-call-signature">setState</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">state</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/controls_FlyControls.FlyState.html" class="tsd-signature-type tsd-kind-interface">FlyState</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#setstate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">state</span>: <a href="../interfaces/controls_FlyControls.FlyState.html" class="tsd-signature-type tsd-kind-interface">FlyState</a></span></li>
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Overrides <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#setstate">setState</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L197">controls/FlyControls.ts:197</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="startaction"><code class="tsd-tag">Protected</code><span>start<wbr/>Action</span><a href="#startaction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="startaction-1"><span class="tsd-kind-call-signature">startAction</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">action</span><span class="tsd-signature-symbol">:</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;roll&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;zoom&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;truck-dolly&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;truck-pedestal&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;pedestal&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;dolly&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;aim&quot;</span><br/>        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;pan-tilt&quot;</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#startaction-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>A press bound to the action starts.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">action</span>: <br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;roll&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;zoom&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;truck-dolly&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;truck-pedestal&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;pedestal&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;dolly&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;aim&quot;</span><br/>    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;pan-tilt&quot;</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#startaction">startAction</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L247">controls/SteeringControls.ts:247</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="step"><code class="tsd-tag">Protected</code><span>step</span><a href="#step" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="step-1"><span class="tsd-kind-call-signature">step</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">dt</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><a href="#step-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Advance state by dt. Returns false once settled.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">dt</span>: <span class="tsd-signature-type">number</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#step">step</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L257">controls/SteeringControls.ts:257</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected">
+<h3 class="tsd-anchor-link" id="steprotation"><code class="tsd-tag">Protected</code><span>step<wbr/>Rotation</span><a href="#steprotation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="steprotation-1"><span class="tsd-kind-call-signature">stepRotation</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">dt</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><a href="#steprotation-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Advance rotation damping. Returns false once settled.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">dt</span>: <span class="tsd-signature-type">number</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
+<p>Overrides <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#steprotation">stepRotation</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L229">controls/FlyControls.ts:229</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="stop"><span>stop</span><a href="#stop" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="stop-1"><span class="tsd-kind-call-signature">stop</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#stop-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Jump to the end of the current motion.</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#stop">stop</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L205">controls/SteeringControls.ts:205</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected">
+<h3 class="tsd-anchor-link" id="stoprotation"><code class="tsd-tag">Protected</code><span>stop<wbr/>Rotation</span><a href="#stoprotation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="stoprotation-1"><span class="tsd-kind-call-signature">stopRotation</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#stoprotation-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Overrides <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#stoprotation">stopRotation</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/FlyControls.ts#L258">controls/FlyControls.ts:258</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="update"><span>update</span><a href="#update" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="update-1"><span class="tsd-kind-call-signature">update</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">dt</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><a href="#update-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Coast with the released drag velocity, then advance and update the pose.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">dt</span>: <span class="tsd-signature-type">number</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#update">update</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/Controls.ts#L159">controls/Controls.ts:159</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="writepose"><code class="tsd-tag">Protected</code><span>write<wbr/>Pose</span><a href="#writepose" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="writepose-1"><span class="tsd-kind-call-signature">writePose</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">out</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/core_pose.Pose.html" class="tsd-signature-type tsd-kind-interface">Pose</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#writepose-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">out</span>: <a href="../interfaces/core_pose.Pose.html" class="tsd-signature-type tsd-kind-interface">Pose</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#writepose">writePose</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L298">controls/SteeringControls.ts:298</a></li></ul></aside></div></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited">
+<h3 class="tsd-anchor-link" id="zoomto"><span>zoom<wbr/>To</span><a href="#zoomto" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-is-inherited">
+<div class="tsd-signature tsd-anchor-link" id="zoomto-1"><span class="tsd-kind-call-signature">zoomTo</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">zoom</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">transition</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">this</span><a href="#zoomto-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Without a transition, only the zoom jumps: other motion carries on.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">zoom</span>: <span class="tsd-signature-type">number</span></span></li>
+<li><span><span class="tsd-kind-parameter">transition</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4><aside class="tsd-sources">
+<p>Inherited from <a href="index.SteeringControls.html">SteeringControls</a>.<a href="index.SteeringControls.html#zoomto">zoomTo</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/2164f6c76f3f60021cf7189183fe4258ed907ce6/src/controls/SteeringControls.ts#L195">controls/SteeringControls.ts:195</a></li></ul></aside></div></li></ul></section></section></details></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h3>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div>
+<div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+<h3>On This Page</h3></summary>
+<div class="tsd-accordion-details">
+<details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Constructors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Constructors</summary>
+<div><a href="#constructor"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Constructor"><use href="../assets/icons.svg#icon-512"></use></svg><span>constructor</span></a></div></details>
+<details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Properties"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Properties</summary>
+<div><a href="#aimzoom" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>aim<wbr/>Zoom</span></a><a href="#autolevel"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>auto<wbr/>Level</span></a><a href="#bindings" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>bindings</span></a><a href="#constrain" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>constrain</span></a><a href="#droptime"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>drop<wbr/>Time</span></a><a href="#inertia" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>inertia</span></a><a href="#lens" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>lens</span></a><a href="#levelkeys"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>level<wbr/>Keys</span></a><a href="#looksmoothtime"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>look<wbr/>Smooth<wbr/>Time</span></a><a href="#lookspeed"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>look<wbr/>Speed</span></a><a href="#minflingspeed" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>min<wbr/>Fling<wbr/>Speed</span></a><a href="#movesmoothtime" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>move<wbr/>Smooth<wbr/>Time</span></a><a href="#pose" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>pose</span></a><a href="#position" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>position</span></a><a href="#positionend" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>position<wbr/>End</span></a><a href="#restthreshold" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>rest<wbr/>Threshold</span></a><a href="#rollkeys"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>roll<wbr/>Keys</span></a><a href="#rollspeed"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>roll<wbr/>Speed</span></a><a href="#slowmultiplier" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>slow<wbr/>Multiplier</span></a><a href="#speed" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>speed</span></a><a href="#sprintmultiplier" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>sprint<wbr/>Multiplier</span></a><a href="#upspace" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>up<wbr/>Space</span></a><a href="#upspaceinverse" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>up<wbr/>Space<wbr/>Inverse</span></a><a href="#upvector" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>up<wbr/>Vector</span></a><a href="#zoombounds" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>Bounds</span></a><a href="#zoomend" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>End</span></a><a href="#zoomsmoothtime" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>Smooth<wbr/>Time</span></a><a href="#zoomspeed" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>Speed</span></a><a href="#zoomvalue" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>zoom<wbr/>Value</span></a><a href="#default_bindings"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>DEFAULT_<wbr/>BINDINGS</span></a></div></details>
+<details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Accessors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Accessors</summary>
+<div><a href="#enabled" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>enabled</span></a><a href="#input" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>input</span></a><a href="#keyboard" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>keyboard</span></a><a href="#keys" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>keys</span></a><a href="#restangle" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>rest<wbr/>Angle</span></a><a href="#up" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>up</span></a><a href="#usercontrolling" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../assets/icons.svg#icon-262144"></use></svg><span>user<wbr/>Controlling</span></a></div></details>
+<details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Methods</summary>
+<div><a href="#applyaction" class="tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>apply<wbr/>Action</span></a><a href="#applyposeoffset" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>apply<wbr/>Pose<wbr/>Offset</span></a><a href="#applyto" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>apply<wbr/>To</span></a><a href="#attach" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>attach</span></a><a href="#commit" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>commit</span></a><a href="#detach" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>detach</span></a><a href="#dispose" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>dispose</span></a><a href="#emit" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>emit</span></a><a href="#endaction" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>end<wbr/>Action</span></a><a href="#getorientation"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Orientation</span></a><a href="#getposition" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Position</span></a><a href="#getstate"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>State</span></a><a href="#getzoom" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>get<wbr/>Zoom</span></a><a href="#invalidate" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>invalidate</span></a><a href="#level"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>level</span></a><a href="#lookat"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>look<wbr/>At</span></a><a href="#move" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>move</span></a><a href="#movebasis" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>move<wbr/>Basis</span></a><a href="#on" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>on</span></a><a href="#orientation" class="tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>orientation</span></a><a href="#removealllisteners" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>remove<wbr/>All<wbr/>Listeners</span></a><a href="#reset" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>reset</span></a><a href="#rotate"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>rotate</span></a><a href="#savestate" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>save<wbr/>State</span></a><a href="#set" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set</span></a><a href="#setend" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>End</span></a><a href="#setorientation"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>Orientation</span></a><a href="#setorientationend" class="tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>Orientation<wbr/>End</span></a><a href="#setpose" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>Pose</span></a><a href="#setposition" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>Position</span></a><a href="#setstate"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>set<wbr/>State</span></a><a href="#startaction" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>start<wbr/>Action</span></a><a href="#step" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>step</span></a><a href="#steprotation" class="tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>step<wbr/>Rotation</span></a><a href="#stop" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>stop</span></a><a href="#stoprotation" class="tsd-is-protected"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>stop<wbr/>Rotation</span></a><a href="#update" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>update</span></a><a href="#writepose" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>write<wbr/>Pose</span></a><a href="#zoomto" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>zoom<wbr/>To</span></a></div></details></div></details></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="../modules.html">cameras</a>
+<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
+<li>Loading...</li></ul></nav></div></div></div><footer>
+<p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer>
+<div class="overlay"></div><script>
+          try {
+            const generateLinkElement = document.querySelector(".tsd-generator a");
+            const link = document.createElement("a");
+            Object.assign(link, {
+              href: "https://github.com/dmnsgn/typedoc-material-theme",
+              target: "_blank",
+              rel: "noreferrer",
+              innerText: "typedoc-material-theme."
+            });
+            generateLinkElement.insertAdjacentElement("afterend", link);
+            generateLinkElement.insertAdjacentText("afterend", " with ");
+          } catch (error) {
+
+          }
+        </script></body></html>
