@@ -54,8 +54,8 @@ const layer = (
 const HANDHELD_FOV: Radian = (40 * Math.PI) / 180;
 
 /**
- * Cinemachine handheld noise profiles at a normal focal length: a slow drift,
- * a sway and a tremor, in rotation only.
+ * Cinemachine handheld noise profiles at a normal focal length: a slow drift, a
+ * sway and a tremor, in rotation only.
  *
  * @see https://github.com/Unity-Technologies/com.unity.cinemachine/tree/main/com.unity.cinemachine/Presets/Noise
  */

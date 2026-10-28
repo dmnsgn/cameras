@@ -1,0 +1,298 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>cameras</title><meta name="description" content="Documentation for cameras"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script><style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --md-sys-color-primary: #f6be46;
+    --md-sys-color-on-primary: #412d00;
+    --md-sys-color-primary-container: #5d4200;
+    --md-sys-color-on-primary-container: #ffdea3;
+    --md-sys-color-secondary: #d9c4a0;
+    --md-sys-color-on-secondary: #3b2f15;
+    --md-sys-color-secondary-container: #53452a;
+    --md-sys-color-on-secondary-container: #f6e0bb;
+    --md-sys-color-tertiary: #b2cfa8;
+    --md-sys-color-on-tertiary: #1e361a;
+    --md-sys-color-tertiary-container: #344d2f;
+    --md-sys-color-on-tertiary-container: #cdebc2;
+    --md-sys-color-error: #ffb4ab;
+    --md-sys-color-on-error: #690005;
+    --md-sys-color-error-container: #93000a;
+    --md-sys-color-on-error-container: #ffb4ab;
+    --md-sys-color-background: #1e1b16;
+    --md-sys-color-on-background: #e9e1d9;
+    --md-sys-color-surface: #1e1b16;
+    --md-sys-color-on-surface: #e9e1d9;
+    --md-sys-color-surface-variant: #4e4639;
+    --md-sys-color-on-surface-variant: #d1c5b4;
+    --md-sys-color-outline: #9a8f80;
+    --md-sys-color-outline-variant: #4e4639;
+    --md-sys-color-shadow: #000000;
+    --md-sys-color-scrim: #000000;
+    --md-sys-color-inverse-surface: #e9e1d9;
+    --md-sys-color-inverse-on-surface: #34302a;
+    --md-sys-color-inverse-primary: #7a5900;
+    --md-sys-color-surface-dim: #16130e;
+    --md-sys-color-surface-bright: #3d3933;
+    --md-sys-color-surface-container-lowest: #110e09;
+    --md-sys-color-surface-container-low: #1e1b16;
+    --md-sys-color-surface-container: #221f1a;
+    --md-sys-color-surface-container-high: #2d2924;
+    --md-sys-color-surface-container-highest: #38342e
+  }
+}
+:root[data-theme="dark"] {
+  --md-sys-color-primary: #f6be46;
+  --md-sys-color-on-primary: #412d00;
+  --md-sys-color-primary-container: #5d4200;
+  --md-sys-color-on-primary-container: #ffdea3;
+  --md-sys-color-secondary: #d9c4a0;
+  --md-sys-color-on-secondary: #3b2f15;
+  --md-sys-color-secondary-container: #53452a;
+  --md-sys-color-on-secondary-container: #f6e0bb;
+  --md-sys-color-tertiary: #b2cfa8;
+  --md-sys-color-on-tertiary: #1e361a;
+  --md-sys-color-tertiary-container: #344d2f;
+  --md-sys-color-on-tertiary-container: #cdebc2;
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000a;
+  --md-sys-color-on-error-container: #ffb4ab;
+  --md-sys-color-background: #1e1b16;
+  --md-sys-color-on-background: #e9e1d9;
+  --md-sys-color-surface: #1e1b16;
+  --md-sys-color-on-surface: #e9e1d9;
+  --md-sys-color-surface-variant: #4e4639;
+  --md-sys-color-on-surface-variant: #d1c5b4;
+  --md-sys-color-outline: #9a8f80;
+  --md-sys-color-outline-variant: #4e4639;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-inverse-surface: #e9e1d9;
+  --md-sys-color-inverse-on-surface: #34302a;
+  --md-sys-color-inverse-primary: #7a5900;
+  --md-sys-color-surface-dim: #16130e;
+  --md-sys-color-surface-bright: #3d3933;
+  --md-sys-color-surface-container-lowest: #110e09;
+  --md-sys-color-surface-container-low: #1e1b16;
+  --md-sys-color-surface-container: #221f1a;
+  --md-sys-color-surface-container-high: #2d2924;
+  --md-sys-color-surface-container-highest: #38342e
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --md-sys-color-primary: #7a5900;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #ffdea3;
+    --md-sys-color-on-primary-container: #261900;
+    --md-sys-color-secondary: #6c5c3f;
+    --md-sys-color-on-secondary: #ffffff;
+    --md-sys-color-secondary-container: #f6e0bb;
+    --md-sys-color-on-secondary-container: #251a04;
+    --md-sys-color-tertiary: #4b6545;
+    --md-sys-color-on-tertiary: #ffffff;
+    --md-sys-color-tertiary-container: #cdebc2;
+    --md-sys-color-on-tertiary-container: #092007;
+    --md-sys-color-error: #ba1a1a;
+    --md-sys-color-on-error: #ffffff;
+    --md-sys-color-error-container: #ffdad6;
+    --md-sys-color-on-error-container: #410002;
+    --md-sys-color-background: #fffbff;
+    --md-sys-color-on-background: #1e1b16;
+    --md-sys-color-surface: #fffbff;
+    --md-sys-color-on-surface: #1e1b16;
+    --md-sys-color-surface-variant: #ede1cf;
+    --md-sys-color-on-surface-variant: #4e4639;
+    --md-sys-color-outline: #7f7667;
+    --md-sys-color-outline-variant: #d1c5b4;
+    --md-sys-color-shadow: #000000;
+    --md-sys-color-scrim: #000000;
+    --md-sys-color-inverse-surface: #34302a;
+    --md-sys-color-inverse-on-surface: #f8efe7;
+    --md-sys-color-inverse-primary: #f6be46;
+    --md-sys-color-surface-dim: #e1d9d0;
+    --md-sys-color-surface-bright: #fff8f2;
+    --md-sys-color-surface-container-lowest: #ffffff;
+    --md-sys-color-surface-container-low: #fbf2e9;
+    --md-sys-color-surface-container: #f5ede4;
+    --md-sys-color-surface-container-high: #efe7de;
+    --md-sys-color-surface-container-highest: #e9e1d9
+  }
+}
+:root[data-theme="light"] {
+  --md-sys-color-primary: #7a5900;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #ffdea3;
+  --md-sys-color-on-primary-container: #261900;
+  --md-sys-color-secondary: #6c5c3f;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #f6e0bb;
+  --md-sys-color-on-secondary-container: #251a04;
+  --md-sys-color-tertiary: #4b6545;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #cdebc2;
+  --md-sys-color-on-tertiary-container: #092007;
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-background: #fffbff;
+  --md-sys-color-on-background: #1e1b16;
+  --md-sys-color-surface: #fffbff;
+  --md-sys-color-on-surface: #1e1b16;
+  --md-sys-color-surface-variant: #ede1cf;
+  --md-sys-color-on-surface-variant: #4e4639;
+  --md-sys-color-outline: #7f7667;
+  --md-sys-color-outline-variant: #d1c5b4;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-inverse-surface: #34302a;
+  --md-sys-color-inverse-on-surface: #f8efe7;
+  --md-sys-color-inverse-primary: #f6be46;
+  --md-sys-color-surface-dim: #e1d9d0;
+  --md-sys-color-surface-bright: #fff8f2;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #fbf2e9;
+  --md-sys-color-surface-container: #f5ede4;
+  --md-sys-color-surface-container-high: #efe7de;
+  --md-sys-color-surface-container-highest: #e9e1d9
+}
+</style><link rel="stylesheet" href="assets/material-style.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container"><a href="index.html" class="title">cameras</a>
+<div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/>
+<ul role="listbox" id="tsd-search-results"></ul>
+<div id="tsd-search-status" aria-live="polite" aria-atomic="true">
+<div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<h1>cameras</h1></div>
+<h2>Hierarchy Summary</h2>
+<ul class="tsd-full-hierarchy">
+<li data-refl="417" id="camera/types.CameraOptions"><a href="interfaces/camera_types.CameraOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>CameraOptions</a>
+<ul>
+<li data-refl="437" id="camera/types.PerspectiveCameraOptions"><a href="interfaces/camera_types.PerspectiveCameraOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>PerspectiveCameraOptions</a></li>
+<li data-refl="459" id="camera/types.OrthographicCameraOptions"><a href="interfaces/camera_types.OrthographicCameraOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>OrthographicCameraOptions</a></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="1380" id="controls/types.ControlsSettings"><a href="interfaces/controls_types.ControlsSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>ControlsSettings</a>
+<ul>
+<li data-refl="1232" id="controls/SteeringControls.SteeringSettings"><a href="interfaces/controls_SteeringControls.SteeringSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>SteeringSettings</a>
+<ul>
+<li data-refl="639" id="controls/FirstPersonControls.FirstPersonSettings"><a href="interfaces/controls_FirstPersonControls.FirstPersonSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>FirstPersonSettings</a>
+<ul>
+<li data-refl="662" id="controls/FirstPersonControls.FirstPersonControlsOptions"><a href="interfaces/controls_FirstPersonControls.FirstPersonControlsOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>FirstPersonControlsOptions</a></li></ul></li>
+<li data-refl="698" id="controls/FlyControls.FlySettings"><a href="interfaces/controls_FlyControls.FlySettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>FlySettings</a>
+<ul>
+<li data-refl="723" id="controls/FlyControls.FlyControlsOptions"><a href="interfaces/controls_FlyControls.FlyControlsOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>FlyControlsOptions</a></li></ul></li>
+<li data-refl="1250" id="controls/SteeringControls.SteeringControlsOptions"><a href="interfaces/controls_SteeringControls.SteeringControlsOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>SteeringControlsOptions</a>
+<ul>
+<li data-refl="662"><a href="interfaces/controls_FirstPersonControls.FirstPersonControlsOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>FirstPersonControlsOptions</a></li>
+<li data-refl="723"><a href="interfaces/controls_FlyControls.FlyControlsOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>FlyControlsOptions</a></li></ul></li></ul></li>
+<li data-refl="1282" id="controls/TargetControls.TargetSettings"><a href="interfaces/controls_TargetControls.TargetSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>TargetSettings</a>
+<ul>
+<li data-refl="1204" id="controls/OrbitControls.OrbitControlsOptions"><a href="interfaces/controls_OrbitControls.OrbitControlsOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>OrbitControlsOptions</a></li>
+<li data-refl="1311" id="controls/TrackballControls.TrackballSettings"><a href="interfaces/controls_TrackballControls.TrackballSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>TrackballSettings</a>
+<ul>
+<li data-refl="1334" id="controls/TrackballControls.TrackballControlsOptions"><a href="interfaces/controls_TrackballControls.TrackballControlsOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>TrackballControlsOptions</a></li></ul></li></ul></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="1910" id="rigs/CraneRig.CraneSettings"><a href="interfaces/rigs_CraneRig.CraneSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>CraneSettings</a>
+<ul>
+<li data-refl="1917" id="rigs/CraneRig.CraneRigOptions"><a href="interfaces/rigs_CraneRig.CraneRigOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>CraneRigOptions</a></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="1963" id="rigs/PoseModifier.default"><a href="classes/rigs_PoseModifier.default.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>default</a>
+<ul>
+<li data-refl="4387" id="index.Composer"><a href="classes/index.Composer.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>Composer</a></li>
+<li data-refl="4462" id="index.GroupFraming"><a href="classes/index.GroupFraming.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>GroupFraming</a></li>
+<li data-refl="4523" id="index.Shake"><a href="classes/index.Shake.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>Shake</a></li>
+<li data-refl="4558" id="index.AutoFocus"><a href="classes/index.AutoFocus.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>AutoFocus</a></li>
+<li data-refl="4587" id="index.FollowZoom"><a href="classes/index.FollowZoom.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>FollowZoom</a></li>
+<li data-refl="4682" id="index.Handheld"><a href="classes/index.Handheld.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>Handheld</a></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="395" id="camera/projection.DepthOptions"><a href="interfaces/camera_projection.DepthOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>DepthOptions</a>
+<ul>
+<li data-refl="73" id="camera/Camera.default"><a href="classes/camera_Camera.default.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>default</a>
+<ul>
+<li data-refl="223" id="camera/OrthographicCamera.default"><a href="classes/camera_OrthographicCamera.default.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>default</a></li>
+<li data-refl="290" id="camera/PerspectiveCamera.default"><a href="classes/camera_PerspectiveCamera.default.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>default</a></li></ul></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="2118" id="index.Emitter"><a href="classes/index.Emitter.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>Emitter</a>
+<ul>
+<li data-refl="1515" id="input/KeyboardManager.default"><a href="classes/input_KeyboardManager.default.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>default</a></li>
+<li data-refl="1601" id="input/PointerManager.default"><a href="classes/input_PointerManager.default.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>default</a></li>
+<li data-refl="2139" id="index.PoseSource"><a href="classes/index.PoseSource.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>PoseSource</a>
+<ul>
+<li data-refl="490" id="controls/Controls.default"><a href="classes/controls_Controls.default.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>default</a>
+<ul>
+<li data-refl="2274" id="index.SteeringControls"><a href="classes/index.SteeringControls.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>SteeringControls</a>
+<ul>
+<li data-refl="3211" id="index.FirstPersonControls"><a href="classes/index.FirstPersonControls.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>FirstPersonControls</a></li>
+<li data-refl="3467" id="index.FlyControls"><a href="classes/index.FlyControls.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>FlyControls</a></li></ul></li>
+<li data-refl="2499" id="index.TargetControls"><a href="classes/index.TargetControls.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>TargetControls</a>
+<ul>
+<li data-refl="2825" id="index.OrbitControls"><a href="classes/index.OrbitControls.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>OrbitControls</a>
+<ul>
+<li data-refl="805" id="controls/MapControls.default"><a href="classes/controls_MapControls.default.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>default</a></li></ul></li>
+<li data-refl="3730" id="index.TrackballControls"><a href="classes/index.TrackballControls.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>TrackballControls</a></li></ul></li></ul></li>
+<li data-refl="4143" id="index.Sequence"><a href="classes/index.Sequence.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>Sequence</a></li>
+<li data-refl="4224" id="index.RailRig"><a href="classes/index.RailRig.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>RailRig</a></li>
+<li data-refl="4304" id="index.CraneRig"><a href="classes/index.CraneRig.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>CraneRig</a></li>
+<li data-refl="4617" id="index.Switcher"><a href="classes/index.Switcher.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Class"><use href="assets/icons.svg#icon-128"></use></svg>Switcher</a></li></ul></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="1787" id="input/types.Located"><a href="interfaces/input_types.Located.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>Located</a>
+<ul>
+<li data-refl="1793" id="input/types.PointerGesture"><a href="interfaces/input_types.PointerGesture.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>PointerGesture</a></li>
+<li data-refl="1811" id="input/types.WheelGesture"><a href="interfaces/input_types.WheelGesture.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>WheelGesture</a></li>
+<li data-refl="1822" id="input/types.PinchGesture"><a href="interfaces/input_types.PinchGesture.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>PinchGesture</a></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="2082" id="rigs/shot.MoveOptions"><a href="interfaces/rigs_shot.MoveOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>MoveOptions</a>
+<ul>
+<li data-refl="2014" id="rigs/Sequence.SequenceShot"><a href="interfaces/rigs_Sequence.SequenceShot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>SequenceShot</a></li>
+<li data-refl="2091" id="rigs/Switcher.SwitchOptions"><a href="interfaces/rigs_Switcher.SwitchOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>SwitchOptions</a>
+<ul>
+<li data-refl="2096" id="rigs/Switcher.SwitcherSettings"><a href="interfaces/rigs_Switcher.SwitcherSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>SwitcherSettings</a></li></ul></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="1504" id="core/PoseSource.PoseSourceEventMap"><a href="interfaces/core_PoseSource.PoseSourceEventMap.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>PoseSourceEventMap</a>
+<ul>
+<li data-refl="1372" id="controls/types.ControlsEventMap"><a href="interfaces/controls_types.ControlsEventMap.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>ControlsEventMap</a></li>
+<li data-refl="1986" id="rigs/RailRig.RailEventMap"><a href="interfaces/rigs_RailRig.RailEventMap.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>RailEventMap</a></li>
+<li data-refl="2021" id="rigs/Sequence.SequenceEventMap"><a href="interfaces/rigs_Sequence.SequenceEventMap.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>SequenceEventMap</a></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="1993" id="rigs/RailRig.RailSettings"><a href="interfaces/rigs_RailRig.RailSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>RailSettings</a>
+<ul>
+<li data-refl="2001" id="rigs/RailRig.RailRigOptions"><a href="interfaces/rigs_RailRig.RailRigOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>RailRigOptions</a></li></ul></li></ul>
+<ul class="tsd-full-hierarchy">
+<li data-refl="1508" id="core/spline.SplineOptions"><a href="interfaces/core_spline.SplineOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>SplineOptions</a>
+<ul>
+<li data-refl="2001"><a href="interfaces/rigs_RailRig.RailRigOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Interface"><use href="assets/icons.svg#icon-256"></use></svg>RailRigOptions</a></li></ul></li></ul></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg>
+<h3>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div>
+<div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="modules.html">cameras</a>
+<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
+<li>Loading...</li></ul></nav></div></div></div><footer>
+<p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer>
+<div class="overlay"></div><script>
+          try {
+            const generateLinkElement = document.querySelector(".tsd-generator a");
+            const link = document.createElement("a");
+            Object.assign(link, {
+              href: "https://github.com/dmnsgn/typedoc-material-theme",
+              target: "_blank",
+              rel: "noreferrer",
+              innerText: "typedoc-material-theme."
+            });
+            generateLinkElement.insertAdjacentElement("afterend", link);
+            generateLinkElement.insertAdjacentText("afterend", " with ");
+          } catch (error) {
+
+          }
+        </script></body></html>

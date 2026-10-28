@@ -12,8 +12,8 @@ interface PoseSourceEvent {
 }
 
 /**
- * SwiftUI's default spring, critically damped with a 0.5 s perceptual
- * duration, as a smooth time.
+ * SwiftUI's default spring, critically damped with a 0.5 s perceptual duration,
+ * as a smooth time.
  *
  * @see https://developer.apple.com/documentation/swiftui/animation/spring(duration:bounce:blendduration:)
  */
@@ -49,9 +49,7 @@ abstract class PoseSource<
   #awake = false;
   #dirty = true;
 
-  /**
-   * Update settings without aliasing the given arrays and objects.
-   */
+  /** Update settings without aliasing the given arrays and objects. */
   public set(options: Settings): this {
     assignOptions(this, options);
     this.invalidate();

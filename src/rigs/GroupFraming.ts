@@ -57,8 +57,8 @@ const TEMP_BOX: AABB = aabb.create();
 
 /**
  * Keep several subjects in frame by dollying and zooming, from their bounds
- * seen along the view axis. Compose the group with a following `Composer`
- * whose subject is the group `center`.
+ * seen along the view axis. Compose the group with a following `Composer` whose
+ * subject is the group `center`.
  *
  * @see https://github.com/Unity-Technologies/com.unity.cinemachine/blob/main/com.unity.cinemachine/Runtime/Behaviours/CinemachineGroupFraming.cs
  */

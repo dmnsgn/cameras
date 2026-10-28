@@ -33,8 +33,8 @@ interface RailSettings {
   up?: Vec3;
   lens?: Lens;
   /**
-   * Screen angle below which motion rests. Camera zoom applied outside the
-   * pose isn't accounted for.
+   * Screen angle below which motion rests. Camera zoom applied outside the pose
+   * isn't accounted for.
    */
   restThreshold?: Radian;
 }

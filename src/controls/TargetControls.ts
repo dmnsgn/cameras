@@ -260,8 +260,8 @@ abstract class TargetControls<
   }
 
   /**
-   * Place the camera at a position, looking along an orientation. The
-   * distance, focal offset and zoom are kept: the target follows.
+   * Place the camera at a position, looking along an orientation. The distance,
+   * focal offset and zoom are kept: the target follows.
    */
   public setPose(position: Vec3, orientation: Quat, transition = true): this {
     const target = vec3.multQuat(

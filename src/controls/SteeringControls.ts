@@ -169,8 +169,8 @@ abstract class SteeringControls<
   }
 
   /**
-   * Place the camera at a position, looking along an orientation, as closely
-   * as the controller represents it. The zoom is kept.
+   * Place the camera at a position, looking along an orientation, as closely as
+   * the controller represents it. The zoom is kept.
    */
   public setPose(position: Vec3, orientation: Quat, transition = true): this {
     this.setEnd(position, this.zoomEnd);

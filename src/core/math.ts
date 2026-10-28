@@ -150,8 +150,8 @@ function sphericalCreate(): Spherical {
 /**
  * Set spherical coordinates from a cartesian vector.
  *
- * The azimuth is in (-π, π]: use {@link shortestAngle} to keep continuity with
- * a previous value. The origin maps to [0, 0, 0].
+ * The azimuth is in (-π, π]: use {@link shortestAngle} to keep continuity with a
+ * previous value. The origin maps to [0, 0, 0].
  *
  * @param out Updated in place.
  * @param v Cartesian vector.

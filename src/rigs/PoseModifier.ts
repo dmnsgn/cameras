@@ -19,9 +19,7 @@ export default abstract class PoseModifier<Settings extends object = object> {
   public readonly pose: Pose = pose.create();
   public enabled = true;
 
-  /**
-   * Update settings without aliasing the given arrays and objects.
-   */
+  /** Update settings without aliasing the given arrays and objects. */
   public set(options: Settings): this {
     return assignOptions(this, options);
   }

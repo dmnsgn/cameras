@@ -63,8 +63,8 @@ class Switcher extends PoseSource<PoseSourceEventMap, SwitchOptions> {
   }
 
   /**
-   * Cut or move to a source. Interrupting a move starts the next one from
-   * where the camera is.
+   * Cut or move to a source. Interrupting a move starts the next one from where
+   * the camera is.
    */
   public switchTo(
     source: Source,

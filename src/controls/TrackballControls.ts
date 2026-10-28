@@ -12,9 +12,9 @@ import type { TargetAction, TargetSettings } from "./TargetControls.js";
 import type { Bindings, Gesture } from "./types.js";
 
 /**
- * - `shoemake`: rotations depend only on the start and end points of a drag,
- *   and rotate by twice the arc on the sphere. A `rotateSpeed` other than 1
- *   breaks this path independence.
+ * - `shoemake`: rotations depend only on the start and end points of a drag, and
+ *   rotate by twice the arc on the sphere. A `rotateSpeed` other than 1 breaks
+ *   this path independence.
  * - `bell`: a hyperbolic sheet outside the sphere removes the discontinuity at
  *   its edge, at the cost of path independence. Rotates by the chord between
  *   points: by the arc on the sphere, half as far as `shoemake`, and in

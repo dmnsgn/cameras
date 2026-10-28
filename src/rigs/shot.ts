@@ -20,8 +20,8 @@ import type { Pose } from "../core/pose.js";
 import type { Radian } from "../core/types.js";
 
 /**
- * A camera setup to cut or move to. In moves, lens values unset on one shot hold
- * the other's.
+ * A camera setup to cut or move to. In moves, lens values unset on one shot
+ * hold the other's.
  */
 interface Shot {
   position: Vec3;
