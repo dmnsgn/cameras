@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+# [4.0.0-alpha.1](https://github.com/dmnsgn/cameras/compare/v4.0.0-alpha.0...v4.0.0-alpha.1) (2026-10-29)
+
+### Performance Improvements
+
+* optimise GC ([0407861](https://github.com/dmnsgn/cameras/commit/0407861beb111c81fdcf5079d4ff22db5156448f))
+
 # [4.0.0-alpha.0](https://github.com/dmnsgn/cameras/compare/v3.1.1...v4.0.0-alpha.0) (2026-10-28)
 
 ### Features

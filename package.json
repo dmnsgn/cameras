@@ -1,6 +1,6 @@
 {
   "name": "cameras",
-  "version": "4.0.0-alpha.0",
+  "version": "4.0.0-alpha.1",
   "description": "Cameras, controls and cinematic rigs for 3D rendering: orbit, map, first person, fly and trackball controls, shots, rails, cranes, framing, handheld and shake, with a physical lens.",
   "keywords": [
     "cameras",
