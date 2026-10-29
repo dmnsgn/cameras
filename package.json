@@ -74,7 +74,7 @@
     "perlin-noise-1d": "^1.0.0",
     "pex-geom": "^3.1.2",
     "pex-math": "^4.5.0",
-    "ressort": "^1.0.0"
+    "ressort": "^1.0.1"
   },
   "devDependencies": {
     "es-module-shims": "^2.8.4",
@@ -86,7 +86,7 @@
   },
   "packageManager": "npm@11.3.0",
   "engines": {
-    "node": ">=24.0.0",
+    "node": ">=26.0.0",
     "snowdev": ">=3.0.0-alpha.3"
   }
 }

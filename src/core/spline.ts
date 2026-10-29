@@ -97,9 +97,8 @@ class Spline {
   /** Unit tangent at a fraction of the arc length. */
   public tangentAt(out: Vec3, u: number, epsilon = 1e-4): Vec3 {
     const t = this.parameterAt(u);
-    const [a, b] = this.closed
-      ? [t - epsilon, t + epsilon]
-      : [Math.max(0, t - epsilon), Math.min(1, t + epsilon)];
+    const a = this.closed ? t - epsilon : Math.max(0, t - epsilon);
+    const b = this.closed ? t + epsilon : Math.min(1, t + epsilon);
     this.pointAtParameter(TEMP_A, a);
     this.pointAtParameter(out, b);
     return vec3.normalize(vec3.sub(out, TEMP_A));

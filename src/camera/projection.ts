@@ -36,17 +36,16 @@ function frustum(
   far: number,
   options: DepthOptions,
 ): Mat4 {
-  const [left, right, bottom, top] = bounds;
   const { depthRange, reversedZ } = options;
   const zeroToOne = depthRange === "zero-to-one";
   const infinite = far === Infinity;
 
   (zeroToOne ? mat4.frustumZO : mat4.frustum)(
     out,
-    left,
-    right,
-    bottom,
-    top,
+    bounds[0],
+    bounds[1],
+    bounds[2],
+    bounds[3],
     near,
     infinite ? near * 2 : far,
   );
@@ -63,17 +62,17 @@ function frustum(
 /** Set an orthographic projection. `far` must be finite. */
 function orthographic(
   out: Mat4,
-  [left, right, bottom, top]: FrustumBounds,
+  bounds: FrustumBounds,
   near: number,
   far: number,
   { depthRange, reversedZ }: DepthOptions,
 ): Mat4 {
   (depthRange === "zero-to-one" ? mat4.orthoZO : mat4.ortho)(
     out,
-    left,
-    right,
-    bottom,
-    top,
+    bounds[0],
+    bounds[1],
+    bounds[2],
+    bounds[3],
     near,
     far,
   );
@@ -145,13 +144,12 @@ function zoomBounds(
   bounds: FrustumBounds,
   zoom: number,
 ): FrustumBounds {
-  const [left, right, bottom, top] = bounds;
-  const x = (left + right) / 2;
-  const y = (bottom + top) / 2;
-  out[0] = x + (left - x) / zoom;
-  out[1] = x + (right - x) / zoom;
-  out[2] = y + (bottom - y) / zoom;
-  out[3] = y + (top - y) / zoom;
+  const x = (bounds[0] + bounds[1]) / 2;
+  const y = (bounds[2] + bounds[3]) / 2;
+  out[0] = x + (bounds[0] - x) / zoom;
+  out[1] = x + (bounds[1] - x) / zoom;
+  out[2] = y + (bounds[2] - y) / zoom;
+  out[3] = y + (bounds[3] - y) / zoom;
   return out;
 }
 
@@ -184,11 +182,10 @@ function applyViewOffset(
  * @param offset Offset in NDC units (2 / viewport size per pixel).
  */
 function applyJitter(out: Mat4, offset: Vec2): Mat4 {
-  const [x, y] = offset;
   for (let column = 0; column < 4; column++) {
     const w = out[column * 4 + 3];
-    out[column * 4] += x * w;
-    out[column * 4 + 1] += y * w;
+    out[column * 4] += offset[0] * w;
+    out[column * 4 + 1] += offset[1] * w;
   }
   return out;
 }

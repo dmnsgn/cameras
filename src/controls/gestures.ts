@@ -66,8 +66,7 @@ const SPEED_FACTOR = 5;
  */
 const STEP_FREQUENCY = 2;
 
-// Read only.
-const ZERO_2: Vec2 = Object.freeze([0, 0]) as unknown as Vec2;
+const ZERO_2: Vec2 = [0, 0];
 
 /** Log of the distance ratio a gesture asks for: positive moves away. */
 function logScale(gesture: Gesture): number {
@@ -129,12 +128,11 @@ function cursorPoint(
   aspect: number,
   ndc: Vec2,
 ): Vec3 {
-  const [x, y] = ndc;
   vec3.multQuat(vec3.set(TEMP_RIGHT, X_AXIS), orientation);
   vec3.multQuat(vec3.set(TEMP_UP, Y_AXIS), orientation);
   vec3.set(out, target);
-  vec3.addScaled(out, TEMP_RIGHT, offset[0] + x * halfHeight * aspect);
-  return vec3.addScaled(out, TEMP_UP, offset[1] + y * halfHeight);
+  vec3.addScaled(out, TEMP_RIGHT, offset[0] + ndc[0] * halfHeight * aspect);
+  return vec3.addScaled(out, TEMP_UP, offset[1] + ndc[1] * halfHeight);
 }
 
 /**

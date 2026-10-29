@@ -88,8 +88,8 @@ const TEMP_CORNERS: Vec3[] = Array.from({ length: 8 }, () => vec3.create());
 const TEMP_VIEW_BOX: AABB = aabb.create();
 const TEMP_RAY: Ray = [vec3.create(), vec3.create()];
 
-const clampBounds = (value: number, [min, max]: [number, number]) =>
-  utils.clamp(value, min, max);
+const clampBounds = (value: number, bounds: [number, number]) =>
+  utils.clamp(value, bounds[0], bounds[1]);
 
 /**
  * Base of target controllers, which orbit or spin the camera around a target:
@@ -392,7 +392,9 @@ abstract class TargetControls<
 
   // Controls
   protected applyAction(action: Action | TargetAction, gesture: Gesture): void {
-    const [dx, dy] = deltaOf(gesture);
+    const delta = deltaOf(gesture);
+    const dx = delta[0];
+    const dy = delta[1];
     const sign = grabSign(gesture);
 
     switch (action) {

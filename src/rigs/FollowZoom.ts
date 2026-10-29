@@ -60,7 +60,8 @@ class FollowZoom extends PoseModifier<FollowZoomSettings> {
     const depth = Math.max(depthOf(out, point), utils.EPSILON);
     // Tangent of the half field of view per unit of visible half height.
     const scale = (out.zoom ?? 1) / depth;
-    const [min, max] = this.fovRange;
+    const min = this.fovRange[0];
+    const max = this.fovRange[1];
     const goal = utils.clamp(2 * Math.atan(this.size * scale), min, max);
 
     let fov = goal;

@@ -239,7 +239,9 @@ class Composer extends PoseModifier<ComposerSettings> {
     this.#apply(out, TEMP_STEP);
   }
 
-  #apply(out: Pose, [a, b]: Vec2): void {
+  #apply(out: Pose, step: Vec2): void {
+    const a = step[0];
+    const b = step[1];
     if (this.#reframe === "pan-tilt") {
       this.#rotate(out, a, b);
     } else {
@@ -268,9 +270,9 @@ class Composer extends PoseModifier<ComposerSettings> {
       quat.invert(quat.set(TEMP_QUAT, pose.orientation)),
     );
     if (TEMP_VEC3[2] >= 0) return null;
-    const [tanX, tanY] = this.#tanHalf(pose);
-    out[0] = TEMP_VEC3[0] / -TEMP_VEC3[2] / tanX;
-    out[1] = TEMP_VEC3[1] / -TEMP_VEC3[2] / tanY;
+    const tanHalf = this.#tanHalf(pose);
+    out[0] = TEMP_VEC3[0] / -TEMP_VEC3[2] / tanHalf[0];
+    out[1] = TEMP_VEC3[1] / -TEMP_VEC3[2] / tanHalf[1];
     return out;
   }
 

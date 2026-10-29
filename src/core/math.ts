@@ -9,8 +9,7 @@ const X_AXIS: Vec3 = [1, 0, 0];
 const Y_AXIS: Vec3 = [0, 1, 0];
 const Z_AXIS: Vec3 = [0, 0, 1];
 const NEG_Z_AXIS: Vec3 = [0, 0, -1];
-/** Read only. */
-const ZERO: Vec3 = Object.freeze([0, 0, 0]) as unknown as Vec3;
+const ZERO: Vec3 = [0, 0, 0];
 
 const TEMP_VEC3: Vec3 = vec3.create();
 const TEMP_QUAT: Quat = quat.create();
@@ -104,7 +103,10 @@ function quatFromUnitVectors(out: Quat, from: Vec3, to: Vec3): Quat {
  *
  * @param out Updated in place.
  */
-function quatPanTiltRoll(out: Quat, [pan, tilt, roll]: Vec3): Quat {
+function quatPanTiltRoll(out: Quat, angles: Vec3): Quat {
+  const pan = angles[0];
+  const tilt = angles[1];
+  const roll = angles[2];
   if (pan) quat.mult(out, quat.fromAxisAngle(TEMP_QUAT, Y_AXIS, pan));
   if (tilt) quat.mult(out, quat.fromAxisAngle(TEMP_QUAT, X_AXIS, tilt));
   if (roll) quat.mult(out, quat.fromAxisAngle(TEMP_QUAT, Z_AXIS, roll));
@@ -157,10 +159,13 @@ function sphericalCreate(): Spherical {
  * @param v Cartesian vector.
  */
 function sphericalFromVec3(out: Spherical, v: Vec3): Spherical {
-  const [x, y, z] = v;
-  out[0] = Math.hypot(x, y, z);
+  const x = v[0];
+  const y = v[1];
+  const z = v[2];
+  // Not Math.hypot, which boxes its arguments.
+  out[0] = Math.sqrt(x * x + y * y + z * z);
   // atan2 stays accurate near the poles, where acos(y / r) loses digits.
-  out[1] = Math.atan2(Math.hypot(x, z), y);
+  out[1] = Math.atan2(Math.sqrt(x * x + z * z), y);
   out[2] = Math.atan2(x, z);
   return out;
 }
@@ -190,10 +195,10 @@ function sphericalFromPositionTarget(
 }
 
 /** Set a cartesian vector from spherical coordinates. */
-function vec3FromSpherical(
-  out: Vec3,
-  [radius, polar, azimuth]: Spherical,
-): Vec3 {
+function vec3FromSpherical(out: Vec3, s: Spherical): Vec3 {
+  const radius = s[0];
+  const polar = s[1];
+  const azimuth = s[2];
   const radiusSinPolar = radius * Math.sin(polar);
   out[0] = radiusSinPolar * Math.sin(azimuth);
   out[1] = radius * Math.cos(polar);

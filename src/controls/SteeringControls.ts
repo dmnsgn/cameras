@@ -193,7 +193,7 @@ abstract class SteeringControls<
 
   /** Without a transition, only the zoom jumps: other motion carries on. */
   public zoomTo(zoom: number, transition = true): this {
-    this.zoomEnd = utils.clamp(zoom, ...this.zoomBounds);
+    this.zoomEnd = utils.clamp(zoom, this.zoomBounds[0], this.zoomBounds[1]);
     if (transition) return this.commit(transition);
     this.zoomValue = this.zoomEnd;
     this.#zoomSpring.velocity = 0;
@@ -216,7 +216,9 @@ abstract class SteeringControls<
     action: Action | SteeringAction,
     gesture: Gesture,
   ): void {
-    const [dx, dy] = deltaOf(gesture);
+    const delta = deltaOf(gesture);
+    const dx = delta[0];
+    const dy = delta[1];
     const sign = grabSign(gesture);
     const amount = this.speed * DRAG_MOVE * sign;
 
@@ -237,7 +239,8 @@ abstract class SteeringControls<
       case "zoom":
         this.zoomEnd = utils.clamp(
           this.zoomEnd * Math.exp(-logScale(gesture) * this.zoomSpeed),
-          ...this.zoomBounds,
+          this.zoomBounds[0],
+          this.zoomBounds[1],
         );
         break;
     }
@@ -319,7 +322,7 @@ abstract class SteeringControls<
   protected setEnd(position: Vec3, zoom: number): void {
     vec3.set(this.positionEnd, position);
     this.constrain?.(this.positionEnd);
-    this.zoomEnd = utils.clamp(zoom, ...this.zoomBounds);
+    this.zoomEnd = utils.clamp(zoom, this.zoomBounds[0], this.zoomBounds[1]);
   }
 
   /** Pose-only position offset, e.g. head bob. */

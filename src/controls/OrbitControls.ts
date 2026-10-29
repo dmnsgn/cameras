@@ -78,8 +78,8 @@ const TEMP_VEC3 = vec3.create();
 const TEMP_VEC3_2 = vec3.create();
 const TEMP_SPHERICAL = sphericalCreate();
 
-const clampBounds = (value: number, [min, max]: [number, number]) =>
-  utils.clamp(value, min, max);
+const clampBounds = (value: number, bounds: [number, number]) =>
+  utils.clamp(value, bounds[0], bounds[1]);
 
 /**
  * Orbit, dolly, zoom, truck, pedestal and pan around a target, with damping,
@@ -235,7 +235,9 @@ class OrbitControls extends TargetControls<
 
   // Controls
   protected override applyAction(action: OrbitAction, gesture: Gesture): void {
-    const [dx, dy] = deltaOf(gesture);
+    const delta = deltaOf(gesture);
+    const dx = delta[0];
+    const dy = delta[1];
     const sign = grabSign(gesture);
 
     switch (action) {

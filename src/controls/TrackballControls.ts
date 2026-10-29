@@ -179,9 +179,9 @@ class TrackballControls extends TargetControls<
    * Point on the trackball under screen coordinates in half viewport heights, y
    * up.
    */
-  public projectOnBall(out: Vec3, [x, y]: Vec2): Vec3 {
-    x /= this.radius;
-    y /= this.radius;
+  public projectOnBall(out: Vec3, point: Vec2): Vec3 {
+    const x = point[0] / this.radius;
+    const y = point[1] / this.radius;
     const lengthSq = x * x + y * y;
     out[0] = x;
     out[1] = y;
@@ -203,7 +203,9 @@ class TrackballControls extends TargetControls<
     gesture: Gesture,
   ): void {
     if (action === "rotate") {
-      const [dx, dy] = deltaOf(gesture);
+      const delta = deltaOf(gesture);
+      const dx = delta[0];
+      const dy = delta[1];
       const sign = grabSign(gesture);
       // Ball coordinates: half area heights, y up, the units of the deltas.
       const x = gesture.ndc[0] * gesture.aspect;

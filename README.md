@@ -17,7 +17,7 @@ Cameras, controls and cinematic rigs for 3D rendering: orbit, map, first person,
 [![twitter](https://img.shields.io/twitter/follow/dmnsgn?style=social)](https://twitter.com/dmnsgn)
 [![bluesky](https://img.shields.io/badge/-blue?logo=bluesky&label=Follow%20%40dmnsgn.me&style=social)](https://bsky.app/profile/dmnsgn.me)
 
-[![cameras screenshot](https://raw.githubusercontent.com/gitHubUsername/cameras/main/screenshot.jpg)](https://gitHubUsername.github.io/cameras/)
+[![cameras screenshot](https://raw.githubusercontent.com/dmnsgn/cameras/main/screenshot.jpg)](https://dmnsgn.github.io/cameras/)
 
 
 ## Installation

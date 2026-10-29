@@ -113,7 +113,7 @@ class FirstPersonControls extends SteeringControls<
 
   public panTiltTo(pan: Radian, tilt: Radian, transition = true): this {
     this.#panEnd = pan;
-    this.#tiltEnd = utils.clamp(tilt, ...this.tiltBounds);
+    this.#tiltEnd = utils.clamp(tilt, this.tiltBounds[0], this.tiltBounds[1]);
     return this.commit(transition);
   }
 
@@ -145,13 +145,19 @@ class FirstPersonControls extends SteeringControls<
   ): void {
     if (action !== "pan-tilt") return super.applyAction(action, gesture);
 
-    const [dx, dy] = deltaOf(gesture);
+    const delta = deltaOf(gesture);
+    const dx = delta[0];
+    const dy = delta[1];
     const angle =
       grabSign(gesture) *
       effectiveFov(this.lens, 1, this.zoomValue) *
       this.lookSpeed;
     this.#panEnd += dx * angle;
-    this.#tiltEnd = utils.clamp(this.#tiltEnd + dy * angle, ...this.tiltBounds);
+    this.#tiltEnd = utils.clamp(
+      this.#tiltEnd + dy * angle,
+      this.tiltBounds[0],
+      this.tiltBounds[1],
+    );
     this.invalidate();
   }
 

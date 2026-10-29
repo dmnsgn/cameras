@@ -57,6 +57,7 @@ interface MoveOptions {
 }
 
 const DEFAULT_RHO = Math.SQRT2;
+const linear: Easing = (t) => t;
 
 const TEMP_UP = vec3.create();
 const TEMP_FROM = sphericalCreate();
@@ -165,7 +166,7 @@ function interpolateShots(
   from: Shot,
   to: Shot,
   t: number,
-  { move = "arc", easing = (x) => x, rho = DEFAULT_RHO }: MoveOptions = {},
+  { move = "arc", easing = linear, rho = DEFAULT_RHO }: MoveOptions = {},
 ): Pose {
   t = utils.clamp(t, 0, 1);
 

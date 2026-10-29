@@ -205,7 +205,9 @@ class FlyControls extends SteeringControls<FlyAction, FlySettings, FlyState> {
     }
 
     if (action === "pan-tilt") {
-      const [dx, dy] = deltaOf(gesture);
+      const delta = deltaOf(gesture);
+      const dx = delta[0];
+      const dy = delta[1];
       const angle =
         grabSign(gesture) *
         effectiveFov(this.lens, 1, this.zoomValue) *

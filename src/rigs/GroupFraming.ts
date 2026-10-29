@@ -151,11 +151,14 @@ class GroupFraming extends PoseModifier<GroupFramingSettings> {
   ): boolean {
     const zoom = out.zoom ?? 1;
     const tanHalf = tanHalfFov(this.lens, out);
-    const [near, far] = this.dollyRange;
     const dollyGoal =
       this.sizeAdjustment === "zoom"
         ? 0
-        : utils.clamp(fit / tanHalf + size[2] / 2 - depth, near, far);
+        : utils.clamp(
+            fit / tanHalf + size[2] / 2 - depth,
+            this.dollyRange[0],
+            this.dollyRange[1],
+          );
     this.#dolly = this.#damp(this.#dolly, dollyGoal, dt);
     const moving =
       Math.abs(this.#dolly - dollyGoal) >=
@@ -167,11 +170,10 @@ class GroupFraming extends PoseModifier<GroupFramingSettings> {
     // Zoom for what the dolly can't reach, at the goal distance: the input
     // field of view when it can.
     const front = Math.max(depth + dollyGoal - size[2] / 2, utils.EPSILON);
-    const [minFov, maxFov] = this.fovRange;
     const goal = utils.clamp(
       2 * Math.atan((fit * zoom) / front),
-      minFov,
-      maxFov,
+      this.fovRange[0],
+      this.fovRange[1],
     );
     this.#lens = this.#damp(this.#lens, goal, dt);
     const zooming = Math.abs(this.#lens - goal) >= this.restThreshold;
