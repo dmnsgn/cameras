@@ -44,8 +44,12 @@ function normalizeDelta(
   lineHeight: Pixel,
   pageHeight: Pixel,
 ): Vec2 {
-  const factor =
-    deltaMode === 1 ? lineHeight : deltaMode === 2 ? pageHeight : 1;
+  let factor = 1;
+  if (deltaMode === 1) {
+    factor = lineHeight;
+  } else if (deltaMode === 2) {
+    factor = pageHeight;
+  }
   out[0] = deltaX * factor;
   out[1] = deltaY * factor;
   return out;

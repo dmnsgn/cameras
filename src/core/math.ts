@@ -161,8 +161,10 @@ function sphericalFromVec3(out: Spherical, v: Vec3): Spherical {
   const y = v[1];
   const z = v[2];
   // Not Math.hypot, which boxes its arguments.
+  // eslint-disable-next-line unicorn/prefer-modern-math-apis
   out[0] = Math.sqrt(x * x + y * y + z * z);
   // atan2 stays accurate near the poles, where asin(y / r) loses digits.
+  // eslint-disable-next-line unicorn/prefer-modern-math-apis
   out[1] = Math.atan2(y, Math.sqrt(x * x + z * z));
   out[2] = Math.atan2(x, z);
   return out;

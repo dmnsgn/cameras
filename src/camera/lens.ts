@@ -9,7 +9,7 @@ import type { Radian, Second } from "../core/types.js";
 import type { Lens } from "./types.js";
 
 /** Millimeters. */
-type Millimeter = number;
+type Millimeter = number; // eslint-disable-line sonarjs/redundant-type-aliases
 
 /**
  * How the sensor gate maps to the viewport when their aspect ratios differ.

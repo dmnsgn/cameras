@@ -103,7 +103,7 @@ class Composer extends PoseModifier<ComposerSettings> {
   // Accumulated correction relative to the input: pan and tilt angles, or
   // truck and pedestal distances.
   #correction: Vec2 = [0, 0];
-  #reframe: Reframe = this.reframe;
+  #lastReframe: Reframe = this.reframe;
 
   constructor(options: ComposerSettings = {}) {
     super();
@@ -127,8 +127,8 @@ class Composer extends PoseModifier<ComposerSettings> {
 
   protected modify(out: Pose, dt: Second): boolean {
     // A correction in one mode means nothing in the other.
-    if (this.reframe !== this.#reframe) {
-      this.#reframe = this.reframe;
+    if (this.reframe !== this.#lastReframe) {
+      this.#lastReframe = this.reframe;
       this.reset();
     }
     const correction = this.#correction;
@@ -155,7 +155,7 @@ class Composer extends PoseModifier<ComposerSettings> {
       const k = moving ? 1 - halfLifeDecay(this.halfLife, dt) : 1;
       TEMP_GOAL[0] = this.#goal(ndc[0], 0, k);
       TEMP_GOAL[1] = this.#goal(ndc[1], 1, k);
-      if (this.#reframe === "pan-tilt") {
+      if (this.#lastReframe === "pan-tilt") {
         this.#panTilt(out, TEMP_GOAL, ndc, tan);
       } else {
         this.#truckPedestal(out, TEMP_GOAL, ndc, tan, depthOf(out, subject));
@@ -164,7 +164,7 @@ class Composer extends PoseModifier<ComposerSettings> {
       // Nothing to frame: ease back to the input pose.
       vec2.scale(correction, halfLifeDecay(this.halfLife, dt));
       const rest =
-        this.#reframe === "pan-tilt" ? restAngle : restAngle * distance;
+        this.#lastReframe === "pan-tilt" ? restAngle : restAngle * distance;
       moving =
         Math.max(Math.abs(correction[0]), Math.abs(correction[1])) >= rest;
       if (!moving) this.reset();
@@ -242,7 +242,7 @@ class Composer extends PoseModifier<ComposerSettings> {
   #apply(out: Pose, step: Vec2): void {
     const a = step[0];
     const b = step[1];
-    if (this.#reframe === "pan-tilt") {
+    if (this.#lastReframe === "pan-tilt") {
       this.#rotate(out, a, b);
     } else {
       const { orientation, position } = out;

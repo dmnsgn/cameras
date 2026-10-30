@@ -247,7 +247,7 @@ export default abstract class Controls<
   #stepFling(dt: Second): void {
     const fling = this.#fling;
     if (!fling || dt <= 0) return;
-    if (!(this.inertia > 0)) {
+    if (this.inertia <= 0) {
       this.#endGesture();
       return;
     }

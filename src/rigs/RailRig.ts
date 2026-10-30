@@ -141,7 +141,7 @@ class RailRig extends PoseSource<RailEventMap, RailSettings> {
       const { length } = this.#spline;
       goalVelocity = safeDivide(this.speed, length);
       const next = this.#progressEnd + goalVelocity * dt;
-      if (!(length > 0) || this.#clamp(next) !== next) {
+      if (length <= 0 || this.#clamp(next) !== next) {
         // Open rail end, or nowhere to travel: the goal stops there.
         goalVelocity = 0;
         this.#progressEnd = this.#clamp(next);
