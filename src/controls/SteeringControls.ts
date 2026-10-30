@@ -25,10 +25,11 @@ import {
   DEFAULT_MOVEMENT_KEYS,
   SLOW_WALK_SPEED,
   SPEED_FACTOR,
+  VIEW_SIGN,
   WALK_SPEED,
 } from "./gestures.js";
 import { SPRING_SMOOTH_TIME } from "../core/PoseSource.js";
-import { nearDistance } from "../camera/lens.js";
+import { effectiveFov, nearDistance } from "../camera/lens.js";
 
 import type { Quat, Vec3 } from "pex-math";
 import type { SpringState } from "ressort";
@@ -331,6 +332,11 @@ abstract class SteeringControls<
   // Zooming in narrows the angle a pixel covers.
   protected get restAngle(): Radian {
     return this.restThreshold / this.zoomEnd;
+  }
+
+  // Travelling through the scene, the view turns with the pointer as in games and editor fly cameras, whatever the input: target controls grab the content instead.
+  protected lookAngle(speed: number): Radian {
+    return VIEW_SIGN * effectiveFov(this.lens, 1, this.zoomValue) * speed;
   }
 
   /** Current orientation. */

@@ -1,6 +1,6 @@
 import { describe, test } from "node:test";
 import assert from "node:assert/strict";
-import { quat } from "pex-math";
+import { quat, vec3 } from "pex-math";
 
 import {
   FirstPersonControls,
@@ -125,7 +125,7 @@ describe("FirstPersonControls", () => {
     assert.deepEqual(events, ["controlstart", "controlend"]);
   });
 
-  test("pointer lock looks in the mouse direction, dragging grabs", () => {
+  test("pan-tilt looks in the pointer direction, locked or dragging", () => {
     const locked = new FirstPersonControls();
     locked.applyAction(
       "pan-tilt",
@@ -135,7 +135,7 @@ describe("FirstPersonControls", () => {
 
     const dragged = new FirstPersonControls();
     dragged.applyAction("pan-tilt", gesture({ deltaNormalized: [0.1, 0] }));
-    assert.ok(dragged.getPanTilt(true)[0] > 0, "turns left");
+    assert.ok(dragged.getPanTilt(true)[0] < 0, "turns right");
   });
 
   test("the pose up stays perpendicular to the view, even looking straight up", () => {
@@ -560,8 +560,8 @@ describe("FirstPersonControls edge cases", () => {
       controls.applyAction("pan-tilt", gesture({ deltaNormalized: [0.1, 0] }));
       return controls.getPanTilt(true)[0];
     };
-    close(turn(1), 0.1);
-    close(turn(2), 0.2 * Math.atan(Math.tan(0.5) / 2));
+    close(turn(1), -0.1);
+    close(turn(2), -0.2 * Math.atan(Math.tan(0.5) / 2));
     // Pinches don't turn.
     const controls = new FirstPersonControls();
     controls.applyAction("pan-tilt", pinchGesture({ scale: 2 }));
@@ -609,21 +609,35 @@ describe("FirstPersonControls edge cases", () => {
 });
 
 describe("FlyControls edge cases", () => {
-  test("pan-tilt grabs when dragging, turns with the mouse when locked", () => {
-    const dragged = new FlyControls();
-    dragged.applyAction("pan-tilt", gesture({ deltaNormalized: [0.1, 0.1] }));
-    dragged.stop().update(0);
-    const look = forward(dragged.pose.orientation);
-    assert.ok(look[0] < 0 && look[1] > 0, "left and up");
-
-    const mouse = new FlyControls();
-    mouse.applyAction("pan-tilt", locked({ deltaNormalized: [0.1, 0.1] }));
-    mouse.stop().update(0);
-    const turned = forward(mouse.pose.orientation);
-    assert.ok(turned[0] > 0 && turned[1] < 0, "right and down");
+  test("pan-tilt looks in the pointer direction, locked or dragging", () => {
+    for (const input of [
+      gesture({ deltaNormalized: [0.1, 0.1] }),
+      locked({ deltaNormalized: [0.1, 0.1] }),
+    ]) {
+      const controls = new FlyControls();
+      controls.applyAction("pan-tilt", input);
+      controls.stop().update(0);
+      const look = forward(controls.pose.orientation);
+      assert.ok(look[0] > 0 && look[1] < 0, "right and down");
+    }
   });
 
-  test("roll from drags, twists and wheels", () => {
+  test("pan-tilt keeps the horizon level while levelling, rolls in 6DoF", () => {
+    const rollOf = (autoLevel) => {
+      const controls = new FlyControls({
+        position: [0, 3, 5],
+        target: [0, 0, 0],
+        autoLevel,
+      });
+      controls.applyAction("pan-tilt", gesture({ deltaNormalized: [-0.3, 0] }));
+      controls.stop().update(0);
+      return vec3.multQuat([1, 0, 0], controls.pose.orientation)[1];
+    };
+    close(rollOf(true), 0);
+    assert.ok(rollOf(false) < 0, "the top leans right looking down");
+  });
+
+    test("roll from drags, twists and wheels", () => {
     const roll = (input) => {
       const controls = new FlyControls();
       controls.applyAction("roll", input);
@@ -634,7 +648,7 @@ describe("FlyControls edge cases", () => {
         upOf(controls.pose.orientation)[1],
       );
     };
-    close(roll(gesture({ deltaNormalized: [0.1, 0] })), 0.1 * Math.PI);
+    close(roll(gesture({ deltaNormalized: [0.1, 0] })), -0.1 * Math.PI);
     close(roll(pinchGesture({ rotation: 0.3 })), -0.3);
     close(roll(wheelGesture({ deltaNormalized: [0.1, 0] })), -0.1 * Math.PI);
     close(roll(gesture({ deltaNormalized: [0, 0.5] })), 0);

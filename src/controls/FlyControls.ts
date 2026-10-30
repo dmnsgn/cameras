@@ -20,13 +20,12 @@ import {
 import SteeringControls from "./SteeringControls.js";
 import {
   deltaOf,
-  grabSign,
   twistOf,
+  VIEW_SIGN,
   DEFAULT_MOVEMENT_KEYS,
   KEY_TURN_SPEED,
   POINTER_LAG,
 } from "./gestures.js";
-import { effectiveFov } from "../camera/lens.js";
 
 import type { Quat, Vec3 } from "pex-math";
 import type { Radian, Second } from "../core/types.js";
@@ -208,14 +207,17 @@ class FlyControls extends SteeringControls<FlyAction, FlySettings, FlyState> {
       const delta = deltaOf(gesture);
       const dx = delta[0];
       const dy = delta[1];
-      const angle =
-        grabSign(gesture) *
-        effectiveFov(this.lens, 1, this.zoomValue) *
-        this.lookSpeed;
-      this.#rotate(dx * angle, dy * angle, 0);
+      const angle = this.lookAngle(this.lookSpeed);
+      // Levelled, pan around the world up as editor fly cameras do: around the camera's own up, a tilted view would roll.
+      if (this.autoLevel) {
+        this.#panAroundUp(dx * angle);
+        this.#rotate(0, dy * angle, 0);
+      } else {
+        this.#rotate(dx * angle, dy * angle, 0);
+      }
     } else {
-      // The horizon follows the fingers: the camera rolls the opposite way.
-      this.#rotate(0, 0, -twistOf(gesture) * this.rollSpeed);
+      // Twists turn the horizon with the fingers, drags roll the view with the pointer as looking does.
+      this.#rotate(0, 0, -twistOf(gesture, VIEW_SIGN) * this.rollSpeed);
     }
     this.invalidate();
   }
@@ -304,6 +306,12 @@ class FlyControls extends SteeringControls<FlyAction, FlySettings, FlyState> {
     vec3.add(TEMP_UP, this.positionEnd);
     quatLookAt(out, this.positionEnd, TEMP_UP, this.upVector);
     return true;
+  }
+
+  #panAroundUp(pan: Radian): void {
+    const end = this.#orientationEnd;
+    quat.fromAxisAngle(TEMP_QUAT, this.upVector, pan);
+    quat.normalize(quat.set(end, quat.mult(TEMP_QUAT, end)));
   }
 
   // Post-multiplication rotates around local axes.

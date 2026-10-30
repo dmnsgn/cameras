@@ -77,6 +77,9 @@ function logScale(gesture: Gesture): number {
     : gesture.delta[1] * PIXEL_DOLLY;
 }
 
+/** Direction factor of deltas that move the view rather than grab the content. */
+const VIEW_SIGN = -1;
+
 /**
  * Direction factor of positional deltas: dragging grabs the content, scrolling
  * and pointer lock move the view.
@@ -84,7 +87,7 @@ function logScale(gesture: Gesture): number {
 function grabSign(gesture: Gesture): 1 | -1 {
   return gesture.type === "wheel" ||
     (gesture.type !== "pinch" && gesture.locked)
-    ? -1
+    ? VIEW_SIGN
     : 1;
 }
 
@@ -96,13 +99,17 @@ function deltaOf(gesture: Gesture): Vec2 {
 /**
  * Content rotation a gesture asks for, counter-clockwise on screen: the twist
  * of two fingers or a trackpad, else a half turn per viewport height of
- * horizontal motion. Fingers panning together don't twist.
+ * horizontal motion, in the direction of `sign`. Fingers panning together
+ * don't twist.
  */
-function twistOf(gesture: Gesture): Radian {
+function twistOf(
+  gesture: Gesture,
+  sign: 1 | -1 = grabSign(gesture),
+): Radian {
   return gesture.type === "pinch" ||
     (gesture.type !== "wheel" && gesture.pointerCount >= 2)
     ? gesture.rotation
-    : -deltaOf(gesture)[0] * grabSign(gesture) * Math.PI;
+    : -deltaOf(gesture)[0] * sign * Math.PI;
 }
 
 const TEMP_RIGHT = vec3.create();
@@ -185,6 +192,7 @@ export {
   SLOW_WALK_SPEED,
   SPEED_FACTOR,
   STEP_FREQUENCY,
+  VIEW_SIGN,
   logScale,
   grabSign,
   deltaOf,

@@ -4,8 +4,7 @@ import { smoothDamp } from "ressort";
 import { shortestAngle, NEG_Z_AXIS, X_AXIS, Y_AXIS } from "../core/math.js";
 
 import SteeringControls from "./SteeringControls.js";
-import { deltaOf, grabSign, POINTER_LAG, STEP_FREQUENCY } from "./gestures.js";
-import { effectiveFov } from "../camera/lens.js";
+import { deltaOf, POINTER_LAG, STEP_FREQUENCY } from "./gestures.js";
 
 import type { Quat, Vec3 } from "pex-math";
 import type { SpringState } from "ressort";
@@ -148,10 +147,7 @@ class FirstPersonControls extends SteeringControls<
     const delta = deltaOf(gesture);
     const dx = delta[0];
     const dy = delta[1];
-    const angle =
-      grabSign(gesture) *
-      effectiveFov(this.lens, 1, this.zoomValue) *
-      this.lookSpeed;
+    const angle = this.lookAngle(this.lookSpeed);
     this.#panEnd += dx * angle;
     this.#tiltEnd = utils.clamp(
       this.#tiltEnd + dy * angle,
