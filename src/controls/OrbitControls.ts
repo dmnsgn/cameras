@@ -24,13 +24,18 @@ import type { TargetAction, TargetSettings } from "./TargetControls.js";
 import type { Bindings, Gesture } from "./types.js";
 
 /**
- * - `arc`: orbit around the target (azimuth and polar)
+ * - `arc`: orbit around the target (azimuth and elevation)
  * - `truck-dolly`: translate on the ground plane, as maps do
  * - `twist`: rotate the azimuth with a two-finger or trackpad rotation, as maps
  *   do
  */
 type OrbitAction =
-  "arc" | "arc-azimuth" | "arc-polar" | "truck-dolly" | "twist" | TargetAction;
+    | "arc"
+  | "arc-azimuth"
+  | "arc-elevation"
+  | "truck-dolly"
+  | "twist"
+  | TargetAction;
 
 interface OrbitState {
   target: Vec3;
@@ -54,9 +59,9 @@ interface OrbitControlsOptions extends TargetSettings {
   bindings?: Bindings<OrbitAction>;
 
   azimuthSpeed?: number;
-  polarSpeed?: number;
+  elevationSpeed?: number;
 
-  polarBounds?: [Radian, Radian];
+  elevationBounds?: [Radian, Radian];
   azimuthBounds?: [Radian, Radian];
 }
 
@@ -94,21 +99,21 @@ class OrbitControls extends TargetControls<
     DEFAULT_BINDINGS;
 
   public azimuthSpeed = 1;
-  public polarSpeed = 1;
+  public elevationSpeed = 1;
 
-  public polarBounds: [Radian, Radian] = [0, Math.PI];
+  public elevationBounds: [Radian, Radian] = [-Math.PI / 2, Math.PI / 2];
   public azimuthBounds: [Radian, Radian] = [-Infinity, Infinity];
 
   #up: Vec3 = [0, 1, 0];
   #upSpace: Quat = quat.create();
   #upSpaceInverse: Quat = quat.create();
 
-  #polar = Math.PI / 2;
-  #polarEnd = Math.PI / 2;
+  #elevation = 0;
+  #elevationEnd = 0;
   #azimuth = 0;
   #azimuthEnd = 0;
 
-  #polarSpring: SpringState = { velocity: 0 };
+  #elevationSpring: SpringState = { velocity: 0 };
   #azimuthSpring: SpringState = { velocity: 0 };
 
   constructor({
@@ -140,27 +145,27 @@ class OrbitControls extends TargetControls<
   // Getters
   public getSpherical(out = sphericalCreate(), end = false): Spherical {
     out[0] = this.getDistance(end);
-    out[1] = end ? this.#polarEnd : this.#polar;
+    out[1] = end ? this.#elevationEnd : this.#elevation;
     out[2] = end ? this.#azimuthEnd : this.#azimuth;
     return out;
   }
 
   // Arc
   /** Orbit around the target by relative angles. */
-  public arc(azimuth: Radian, polar: Radian, transition = true): this {
+  public arc(azimuth: Radian, elevation: Radian, transition = true): this {
     return this.arcTo(
       this.#azimuthEnd + azimuth,
-      this.#polarEnd + polar,
+      this.#elevationEnd + elevation,
       transition,
     );
   }
 
   /**
    * Orbit around the target to absolute angles: azimuth around up from +Z,
-   * polar from up.
+   * elevation from the horizon.
    */
-  public arcTo(azimuth: Radian, polar: Radian, transition = true): this {
-    this.#setAngles(azimuth, polar);
+  public arcTo(azimuth: Radian, elevation: Radian, transition = true): this {
+    this.#setAngles(azimuth, elevation);
     return this.commit(transition);
   }
 
@@ -227,9 +232,9 @@ class OrbitControls extends TargetControls<
   }
 
   public setState(state: OrbitState, transition = true): this {
-    const [distance, polar, azimuth] = state.spherical;
+    const [distance, elevation, azimuth] = state.spherical;
     this.setEnd(state.target, distance, state.focalOffset, state.zoom);
-    this.#setAngles(azimuth, polar);
+    this.#setAngles(azimuth, elevation);
     return this.commit(transition);
   }
 
@@ -244,19 +249,19 @@ class OrbitControls extends TargetControls<
       case "arc":
         this.#setAngles(
           this.#azimuthEnd - TAU * dx * sign * this.azimuthSpeed,
-          this.#polarEnd - TAU * dy * sign * this.polarSpeed,
+          this.#elevationEnd + TAU * dy * sign * this.elevationSpeed,
         );
         break;
       case "arc-azimuth":
         this.#setAngles(
           this.#azimuthEnd - TAU * dx * sign * this.azimuthSpeed,
-          this.#polarEnd,
+          this.#elevationEnd,
         );
         break;
-      case "arc-polar":
+      case "arc-elevation":
         this.#setAngles(
           this.#azimuthEnd,
-          this.#polarEnd - TAU * dy * sign * this.polarSpeed,
+          this.#elevationEnd + TAU * dy * sign * this.elevationSpeed,
         );
         break;
       case "truck-dolly": {
@@ -268,7 +273,7 @@ class OrbitControls extends TargetControls<
       case "twist":
         this.#setAngles(
           this.#azimuthEnd - twistOf(gesture) * this.azimuthSpeed,
-          this.#polarEnd,
+          this.#elevationEnd,
         );
         break;
       default:
@@ -277,15 +282,12 @@ class OrbitControls extends TargetControls<
     this.invalidate();
   }
 
-  // Up space rotation, then azimuth around +Y, then polar around +X: camera looks down -Z.
+  // Up space rotation, then azimuth around +Y, then elevation around -X: camera looks down -Z.
   protected orientation(out: Quat, end = false): Quat {
-    const polar = end ? this.#polarEnd : this.#polar;
+    const elevation = end ? this.#elevationEnd : this.#elevation;
     const azimuth = end ? this.#azimuthEnd : this.#azimuth;
     quat.fromAxisAngle(TEMP_QUAT_2, Y_AXIS, azimuth);
-    quat.mult(
-      TEMP_QUAT_2,
-      quat.fromAxisAngle(out, X_AXIS, polar - Math.PI / 2),
-    );
+    quat.mult(TEMP_QUAT_2, quat.fromAxisAngle(out, X_AXIS, -elevation));
     return quat.mult(quat.set(out, this.#upSpaceInverse), TEMP_QUAT_2);
   }
 
@@ -294,15 +296,15 @@ class OrbitControls extends TargetControls<
       vec3.sub(vec3.set(TEMP_VEC3, position), target),
       this.#upSpace,
     );
-    const [distance, polar, azimuth] = sphericalFromVec3(
+    const [distance, elevation, azimuth] = sphericalFromVec3(
       TEMP_SPHERICAL,
       TEMP_VEC3,
     );
     // On the target the angles are undefined, on the up axis the azimuth: keep them.
     if (distance > 0) {
       this.#setAngles(
-        Math.sin(polar) < utils.EPSILON ? this.#azimuthEnd : azimuth,
-        polar,
+        Math.cos(elevation) < utils.EPSILON ? this.#azimuthEnd : azimuth,
+        elevation,
         true,
       );
     }
@@ -311,14 +313,14 @@ class OrbitControls extends TargetControls<
 
   // Rotating around the camera rotates (position - target) by the same angles.
   protected turnEnd(pan: Radian, tilt: Radian): void {
-    this.#setAngles(this.#azimuthEnd + pan, this.#polarEnd + tilt);
+    this.#setAngles(this.#azimuthEnd + pan, this.#elevationEnd - tilt);
   }
 
   protected stepRotation(dt: Second, smoothTime: Second): Radian {
-    this.#polar = smoothDamp(
-      this.#polar,
-      this.#polarEnd,
-      this.#polarSpring,
+    this.#elevation = smoothDamp(
+      this.#elevation,
+      this.#elevationEnd,
+      this.#elevationSpring,
       smoothTime,
       dt,
     );
@@ -330,15 +332,15 @@ class OrbitControls extends TargetControls<
       dt,
     );
     return Math.max(
-      Math.abs(this.#polar - this.#polarEnd),
+      Math.abs(this.#elevation - this.#elevationEnd),
       Math.abs(this.#azimuth - this.#azimuthEnd),
     );
   }
 
   protected stopRotation(): void {
-    this.#polar = this.#polarEnd;
+    this.#elevation = this.#elevationEnd;
     this.#azimuth = this.#azimuthEnd;
-    this.#polarSpring.velocity = 0;
+    this.#elevationSpring.velocity = 0;
     this.#azimuthSpring.velocity = 0;
   }
 
@@ -357,15 +359,15 @@ class OrbitControls extends TargetControls<
     return sphericalFromVec3(out, TEMP_VEC3);
   }
 
-  // Clamp to bounds and keep the polar angle off the poles, where the azimuth is undefined, so rest is reachable.
-  #setAngles(azimuth: Radian, polar: Radian, nearestTurn = false): void {
+  // Clamp to bounds and keep the elevation off the poles, where the azimuth is undefined, so rest is reachable.
+  #setAngles(azimuth: Radian, elevation: Radian, nearestTurn = false): void {
     // Angles derived from positions are in (-π, π]: pick the turn closest to the current one to avoid spinning around.
     if (nearestTurn) azimuth = shortestAngle(azimuth, this.#azimuthEnd);
     this.#azimuthEnd = clampBounds(azimuth, this.azimuthBounds);
-    this.#polarEnd = utils.clamp(
-      clampBounds(polar, this.polarBounds),
-      utils.EPSILON,
-      Math.PI - utils.EPSILON,
+    this.#elevationEnd = utils.clamp(
+      clampBounds(elevation, this.elevationBounds),
+      utils.EPSILON - Math.PI / 2,
+      Math.PI / 2 - utils.EPSILON,
     );
   }
 

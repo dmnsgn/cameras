@@ -46,14 +46,14 @@ describe("spherical", () => {
     }
   });
 
-  test("polar angle keeps full precision near the poles", () => {
-    for (const polar of [1e-5, 1e-9, Math.PI - 1e-9]) {
+  test("elevation keeps full precision near the poles", () => {
+    for (const elevation of [Math.PI / 2 - 1e-9, 1e-9 - Math.PI / 2]) {
       const s = sphericalFromVec3(sphericalCreate(), [
-        Math.sin(polar),
-        Math.cos(polar),
+        Math.cos(elevation),
+        Math.sin(elevation),
         0,
       ]);
-      close(s[1], polar, polar * 1e-12);
+      close(s[1], elevation, 1e-15);
     }
   });
 
@@ -76,7 +76,7 @@ describe("spherical", () => {
     }
   });
 
-  test("polar angle is measured from the up vector", () => {
+  test("elevation is measured towards the up vector", () => {
     const s = sphericalFromPositionTarget(
       sphericalCreate(),
       [0, 0, 5],
@@ -84,7 +84,7 @@ describe("spherical", () => {
       [0, 0, 1],
     );
     close(s[0], 5);
-    close(s[1], 0);
+    close(s[1], Math.PI / 2);
   });
 
   test("normalizeAngle wraps to (-π, π]", () => {
@@ -183,9 +183,9 @@ describe("spherical edge cases", () => {
 
   test("poles and axes", () => {
     const up = sphericalFromVec3(sphericalCreate(), [0, 3, 0]);
-    close(up[1], 0);
+    close(up[1], Math.PI / 2);
     const down = sphericalFromVec3(sphericalCreate(), [0, -3, 0]);
-    close(down[1], Math.PI);
+    close(down[1], -Math.PI / 2);
     const x = sphericalFromVec3(sphericalCreate(), [2, 0, 0]);
     close(x[2], Math.PI / 2);
   });

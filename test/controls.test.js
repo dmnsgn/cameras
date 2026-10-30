@@ -341,18 +341,14 @@ describe("OrbitControls", () => {
   test("lerp interpolates spherical states", () => {
     const controls = new OrbitControls();
     controls.lerp(
-      { target: [0, 0, 0], spherical: [2, Math.PI / 2, 0] },
-      { target: [2, 0, 0], spherical: [4, Math.PI / 2, Math.PI] },
+      { target: [0, 0, 0], spherical: [2, 0, 0] },
+      { target: [2, 0, 0], spherical: [4, 0, Math.PI] },
       0.5,
       false,
     );
     closeVec(controls.getTarget([], true), [1, 0, 0]);
     // Distance in log space: the geometric mean halfway.
-    closeVec(controls.getSpherical([], true), [
-      Math.sqrt(8),
-      Math.PI / 2,
-      Math.PI / 2,
-    ]);
+    closeVec(controls.getSpherical([], true), [Math.sqrt(8), 0, Math.PI / 2]);
   });
 
   test("reset restores the saved state", () => {
@@ -901,10 +897,10 @@ describe("OrbitControls edge cases", () => {
 
   test("setLookAt on the target keeps the angles", () => {
     const controls = new OrbitControls({ position: [3, 4, 0] });
-    const [, polar, azimuth] = controls.getSpherical();
+    const [, elevation, azimuth] = controls.getSpherical();
     controls.setLookAt([1, 1, 1], [1, 1, 1], false);
     const s = controls.getSpherical();
-    assert.deepEqual([s[1], s[2]], [polar, azimuth]);
+    assert.deepEqual([s[1], s[2]], [elevation, azimuth]);
     assert.ok(s[0] > 0);
     assert.ok(poseOf(controls).orientation.every(Number.isFinite));
   });
@@ -988,16 +984,19 @@ describe("OrbitControls edge cases", () => {
 
   test("single axis arcs and twist", () => {
     const controls = new OrbitControls({ position: [0, 0, 5] });
-    const [, polar, azimuth] = controls.getSpherical();
+    const [, elevation, azimuth] = controls.getSpherical();
     controls.applyAction(
       "arc-azimuth",
       gesture({ deltaNormalized: [0.1, 0.1] }),
     );
-    assert.equal(controls.getSpherical([], true)[1], polar);
+    assert.equal(controls.getSpherical([], true)[1], elevation);
     close(controls.getSpherical([], true)[2], azimuth - TAU * 0.1);
 
-    controls.applyAction("arc-polar", gesture({ deltaNormalized: [0.1, 0.1] }));
-    close(controls.getSpherical([], true)[1], polar - TAU * 0.1);
+    controls.applyAction(
+      "arc-elevation",
+      gesture({ deltaNormalized: [0.1, 0.1] }),
+    );
+    close(controls.getSpherical([], true)[1], elevation + TAU * 0.1);
     close(controls.getSpherical([], true)[2], azimuth - TAU * 0.1);
 
     controls.stop();
@@ -1230,9 +1229,9 @@ describe("OrbitControls edge cases", () => {
       0.5,
       false,
     );
-    const [radius, polar, azimuth] = controls.getSpherical();
+    const [radius, elevation, azimuth] = controls.getSpherical();
     close(radius, 5);
-    close(polar, Math.PI / 2);
+    close(elevation, 0);
     close(azimuth, Math.PI / 4);
   });
 
@@ -1255,24 +1254,24 @@ describe("OrbitControls edge cases", () => {
   test("setLookAt on the up axis keeps the azimuth", () => {
     const controls = new OrbitControls({ position: [5, 0, 0] });
     controls.setLookAt([0, 5, 0], [0, 0, 0], false);
-    const [, polar, azimuth] = controls.getSpherical();
-    assert.ok(polar > 0);
+    const [, elevation, azimuth] = controls.getSpherical();
+    assert.ok(elevation < Math.PI / 2);
     close(azimuth, Math.PI / 2);
   });
 
-  test("polar angle stays off the poles with open bounds", () => {
-    const controls = new OrbitControls({ polarBounds: [-1, 4] });
-    controls.arcTo(0, -1, false);
-    assert.ok(controls.getSpherical()[1] > 0);
-    controls.arcTo(0, 4, false);
-    assert.ok(controls.getSpherical()[1] < Math.PI);
+  test("elevation stays off the poles with open bounds", () => {
+    const controls = new OrbitControls({ elevationBounds: [-3, 3] });
+    controls.arcTo(0, -3, false);
+    assert.ok(controls.getSpherical()[1] > -Math.PI / 2);
+    controls.arcTo(0, 3, false);
+    assert.ok(controls.getSpherical()[1] < Math.PI / 2);
   });
 
   test("setState clamps to the bounds", () => {
     const controls = new OrbitControls({
       distanceBounds: [1, 10],
       zoomBounds: [1, 2],
-      polarBounds: [0.5, 1],
+      elevationBounds: [0.5, 1],
     });
     controls.setState(
       {
@@ -1303,7 +1302,7 @@ describe("MapControls", () => {
   test("defaults", () => {
     const controls = new MapControls();
     assert.equal(controls.dollyToCursor, true);
-    assert.equal(controls.polarBounds[1], Math.PI / 2);
+    assert.deepEqual(controls.elevationBounds, [0, Math.PI / 2]);
     assert.equal(controls.bindings["mouse:primary"], "truck-dolly");
     assert.equal(MapControls.DEFAULT_BINDINGS["mouse:secondary"], "arc");
     assert.notEqual(

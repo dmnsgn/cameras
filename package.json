@@ -84,7 +84,7 @@
     "primitive-geometry": "^3.3.1",
     "tweakpane": "^4.0.5"
   },
-  "packageManager": "npm@11.3.0",
+  "packageManager": "npm@11.12.1",
   "engines": {
     "node": ">=26.0.0",
     "snowdev": ">=3.0.0-alpha.3"

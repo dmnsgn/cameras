@@ -73,7 +73,7 @@ function followZoom({ ctx, scene, pane }) {
   bindSettings(pane.addFolder({ title: "Orbit", expanded: false }), controls, [
     "smoothTime",
     "azimuthSpeed",
-    "polarSpeed",
+    "elevationSpeed",
     "dollySpeed",
   ]);
 }

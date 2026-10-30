@@ -135,18 +135,16 @@ function quatLookAt(
 }
 
 /**
- * Spherical coordinates in Y-up space: polar angle from +Y, azimuth around +Y
- * from +Z towards +X.
- *
- * ISO 80000-2 (r, θ, φ) with axes relabelled for Y-up, handedness preserved.
+ * Spherical coordinates in Y-up space: elevation from the horizon towards +Y,
+ * azimuth around +Y from +Z towards +X.
  *
  * @see https://en.wikipedia.org/wiki/Spherical_coordinate_system
  */
-type Spherical = [radius: number, polar: Radian, azimuth: Radian];
+type Spherical = [radius: number, elevation: Radian, azimuth: Radian];
 
 /** Create spherical coordinates at radius 1 on the horizon facing +Z. */
 function sphericalCreate(): Spherical {
-  return [1, Math.PI / 2, 0];
+  return [1, 0, 0];
 }
 
 /**
@@ -164,8 +162,8 @@ function sphericalFromVec3(out: Spherical, v: Vec3): Spherical {
   const z = v[2];
   // Not Math.hypot, which boxes its arguments.
   out[0] = Math.sqrt(x * x + y * y + z * z);
-  // atan2 stays accurate near the poles, where acos(y / r) loses digits.
-  out[1] = Math.atan2(Math.sqrt(x * x + z * z), y);
+  // atan2 stays accurate near the poles, where asin(y / r) loses digits.
+  out[1] = Math.atan2(y, Math.sqrt(x * x + z * z));
   out[2] = Math.atan2(x, z);
   return out;
 }
@@ -197,12 +195,12 @@ function sphericalFromPositionTarget(
 /** Set a cartesian vector from spherical coordinates. */
 function vec3FromSpherical(out: Vec3, s: Spherical): Vec3 {
   const radius = s[0];
-  const polar = s[1];
+  const elevation = s[1];
   const azimuth = s[2];
-  const radiusSinPolar = radius * Math.sin(polar);
-  out[0] = radiusSinPolar * Math.sin(azimuth);
-  out[1] = radius * Math.cos(polar);
-  out[2] = radiusSinPolar * Math.cos(azimuth);
+  const horizontal = radius * Math.cos(elevation);
+  out[0] = horizontal * Math.sin(azimuth);
+  out[1] = radius * Math.sin(elevation);
+  out[2] = horizontal * Math.cos(azimuth);
   return out;
 }
 

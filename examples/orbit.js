@@ -21,7 +21,7 @@ const POSITION = [0, 5, 5];
 const ACTIONS = [
   "arc",
   "arc-azimuth",
-  "arc-polar",
+  "arc-elevation",
   "dolly",
   "zoom",
   "truck-pedestal",
@@ -109,7 +109,7 @@ function orbit({ ctx, scene, pane }) {
       "draggingSmoothTime",
       "restThreshold",
       "azimuthSpeed",
-      "polarSpeed",
+      "elevationSpeed",
       "dollySpeed",
       "zoomSpeed",
       "truckSpeed",
@@ -120,13 +120,19 @@ function orbit({ ctx, scene, pane }) {
       settings.addFolder({ title: "Bounds", expanded: false }),
       controls,
       {
-        minPolar: [controls.polarBounds[0], { min: 0, max: Math.PI }],
-        maxPolar: [controls.polarBounds[1], { min: 0, max: Math.PI }],
+        minElevation: [
+          controls.elevationBounds[0],
+          { min: -Math.PI / 2, max: Math.PI / 2 },
+        ],
+        maxElevation: [
+          controls.elevationBounds[1],
+          { min: -Math.PI / 2, max: Math.PI / 2 },
+        ],
         limitAzimuth: [false],
         azimuth: [Math.PI / 2, { min: 0, max: Math.PI }],
       },
       (limits) => ({
-        polarBounds: [limits.minPolar, limits.maxPolar],
+        elevationBounds: [limits.minElevation, limits.maxElevation],
         azimuthBounds: limits.limitAzimuth
           ? [-limits.azimuth, limits.azimuth]
           : [-Infinity, Infinity],
@@ -142,8 +148,8 @@ function orbit({ ctx, scene, pane }) {
 
     addActions(actions, [
       ["arc 45° azimuth", (t) => controls.arc(Math.PI / 4, 0, t)],
-      ["arcTo front", (t) => controls.arcTo(0, Math.PI / 2, t)],
-      ["arcTo top", (t) => controls.arcTo(0, 0, t)],
+      ["arcTo front", (t) => controls.arcTo(0, 0, t)],
+      ["arcTo top", (t) => controls.arcTo(0, Math.PI / 2, t)],
       ["dolly in", (t) => controls.dolly(-1, t)],
       ["dolly out", (t) => controls.dolly(1, t)],
       ["zoom in", (t) => controls.zoom(0.25, t)],
@@ -185,11 +191,11 @@ function orbit({ ctx, scene, pane }) {
     const lerp = { t: 0 };
     const from = {
       target: [0, 0, 0],
-      spherical: [6, Math.PI / 3, -Math.PI / 2],
+      spherical: [6, Math.PI / 6, -Math.PI / 2],
     };
     const to = {
       target: [2, 0, 0],
-      spherical: [3, Math.PI / 2.2, Math.PI / 2],
+      spherical: [3, Math.PI / 22, Math.PI / 2],
     };
     actions
       .addBinding(lerp, "t", { label: "lerp", min: 0, max: 1 })

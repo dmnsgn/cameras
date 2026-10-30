@@ -294,9 +294,9 @@ describe("trackball review regressions", () => {
     closeVec(trackball.getTarget(), [0, 0, 1]);
 
     const orbit = new OrbitControls({ position: [0, 0, 5] });
-    orbit.arcTo(-Math.PI / 2, Math.PI / 2).truck(1, 0, false);
+    orbit.arcTo(-Math.PI / 2, 0).truck(1, 0, false);
     closeVec(orbit.getTarget(), [0, 0, 1]);
-    orbit.arcTo(0, Math.PI / 2).forward(1, false);
+    orbit.arcTo(0, 0).forward(1, false);
     closeVec(orbit.getTarget(), [0, 0, 0]);
   });
 
@@ -435,9 +435,9 @@ describe("rigs review regressions", () => {
   });
 
   test("composer corrections keep their half life looking down", () => {
-    const framesToHalve = (polar) => {
+    const framesToHalve = (elevation) => {
       const pose = poseUtils.create();
-      pose.position = [0, 10 * Math.cos(polar), 10 * Math.sin(polar)];
+      pose.position = [0, 10 * Math.sin(elevation), 10 * Math.cos(elevation)];
       quatLookAt(pose.orientation, pose.position, pose.target, pose.up);
       const composer = new Composer({
         lens,
@@ -455,9 +455,9 @@ describe("rigs review regressions", () => {
       }
       return frames;
     };
-    const level = framesToHalve(Math.PI / 2 - 0.3);
+    const level = framesToHalve(0.3);
     // Steeper views approach the gimbal lock of a pan and tilt head.
-    assert.ok(Math.abs(framesToHalve(0.3) - level) <= 1);
+    assert.ok(Math.abs(framesToHalve(Math.PI / 2 - 0.3) - level) <= 1);
   });
 
   test("composer eases back to the input once the subject is gone", () => {

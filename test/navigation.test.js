@@ -293,8 +293,8 @@ describe("MapControls", () => {
     controls.applyAction("twist", gesture({ pointerCount: 2, rotation: 0.3 }));
     close(controls.getSpherical([], true)[2], -0.3);
 
-    controls.arcTo(0, Math.PI);
-    assert.ok(controls.getSpherical([], true)[1] <= Math.PI / 2);
+    controls.arcTo(0, -Math.PI / 2);
+    assert.ok(controls.getSpherical([], true)[1] >= 0);
   });
 });
 

@@ -11,7 +11,7 @@ const DEFAULT_BINDINGS: Bindings<OrbitAction> = {
   "mouse:auxiliary": "dolly",
   "touch:1": "truck-dolly",
   "touch:2": ["dolly", "truck-dolly", "twist"],
-  "touch:3": "arc-polar",
+  "touch:3": "arc-elevation",
   wheel: "dolly",
   pinch: ["dolly", "twist"],
 };
@@ -31,7 +31,7 @@ export default class MapControls extends OrbitControls {
       // Dragging moves the ground 1:1, as scrolling does.
       inertia: SCROLL_HALF_LIFE,
       dollyToCursor: true,
-      polarBounds: [0, Math.PI / 2],
+      elevationBounds: [0, Math.PI / 2],
       ...options,
       bindings: { ...DEFAULT_BINDINGS, ...bindings },
     });

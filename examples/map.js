@@ -12,7 +12,7 @@ import {
 
 const ACTIONS = [
   "arc",
-  "arc-polar",
+  "arc-elevation",
   "dolly",
   "zoom",
   "truck-pedestal",
@@ -54,15 +54,17 @@ function map({ ctx, scene, pane }) {
     "smoothTime",
     "draggingSmoothTime",
     "azimuthSpeed",
-    "polarSpeed",
+    "elevationSpeed",
     "dollySpeed",
     "truckSpeed",
     "boundaryFriction",
   ]);
-  const limits = { maxPolar: controls.polarBounds[1] };
+  const limits = { minElevation: controls.elevationBounds[0] };
   settings
-    .addBinding(limits, "maxPolar", { min: 0, max: Math.PI / 2 })
-    .on("change", ({ value }) => controls.set({ polarBounds: [0, value] }));
+    .addBinding(limits, "minElevation", { min: 0, max: Math.PI / 2 })
+    .on("change", ({ value }) =>
+      controls.set({ elevationBounds: [value, Math.PI / 2] }),
+    );
 
   addBindings(
     pane.addFolder({ title: "Bindings", expanded: false }),
@@ -78,7 +80,8 @@ function map({ ctx, scene, pane }) {
     ],
     [
       "top down",
-      (t) => controls.arcTo(controls.getSpherical([], true)[2], 0, t),
+      (t) =>
+        controls.arcTo(controls.getSpherical([], true)[2], Math.PI / 2, t),
     ],
     ["fly to (10, 0, -10)", (t) => controls.moveTo([10, 0, -10], t)],
     [
