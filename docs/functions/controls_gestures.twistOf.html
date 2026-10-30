@@ -172,19 +172,21 @@
 <section class="tsd-panel">
 <ul class="tsd-signatures">
 <li class="">
-<div class="tsd-signature tsd-anchor-link" id="twistof"><span class="tsd-kind-call-signature">twistOf</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">gesture</span><span class="tsd-signature-symbol">:</span> <a href="../types/controls_types.Gesture.html" class="tsd-signature-type tsd-kind-type-alias">Gesture</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><a href="#twistof" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-signature tsd-anchor-link" id="twistof"><span class="tsd-kind-call-signature">twistOf</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">gesture</span><span class="tsd-signature-symbol">:</span> <a href="../types/controls_types.Gesture.html" class="tsd-signature-type tsd-kind-type-alias">Gesture</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">sign</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">-1</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">1</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><a href="#twistof" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Content rotation a gesture asks for, counter-clockwise on screen: the twist
-of two fingers or a trackpad, else a half turn per viewport height of
-horizontal motion. Fingers panning together don't twist.</p>
+<div class="tsd-comment tsd-typography"><p>Rotation a gesture asks for, counter-clockwise on screen: the twist of two
+fingers or a trackpad, else a half turn per viewport height of horizontal
+motion, grabbing the content unless <code>sign</code> moves the view. Fingers panning
+together don't twist.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
-<li><span><span class="tsd-kind-parameter">gesture</span>: <a href="../types/controls_types.Gesture.html" class="tsd-signature-type tsd-kind-type-alias">Gesture</a></span></li></ul></div>
+<li><span><span class="tsd-kind-parameter">gesture</span>: <a href="../types/controls_types.Gesture.html" class="tsd-signature-type tsd-kind-type-alias">Gesture</a></span></li>
+<li><span><span class="tsd-kind-parameter">sign</span>: <span class="tsd-signature-type">-1</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> = ...</span></span></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/0407861beb111c81fdcf5079d4ff22db5156448f/src/controls/gestures.ts#L101">controls/gestures.ts:101</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/dmnsgn/cameras/blob/33f64aeaedf94e38d4f7114a52974835253478e2/src/controls/gestures.ts#L105">controls/gestures.ts:105</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

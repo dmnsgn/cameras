@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+# [4.0.0-alpha.2](https://github.com/dmnsgn/cameras/compare/v4.0.0-alpha.1...v4.0.0-alpha.2) (2026-10-30)
+
+### Bug Fixes
+
+* keep levelled fly looks off the poles and in the pointer direction upside down ([f69215a](https://github.com/dmnsgn/cameras/commit/f69215a16fab094d9218b5d1393145c90ea5289e))
+* make fly and first person look and roll in the pointer direction ([bbcd505](https://github.com/dmnsgn/cameras/commit/bbcd505e0efb0b32c36332a7105f852f5e70e662))
+
 # [4.0.0-alpha.1](https://github.com/dmnsgn/cameras/compare/v4.0.0-alpha.0...v4.0.0-alpha.1) (2026-10-29)
 
 ### Performance Improvements
