@@ -30,7 +30,7 @@ import type { Bindings, Gesture } from "./types.js";
  *   do
  */
 type OrbitAction =
-    | "arc"
+  | "arc"
   | "arc-azimuth"
   | "arc-elevation"
   | "truck-dolly"

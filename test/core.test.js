@@ -46,14 +46,19 @@ describe("spherical", () => {
     }
   });
 
-  test("elevation keeps full precision near the poles", () => {
-    for (const elevation of [Math.PI / 2 - 1e-9, 1e-9 - Math.PI / 2]) {
+  test("elevation keeps full precision near the poles and the horizon", () => {
+    for (const [elevation, epsilon] of [
+      [Math.PI / 2 - 1e-9, 1e-15],
+      [1e-9 - Math.PI / 2, 1e-15],
+      [1e-9, 1e-24],
+      [-1e-9, 1e-24],
+    ]) {
       const s = sphericalFromVec3(sphericalCreate(), [
         Math.cos(elevation),
         Math.sin(elevation),
         0,
       ]);
-      close(s[1], elevation, 1e-15);
+      close(s[1], elevation, epsilon);
     }
   });
 

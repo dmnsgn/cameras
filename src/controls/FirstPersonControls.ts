@@ -19,7 +19,6 @@ import type { Bindings, Gesture } from "./types.js";
 type FirstPersonAction = SteeringAction | "pan-tilt";
 
 interface FirstPersonSettings extends SteeringSettings {
-  lookSpeed?: number;
   /** Lag behind the pointer, 0 for raw input. */
   lookSmoothTime?: Second;
   /** Up and down limits of the tilt. */
@@ -69,7 +68,6 @@ class FirstPersonControls extends SteeringControls<
     Bindings<FirstPersonAction>
   > = DEFAULT_BINDINGS;
 
-  public lookSpeed = 1;
   public lookSmoothTime: Second = POINTER_LAG;
   public tiltBounds: [Radian, Radian] = [-Math.PI / 2, Math.PI / 2];
   public headBobAmplitude = 0;
@@ -147,7 +145,7 @@ class FirstPersonControls extends SteeringControls<
     const delta = deltaOf(gesture);
     const dx = delta[0];
     const dy = delta[1];
-    const angle = this.lookAngle(this.lookSpeed);
+    const angle = this.lookAngle();
     this.#panEnd += dx * angle;
     this.#tiltEnd = utils.clamp(
       this.#tiltEnd + dy * angle,

@@ -97,15 +97,12 @@ function deltaOf(gesture: Gesture): Vec2 {
 }
 
 /**
- * Content rotation a gesture asks for, counter-clockwise on screen: the twist
- * of two fingers or a trackpad, else a half turn per viewport height of
- * horizontal motion, in the direction of `sign`. Fingers panning together
- * don't twist.
+ * Rotation a gesture asks for, counter-clockwise on screen: the twist of two
+ * fingers or a trackpad, else a half turn per viewport height of horizontal
+ * motion, grabbing the content unless `sign` moves the view. Fingers panning
+ * together don't twist.
  */
-function twistOf(
-  gesture: Gesture,
-  sign: 1 | -1 = grabSign(gesture),
-): Radian {
+function twistOf(gesture: Gesture, sign: 1 | -1 = grabSign(gesture)): Radian {
   return gesture.type === "pinch" ||
     (gesture.type !== "wheel" && gesture.pointerCount >= 2)
     ? gesture.rotation

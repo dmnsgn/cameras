@@ -53,6 +53,7 @@ interface SteeringSettings extends ControlsSettings {
    * deceleration feel.
    */
   moveSmoothTime?: Second;
+  lookSpeed?: number;
   zoomSpeed?: number;
   zoomSmoothTime?: Second;
   zoomBounds?: [number, number];
@@ -109,6 +110,7 @@ abstract class SteeringControls<
   public sprintMultiplier = SPEED_FACTOR;
   public slowMultiplier = SLOW_WALK_SPEED / WALK_SPEED;
   public moveSmoothTime: Second = SPRING_SMOOTH_TIME;
+  public lookSpeed = 1;
   public zoomSpeed = 1;
   public zoomSmoothTime: Second = SPRING_SMOOTH_TIME;
   public zoomBounds: [number, number] = [0.1, 20];
@@ -334,9 +336,11 @@ abstract class SteeringControls<
     return this.restThreshold / this.zoomEnd;
   }
 
-  // Travelling through the scene, the view turns with the pointer as in games and editor fly cameras, whatever the input: target controls grab the content instead.
-  protected lookAngle(speed: number): Radian {
-    return VIEW_SIGN * effectiveFov(this.lens, 1, this.zoomValue) * speed;
+  // The view turns with the pointer as in games: target controls grab the content.
+  protected lookAngle(): Radian {
+    return (
+      VIEW_SIGN * effectiveFov(this.lens, 1, this.zoomValue) * this.lookSpeed
+    );
   }
 
   /** Current orientation. */

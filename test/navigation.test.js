@@ -637,7 +637,32 @@ describe("FlyControls edge cases", () => {
     assert.ok(rollOf(false) < 0, "the top leans right looking down");
   });
 
-    test("roll from drags, twists and wheels", () => {
+  test("levelled pan-tilt stops short of the poles", () => {
+    for (const sign of [1, -1]) {
+      const controls = new FlyControls();
+      for (let i = 0; i < 2; i++) {
+        controls.applyAction(
+          "pan-tilt",
+          gesture({ deltaNormalized: [0, 5 * sign] }),
+        );
+      }
+      controls.stop().update(0);
+      close(forward(controls.pose.orientation)[1], -sign * (1 - 1e-3), 1e-9);
+      assert.ok(upOf(controls.pose.orientation)[1] > 0, "not flipped");
+    }
+  });
+
+  test("levelled pan-tilt looks in the pointer direction upside down", () => {
+    const controls = new FlyControls();
+    controls.rotate(0, 0, Math.PI, false).update(0);
+    const right = rightOf(controls.pose.orientation);
+    close(right[0], -1);
+    controls.applyAction("pan-tilt", gesture({ deltaNormalized: [0.1, 0] }));
+    controls.stop().update(0);
+    assert.ok(vec3.dot(forward(controls.pose.orientation), right) > 0);
+  });
+
+  test("roll from drags, twists and wheels", () => {
     const roll = (input) => {
       const controls = new FlyControls();
       controls.applyAction("roll", input);

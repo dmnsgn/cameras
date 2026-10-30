@@ -80,8 +80,7 @@ function map({ ctx, scene, pane }) {
     ],
     [
       "top down",
-      (t) =>
-        controls.arcTo(controls.getSpherical([], true)[2], Math.PI / 2, t),
+      (t) => controls.arcTo(controls.getSpherical([], true)[2], Math.PI / 2, t),
     ],
     ["fly to (10, 0, -10)", (t) => controls.moveTo([10, 0, -10], t)],
     [

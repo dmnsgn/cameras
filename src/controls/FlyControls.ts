@@ -1,4 +1,4 @@
-import { quat, vec3 } from "pex-math";
+import { quat, utils, vec3 } from "pex-math";
 import {
   advance,
   createTransition,
@@ -45,7 +45,6 @@ interface RollKeys {
 }
 
 interface FlySettings extends SteeringSettings {
-  lookSpeed?: number;
   /** Scales the key roll rate and the roll per normalized drag. */
   rollSpeed?: number;
   /** Lag behind the pointer, 0 for raw input. */
@@ -88,6 +87,8 @@ const DEFAULT_KEYS: MovementKeys = {
 
 // Looking along the up axis, the horizon is undefined.
 const LEVEL_EPSILON = 1e-3;
+// Levelled looks stop where the horizon is still defined.
+const TILT_BOUND: Radian = Math.asin(1 - LEVEL_EPSILON);
 
 /**
  * Complete elliptic integral K(1/√2): an undamped pendulum released at 90°
@@ -106,6 +107,7 @@ const DROP_TIME: Second = 1.5;
 
 const TEMP_QUAT = quat.create();
 const TEMP_UP = vec3.create();
+const TEMP_FORWARD = vec3.create();
 const TEMP_LEVEL = quat.create();
 const TEMP_SPRING = { velocity: 0 };
 const TEMP_STEP = createTransition();
@@ -118,7 +120,6 @@ class FlyControls extends SteeringControls<FlyAction, FlySettings, FlyState> {
   public static readonly DEFAULT_BINDINGS: Readonly<Bindings<FlyAction>> =
     DEFAULT_BINDINGS;
 
-  public lookSpeed = 1;
   public rollSpeed = 1;
   public lookSmoothTime: Second = POINTER_LAG;
   public rollKeys: RollKeys = { rollLeft: ["KeyQ"], rollRight: ["KeyE"] };
@@ -207,16 +208,11 @@ class FlyControls extends SteeringControls<FlyAction, FlySettings, FlyState> {
       const delta = deltaOf(gesture);
       const dx = delta[0];
       const dy = delta[1];
-      const angle = this.lookAngle(this.lookSpeed);
-      // Levelled, pan around the world up as editor fly cameras do: around the camera's own up, a tilted view would roll.
-      if (this.autoLevel) {
-        this.#panAroundUp(dx * angle);
-        this.#rotate(0, dy * angle, 0);
-      } else {
-        this.#rotate(dx * angle, dy * angle, 0);
-      }
+      const angle = this.lookAngle();
+      if (this.autoLevel) this.#levelledLook(dx * angle, dy * angle);
+      else this.#rotate(dx * angle, dy * angle, 0);
     } else {
-      // Twists turn the horizon with the fingers, drags roll the view with the pointer as looking does.
+      // Twists turn the horizon with the fingers, drags roll with the pointer.
       this.#rotate(0, 0, -twistOf(gesture, VIEW_SIGN) * this.rollSpeed);
     }
     this.invalidate();
@@ -308,10 +304,28 @@ class FlyControls extends SteeringControls<FlyAction, FlySettings, FlyState> {
     return true;
   }
 
-  #panAroundUp(pan: Radian): void {
+  // Pan around the world up, as editor fly cameras do: around the camera's own
+  // up, a tilted view would roll. Past the poles, the horizon would flip.
+  #levelledLook(pan: Radian, tilt: Radian): void {
     const end = this.#orientationEnd;
-    quat.fromAxisAngle(TEMP_QUAT, this.upVector, pan);
+    const up = vec3.dot(
+      vec3.multQuat(vec3.set(TEMP_UP, Y_AXIS), end),
+      this.upVector,
+    );
+    const forward = vec3.dot(
+      vec3.multQuat(vec3.set(TEMP_FORWARD, NEG_Z_AXIS), end),
+      this.upVector,
+    );
+    // Upside down, the world up points down the screen.
+    quat.fromAxisAngle(TEMP_QUAT, this.upVector, up < 0 ? -pan : pan);
     quat.normalize(quat.set(end, quat.mult(TEMP_QUAT, end)));
+
+    // View angle above the horizon around the camera's right, rolled or not.
+    const elevation = Math.atan2(forward, up);
+    if (Math.abs(elevation) <= TILT_BOUND) {
+      tilt = utils.clamp(elevation + tilt, -TILT_BOUND, TILT_BOUND) - elevation;
+    }
+    this.#rotate(0, tilt, 0);
   }
 
   // Post-multiplication rotates around local axes.
